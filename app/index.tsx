@@ -9,7 +9,7 @@ const SplashScreen = () => {
 	const [isEnabled, setIsEnabled] = useState(false);
 	const { theme, themeMode, toggleTheme } = useTheme();
 	return (
-		<ScreenWrapper>
+		<ScreenWrapper useGradient={true}>
 			<View style={{ flex: 1, justifyContent: "flex-start" }}>
 				<Typo>{themeMode}</Typo>
 				<Switch

@@ -127,29 +127,27 @@ export const TYPOGRAPHY = {
 export const COLORS = {
 	// Brand Colors - Màu thương hiệu
 	primary: {
-		50: "#F0F4FF",
-		100: "#E0E9FF",
-		200: "#C7D7FE",
-		300: "#A4BCFD",
-		400: "#8098F9",
-		500: "#6366F1",
-		600: "#4F46E5",
-		700: "#4338CA",
-		800: "#3730A3",
-		900: "#312E81",
+		100: "#FFFFFF",
+		200: "#EFECFB",
+		300: "#DFDBF9",
+		400: "#C8BEF4",
+		500: "#AC99EC",
+		600: "#8F6FE3",
+		700: "#7C4DD6",
+		800: "#5C34A3",
+		900: "#2F1B5A",
 	},
 
 	secondary: {
-		50: "#ECFEFF",
-		100: "#CFFAFE",
-		200: "#A5F3FC",
-		300: "#67E8F9",
-		400: "#22D3EE",
-		500: "#06B6D4",
-		600: "#0891B2",
-		700: "#0E7490",
-		800: "#155E75",
-		900: "#164E63",
+		100: "#f9f1ffff",
+		200: "#F5E7FF",
+		300: "#DFB2FF",
+		400: "#C97BFF",
+		500: "#A225F8",
+		600: "#7617B2",
+		700: "#410068",
+		800: "#25003B",
+		900: "#06000A",
 	},
 
 	// Emotion Colors - Màu cho các cảm xúc
@@ -208,13 +206,20 @@ export const lightTheme = {
 		secondary: "#F8FAFC",
 		tertiary: "#F1F5F9",
 		elevated: "#FFFFFF",
+		gradient: [
+			"#7C4DD6",
+			"#C8B8E8",
+			"#E8DFF5",
+			"#F5F1FF",
+			"#FAFAFF",
+		] as const,
 	},
 
 	// Text
 	text: {
-		primary: "#0F172A",
-		secondary: "#475569",
-		tertiary: "#94A3B8",
+		primary: "#5C34A3",
+		secondary: "#7C4DD6",
+		tertiary: "#2A40D4",
 		disabled: "#CBD5E1",
 		inverse: "#FFFFFF",
 	},
@@ -291,6 +296,13 @@ export const darkTheme = {
 		secondary: "#1E293B", // Slate 800
 		tertiary: "#334155", // Slate 700
 		elevated: "#1E293B",
+		gradient: [
+			"#2D1B4E",
+			"#3D2B5E",
+			"#2B2640",
+			"#1F1F2E",
+			"#15151F",
+		] as const,
 	},
 
 	// Text
@@ -369,6 +381,7 @@ export interface ThemeColors {
 		secondary: string;
 		tertiary: string;
 		elevated: string;
+		gradient: readonly string[];
 	};
 	text: {
 		primary: string;
