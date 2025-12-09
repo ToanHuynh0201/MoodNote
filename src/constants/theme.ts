@@ -267,6 +267,22 @@ export const lightTheme = {
 	},
 } as const;
 
+export const withOpacity = (color: string, opacity: number): string => {
+	// For hex colors
+	if (color.startsWith("#")) {
+		const hex = color.replace("#", "");
+		const r = parseInt(hex.substring(0, 2), 16);
+		const g = parseInt(hex.substring(2, 4), 16);
+		const b = parseInt(hex.substring(4, 6), 16);
+		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+	}
+	// For rgb/rgba colors
+	if (color.startsWith("rgb")) {
+		return color.replace(/[\d.]+\)$/g, `${opacity})`);
+	}
+	return color;
+};
+
 // Dark Mode Theme
 export const darkTheme = {
 	// Background
@@ -344,24 +360,65 @@ export const darkTheme = {
 } as const;
 
 export type ColorPalette = typeof COLORS;
-export type ThemeColors = typeof lightTheme;
 export type EmotionColors = typeof COLORS.emotions;
 
-export const withOpacity = (color: string, opacity: number): string => {
-	// For hex colors
-	if (color.startsWith("#")) {
-		const hex = color.replace("#", "");
-		const r = parseInt(hex.substring(0, 2), 16);
-		const g = parseInt(hex.substring(2, 4), 16);
-		const b = parseInt(hex.substring(4, 6), 16);
-		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-	}
-	// For rgb/rgba colors
-	if (color.startsWith("rgb")) {
-		return color.replace(/[\d.]+\)$/g, `${opacity})`);
-	}
-	return color;
-};
+// Define a more flexible ThemeColors type that works for both light and dark themes
+export interface ThemeColors {
+	background: {
+		primary: string;
+		secondary: string;
+		tertiary: string;
+		elevated: string;
+	};
+	text: {
+		primary: string;
+		secondary: string;
+		tertiary: string;
+		disabled: string;
+		inverse: string;
+	};
+	surface: {
+		primary: string;
+		secondary: string;
+		elevated: string;
+		overlay: string;
+	};
+	border: {
+		light: string;
+		main: string;
+		dark: string;
+	};
+	primary: string;
+	primaryLight: string;
+	primaryDark: string;
+	secondary: string;
+	secondaryLight: string;
+	secondaryDark: string;
+	emotions: {
+		happy: string;
+		excited: string;
+		calm: string;
+		sad: string;
+		anxious: string;
+		angry: string;
+		tired: string;
+		grateful: string;
+	};
+	success: string;
+	warning: string;
+	error: string;
+	info: string;
+	shadow: string;
+	shadowMedium: string;
+	shadowLarge: string;
+	chart: {
+		positive: string;
+		negative: string;
+		neutral: string;
+		gradient1: string;
+		gradient2: string;
+	};
+}
 
 export default {
 	COLORS,

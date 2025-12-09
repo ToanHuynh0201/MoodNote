@@ -1,3 +1,4 @@
+import { useTheme } from "@/hooks/useTheme";
 import { ScreenWrapperProps } from "@/types";
 import React from "react";
 import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
@@ -8,9 +9,13 @@ const ScreenWrapper = ({
 	style,
 	safeAreaEdges = ["top", "bottom", "left", "right"], // Mặc định apply safe area cho tất cả các cạnh
 }: ScreenWrapperProps) => {
+	const { theme } = useTheme();
 	return (
 		<SafeAreaView
-			style={[styles.container]}
+			style={[
+				styles.container,
+				{ backgroundColor: theme.background.primary },
+			]}
 			edges={safeAreaEdges}>
 			<KeyboardAvoidingView
 				style={{ flex: 1 }}

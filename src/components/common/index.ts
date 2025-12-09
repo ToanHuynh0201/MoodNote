@@ -1,1 +1,1 @@
-export * from "./typo";
+export * from "./Typo";
