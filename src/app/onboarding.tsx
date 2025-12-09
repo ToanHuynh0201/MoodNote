@@ -1,19 +1,19 @@
-import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import Typo from "@/components/common/Typo";
 import IconButton from "@/components/common/IconButton";
+import Typo from "@/components/common/Typo";
+import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
+import { moderateScale } from "@/utils/responsive";
+import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
-	View,
-	StyleSheet,
+	Animated,
 	Dimensions,
 	FlatList,
-	Animated,
 	Pressable,
+	StyleSheet,
+	View,
 } from "react-native";
-import { moderateScale } from "@/utils/responsive";
-import { MaterialIcons } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
@@ -79,7 +79,8 @@ const OnboardingScreen = () => {
 
 	const renderSlide = ({ item }: { item: OnboardingSlide }) => (
 		<View style={[styles.slide, { width }]}>
-			<View style={styles.iconCircle}>
+			<View
+				style={[styles.iconCircle, { backgroundColor: theme.primary }]}>
 				<MaterialIcons
 					name={item.icon}
 					size={moderateScale(80)}
@@ -89,19 +90,17 @@ const OnboardingScreen = () => {
 
 			<Typo
 				variant="headlineLarge"
-				color={theme.text.inverse}
+				color={theme.text.primary}
 				align="center"
-				style={styles.title}
-			>
+				style={styles.title}>
 				{item.title}
 			</Typo>
 
 			<Typo
 				variant="bodyLarge"
-				color={theme.text.inverse}
+				color={theme.text.primary}
 				align="center"
-				style={styles.description}
-			>
+				style={styles.description}>
 				{item.description}
 			</Typo>
 		</View>
@@ -136,7 +135,7 @@ const OnboardingScreen = () => {
 							{
 								width: dotWidth,
 								opacity,
-								backgroundColor: theme.text.inverse,
+								backgroundColor: theme.text.secondary,
 							},
 						]}
 					/>
@@ -149,8 +148,13 @@ const OnboardingScreen = () => {
 		<ScreenWrapper useGradient={true}>
 			<View style={styles.container}>
 				{/* Skip Button */}
-				<Pressable style={styles.skipButton} onPress={handleSkip}>
-					<Typo variant="labelLarge" color={theme.text.inverse}>
+				<Pressable
+					style={styles.skipButton}
+					onPress={handleSkip}>
+					<Typo
+						variant="labelLarge"
+						color={theme.text.inverse}
+						style={{ fontSize: moderateScale(24) }}>
 						Bỏ qua
 					</Typo>
 				</Pressable>
@@ -167,7 +171,7 @@ const OnboardingScreen = () => {
 					keyExtractor={(item) => item.id}
 					onScroll={Animated.event(
 						[{ nativeEvent: { contentOffset: { x: scrollX } } }],
-						{ useNativeDriver: false }
+						{ useNativeDriver: false },
 					)}
 					onViewableItemsChanged={viewableItemsChanged}
 					viewabilityConfig={viewConfig}
@@ -189,7 +193,7 @@ const OnboardingScreen = () => {
 											: "arrow-forward"
 									}
 									size={moderateScale(24)}
-									color={theme.primaryDark}
+									color={theme.text.inverse}
 								/>
 							}
 							label={
@@ -230,13 +234,12 @@ const styles = StyleSheet.create({
 	iconCircle: {
 		width: moderateScale(160),
 		height: moderateScale(160),
-		borderRadius: moderateScale(80),
-		backgroundColor: "rgba(255, 255, 255, 0.25)",
+		borderRadius: 80,
 		justifyContent: "center",
 		alignItems: "center",
 		marginBottom: moderateScale(40),
 		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 4 },
+		shadowOffset: { width: 2, height: 4 },
 		shadowOpacity: 0.3,
 		shadowRadius: 8,
 		elevation: 5,

@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { moderateScale } from "@/utils/responsive";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
-import { Animated, Dimensions, StyleSheet, View } from "react-native";
+import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -180,6 +180,57 @@ const SoundWave = ({ delay }: any) => {
 	);
 };
 
+// Animated word component for slogan
+const AnimatedWord = ({ word, delay }: any) => {
+	const { theme } = useTheme();
+	const translateY = useRef(new Animated.Value(-50)).current;
+	const opacity = useRef(new Animated.Value(0)).current;
+	const scale = useRef(new Animated.Value(0.5)).current;
+
+	useEffect(() => {
+		setTimeout(() => {
+			Animated.parallel([
+				Animated.spring(translateY, {
+					toValue: 0,
+					tension: 40,
+					friction: 8,
+					useNativeDriver: true,
+				}),
+				Animated.timing(opacity, {
+					toValue: 1,
+					duration: 600,
+					useNativeDriver: true,
+				}),
+				Animated.spring(scale, {
+					toValue: 1,
+					tension: 40,
+					friction: 8,
+					useNativeDriver: true,
+				}),
+			]).start();
+		}, delay);
+	}, []);
+
+	return (
+		<Animated.View
+			style={{
+				opacity,
+				transform: [{ translateY }, { scale }],
+			}}>
+			<Text
+				style={[
+					styles.sloganWord,
+					{
+						color: theme.text.secondary,
+					},
+				]}
+				numberOfLines={1}>
+				{word}
+			</Text>
+		</Animated.View>
+	);
+};
+
 const SplashScreen = () => {
 	const { theme } = useTheme();
 	const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -241,24 +292,21 @@ const SplashScreen = () => {
 		// Navigate to onboarding after 2.5 seconds
 		const timer = setTimeout(() => {
 			router.replace("/onboarding");
-		}, 2500);
+		}, 4000);
 
 		return () => clearTimeout(timer);
 	}, []);
-
-	const shimmerTranslate = shimmerAnim.interpolate({
-		inputRange: [0, 1],
-		outputRange: [-width, width],
-	});
 
 	// Generate floating notes
 	const musicNotes = ["♪", "♫", "♬", "♩", "♭", "♮", "♯"];
 	const floatingNotes = Array.from({ length: 15 }, (_, i) => ({
 		id: i,
-		delay: i * 400,
-		startX: Math.random() * width - 50,
-		endX: Math.random() * width - 50,
-		duration: 6000 + Math.random() * 3000,
+		delay: i * 1000,
+		startX: (Math.random() * 2 - 1) * width,
+		endX: (Math.random() * 2 - 1) * width,
+		startY: (Math.random() * 2 - 1) * height,
+		endY: (Math.random() * 2 - 1) * height * 2,
+		duration: 600 + Math.random() * 6000,
 		symbol: musicNotes[Math.floor(Math.random() * musicNotes.length)],
 	}));
 
@@ -278,6 +326,11 @@ const SplashScreen = () => {
 		delay: i * 100,
 		index: i,
 	}));
+
+	// Split slogan into words for animation
+	const sloganText = "Vì tâm tư nào cũng mang dáng hình thanh âm.";
+	const sloganWords = sloganText.split(" ");
+	const baseDelay = 1600; // Start after logo animation completes
 
 	return (
 		<ScreenWrapper useGradient={true}>
@@ -308,18 +361,6 @@ const SplashScreen = () => {
 								],
 							},
 						]}>
-						{/* Shimmer effect overlay */}
-						<Animated.View
-							style={[
-								styles.shimmerOverlay,
-								{
-									transform: [
-										{ translateX: shimmerTranslate },
-									],
-								},
-							]}
-						/>
-
 						{/* App Name with decorative font */}
 						<Typo
 							variant="displayLarge"
@@ -368,13 +409,15 @@ const SplashScreen = () => {
 							},
 						]}>
 						<View style={styles.sloganGlow} />
-						<Typo
-							variant="bodyLarge"
-							color={theme.text.primary}
-							align="center"
-							style={styles.slogan}>
-							Vì tâm tư nào cũng mang dáng hình thanh âm.
-						</Typo>
+						<View style={styles.sloganWordsContainer}>
+							{sloganWords.map((word, index) => (
+								<AnimatedWord
+									key={index}
+									word={word}
+									delay={baseDelay + index * 150}
+								/>
+							))}
+						</View>
 					</Animated.View>
 				</View>
 			</View>
@@ -503,6 +546,24 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		backgroundColor: "rgba(124, 90, 200, 0.08)",
 		borderRadius: moderateScale(28),
+	},
+	sloganWordsContainer: {
+		flexDirection: "row",
+		flexWrap: "wrap",
+		justifyContent: "center",
+		alignItems: "center",
+		zIndex: 1,
+		rowGap: moderateScale(4),
+		columnGap: moderateScale(3.5),
+	},
+	sloganWord: {
+		fontStyle: "italic",
+		textShadowColor: "rgba(124, 90, 200, 0.4)",
+		textShadowOffset: { width: 0, height: 1 },
+		textShadowRadius: 4,
+		fontWeight: "600",
+		fontSize: moderateScale(24),
+		lineHeight: moderateScale(26),
 	},
 	slogan: {
 		fontStyle: "italic",

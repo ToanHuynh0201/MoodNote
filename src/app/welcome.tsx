@@ -1,12 +1,12 @@
-import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import Typo from "@/components/common/Typo";
 import IconButton from "@/components/common/IconButton";
+import Typo from "@/components/common/Typo";
+import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { router } from "expo-router";
-import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Animated, Dimensions } from "react-native";
 import { moderateScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import React, { useEffect, useRef } from "react";
+import { Animated, Dimensions, StyleSheet, View } from "react-native";
 
 const { width } = Dimensions.get("window");
 
@@ -54,8 +54,7 @@ const WelcomeScreen = () => {
 							opacity: fadeAnim,
 							transform: [{ translateY: slideUpAnim }],
 						},
-					]}
-				>
+					]}>
 					{/* Welcome Icon */}
 					<View style={styles.iconContainer}>
 						<MaterialIcons
@@ -70,8 +69,7 @@ const WelcomeScreen = () => {
 						variant="displayMedium"
 						color={theme.text.inverse}
 						align="center"
-						style={styles.welcomeTitle}
-					>
+						style={styles.welcomeTitle}>
 						Chào mừng đến với
 					</Typo>
 
@@ -80,8 +78,7 @@ const WelcomeScreen = () => {
 						decorative={true}
 						color={theme.text.inverse}
 						align="center"
-						style={styles.appName}
-					>
+						style={styles.appName}>
 						MoodNote
 					</Typo>
 
@@ -89,10 +86,9 @@ const WelcomeScreen = () => {
 						variant="bodyLarge"
 						color={theme.text.inverse}
 						align="center"
-						style={styles.description}
-					>
-						Hãy bắt đầu hành trình khám phá cảm xúc và tìm kiếm thanh âm cho
-						tâm hồn bạn
+						style={styles.description}>
+						Hãy bắt đầu hành trình khám phá cảm xúc và tìm kiếm
+						thanh âm cho tâm hồn bạn
 					</Typo>
 				</Animated.View>
 
@@ -111,8 +107,7 @@ const WelcomeScreen = () => {
 								},
 							],
 						},
-					]}
-				>
+					]}>
 					<IconButton
 						icon={
 							<MaterialIcons
@@ -146,8 +141,7 @@ const WelcomeScreen = () => {
 						color={theme.text.inverse}
 						align="center"
 						style={styles.skipText}
-						onPress={handleGetStarted}
-					>
+						onPress={handleGetStarted}>
 						Hoặc khám phá ngay →
 					</Typo>
 				</Animated.View>

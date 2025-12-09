@@ -1,9 +1,9 @@
 import { useTheme } from "@/hooks/useTheme";
 import { IconButtonProps } from "@/types";
+import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
 import Typo from "./Typo";
-import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 
 const IconButton = ({
 	icon,
@@ -21,7 +21,7 @@ const IconButton = ({
 		switch (variant) {
 			case "filled":
 				return {
-					backgroundColor: theme.primary,
+					backgroundColor: theme.primaryDark,
 				};
 			case "tonal":
 				return {
