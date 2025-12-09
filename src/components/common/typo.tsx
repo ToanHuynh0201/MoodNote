@@ -1,4 +1,5 @@
-import { TYPOGRAPHY, lightTheme } from "@/constants/theme";
+import { FONTS, TYPOGRAPHY } from "@/constants/theme";
+import { useTheme } from "@/hooks/useTheme";
 import { TypoProps } from "@/types";
 import React from "react";
 import { Text, TextStyle } from "react-native";
@@ -12,13 +13,15 @@ const Typo = ({
 	lineThrough = false,
 	numberOfLines,
 	style,
+	decorative = false,
 	children,
 	...rest
 }: TypoProps) => {
+	const { theme } = useTheme();
 	const typographyStyle = TYPOGRAPHY[variant];
 
 	// Use theme text color if no color is provided
-	const textColor = color || lightTheme.text.primary;
+	const textColor = color || theme.text.primary;
 
 	const textStyle: TextStyle = {
 		...typographyStyle,
@@ -30,6 +33,8 @@ const Typo = ({
 			: lineThrough
 			? "line-through"
 			: "none",
+		// Override fontFamily if decorative is true
+		...(decorative && { fontFamily: FONTS.decorative }),
 	};
 
 	return (

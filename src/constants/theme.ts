@@ -1,3 +1,5 @@
+import { moderateScale } from "@/utils/responsive";
+
 export const FONTS = {
 	regular: "Segoe UI",
 	italic: "Segoe UI Italic",
@@ -6,27 +8,28 @@ export const FONTS = {
 	decorative: "Pacifico",
 };
 
-// Material 3 Typography Scale
+// Mobile-optimized Typography Scale (adapted from Material 3)
+// Using moderateScale with factor 0.5 for responsive font sizes
 export const TYPOGRAPHY = {
-	// Display styles - largest text
+	// Display styles - largest text (reduced for mobile)
 	displayLarge: {
 		fontFamily: FONTS.regular,
-		fontSize: 57,
-		lineHeight: 64,
+		fontSize: moderateScale(40),
+		lineHeight: moderateScale(48),
 		letterSpacing: -0.25,
 		fontWeight: "400" as const,
 	},
 	displayMedium: {
 		fontFamily: FONTS.regular,
-		fontSize: 45,
-		lineHeight: 52,
+		fontSize: moderateScale(34),
+		lineHeight: moderateScale(40),
 		letterSpacing: 0,
 		fontWeight: "400" as const,
 	},
 	displaySmall: {
 		fontFamily: FONTS.regular,
-		fontSize: 36,
-		lineHeight: 44,
+		fontSize: moderateScale(28),
+		lineHeight: moderateScale(36),
 		letterSpacing: 0,
 		fontWeight: "400" as const,
 	},
@@ -34,22 +37,22 @@ export const TYPOGRAPHY = {
 	// Headline styles - high-emphasis text
 	headlineLarge: {
 		fontFamily: FONTS.regular,
-		fontSize: 32,
-		lineHeight: 40,
+		fontSize: moderateScale(24),
+		lineHeight: moderateScale(32),
 		letterSpacing: 0,
 		fontWeight: "400" as const,
 	},
 	headlineMedium: {
 		fontFamily: FONTS.regular,
-		fontSize: 28,
-		lineHeight: 36,
+		fontSize: moderateScale(22),
+		lineHeight: moderateScale(28),
 		letterSpacing: 0,
 		fontWeight: "400" as const,
 	},
 	headlineSmall: {
 		fontFamily: FONTS.regular,
-		fontSize: 24,
-		lineHeight: 32,
+		fontSize: moderateScale(20),
+		lineHeight: moderateScale(28),
 		letterSpacing: 0,
 		fontWeight: "400" as const,
 	},
@@ -57,22 +60,22 @@ export const TYPOGRAPHY = {
 	// Title styles - medium-emphasis text
 	titleLarge: {
 		fontFamily: FONTS.regular,
-		fontSize: 22,
-		lineHeight: 28,
+		fontSize: moderateScale(18),
+		lineHeight: moderateScale(24),
 		letterSpacing: 0,
-		fontWeight: "400" as const,
+		fontWeight: "700" as const,
 	},
 	titleMedium: {
 		fontFamily: FONTS.bold,
-		fontSize: 16,
-		lineHeight: 24,
+		fontSize: moderateScale(16),
+		lineHeight: moderateScale(22),
 		letterSpacing: 0.15,
 		fontWeight: "700" as const,
 	},
 	titleSmall: {
 		fontFamily: FONTS.bold,
-		fontSize: 14,
-		lineHeight: 20,
+		fontSize: moderateScale(14),
+		lineHeight: moderateScale(20),
 		letterSpacing: 0.1,
 		fontWeight: "700" as const,
 	},
@@ -80,22 +83,22 @@ export const TYPOGRAPHY = {
 	// Body styles - for long-form writing
 	bodyLarge: {
 		fontFamily: FONTS.regular,
-		fontSize: 16,
-		lineHeight: 24,
+		fontSize: moderateScale(16),
+		lineHeight: moderateScale(24),
 		letterSpacing: 0.5,
 		fontWeight: "400" as const,
 	},
 	bodyMedium: {
 		fontFamily: FONTS.regular,
-		fontSize: 14,
-		lineHeight: 20,
+		fontSize: moderateScale(14),
+		lineHeight: moderateScale(20),
 		letterSpacing: 0.25,
 		fontWeight: "400" as const,
 	},
 	bodySmall: {
 		fontFamily: FONTS.regular,
-		fontSize: 12,
-		lineHeight: 16,
+		fontSize: moderateScale(12),
+		lineHeight: moderateScale(16),
 		letterSpacing: 0.4,
 		fontWeight: "400" as const,
 	},
@@ -103,51 +106,51 @@ export const TYPOGRAPHY = {
 	// Label styles - for UI elements like buttons
 	labelLarge: {
 		fontFamily: FONTS.bold,
-		fontSize: 14,
-		lineHeight: 20,
+		fontSize: moderateScale(14),
+		lineHeight: moderateScale(20),
 		letterSpacing: 0.1,
 		fontWeight: "700" as const,
 	},
 	labelMedium: {
 		fontFamily: FONTS.bold,
-		fontSize: 12,
-		lineHeight: 16,
+		fontSize: moderateScale(12),
+		lineHeight: moderateScale(16),
 		letterSpacing: 0.5,
 		fontWeight: "700" as const,
 	},
 	labelSmall: {
 		fontFamily: FONTS.bold,
-		fontSize: 11,
-		lineHeight: 16,
+		fontSize: moderateScale(11),
+		lineHeight: moderateScale(16),
 		letterSpacing: 0.5,
 		fontWeight: "700" as const,
 	},
 };
 
 export const COLORS = {
-	// Brand Colors - Màu thương hiệu
+	// Brand Colors - Màu thương hiệu (dựa trên UI design)
 	primary: {
-		100: "#FFFFFF",
-		200: "#EFECFB",
-		300: "#DFDBF9",
-		400: "#C8BEF4",
-		500: "#AC99EC",
-		600: "#8F6FE3",
-		700: "#7C4DD6",
-		800: "#5C34A3",
-		900: "#2F1B5A",
+		100: "#F5F0FF", // Tím rất nhạt - background
+		200: "#E8DEFF", // Tím nhạt
+		300: "#D4C2F7", // Tím pastel
+		400: "#B99DEB", // Tím sáng
+		500: "#9B7FDB", // Tím chính (main purple)
+		600: "#7C5AC8", // Tím đậm (dark purple)
+		700: "#6744B8", // Tím đậm hơn
+		800: "#5033A3", // Tím rất đậm
+		900: "#3D2070", // Tím gần đen
 	},
 
 	secondary: {
-		100: "#f9f1ffff",
-		200: "#F5E7FF",
-		300: "#DFB2FF",
-		400: "#C97BFF",
-		500: "#A225F8",
-		600: "#7617B2",
-		700: "#410068",
-		800: "#25003B",
-		900: "#06000A",
+		100: "#FDF5FF", // Hồng tím rất nhạt
+		200: "#F9E7FF", // Hồng tím nhạt
+		300: "#F0D4FF", // Hồng tím pastel
+		400: "#E0B3FF", // Hồng tím sáng
+		500: "#C77DFF", // Hồng tím chính
+		600: "#AD5CFF", // Hồng tím đậm
+		700: "#8F3FE0", // Hồng tím đậm hơn
+		800: "#6B2BB8", // Hồng tím rất đậm
+		900: "#4A1A80", // Hồng tím gần đen
 	},
 
 	// Emotion Colors - Màu cho các cảm xúc
@@ -202,25 +205,25 @@ export const COLORS = {
 export const lightTheme = {
 	// Background
 	background: {
-		primary: "#FFFFFF",
-		secondary: "#F8FAFC",
-		tertiary: "#F1F5F9",
+		primary: "#F5F0FF", // Nền tím nhạt như trong design
+		secondary: "#FFFFFF", // Nền trắng cho cards
+		tertiary: "#E8DEFF", // Nền tím rất nhạt
 		elevated: "#FFFFFF",
 		gradient: [
-			"#7C4DD6",
-			"#C8B8E8",
-			"#E8DFF5",
-			"#F5F1FF",
-			"#FAFAFF",
+			"#7C5AC8", // Tím đậm
+			"#9B7FDB", // Tím chính
+			"#D4C2F7", // Tím pastel
+			"#E8DEFF", // Tím nhạt
+			"#F5F0FF", // Tím rất nhạt
 		] as const,
 	},
 
 	// Text
 	text: {
-		primary: "#5C34A3",
-		secondary: "#7C4DD6",
-		tertiary: "#2A40D4",
-		disabled: "#CBD5E1",
+		primary: "#3D2070", // Tím đen cho text chính
+		secondary: "#6744B8", // Tím đậm cho text phụ
+		tertiary: "#9B7FDB", // Tím nhạt cho text tertiary
+		disabled: "#B5A8CC", // Tím xám nhạt
 		inverse: "#FFFFFF",
 	},
 

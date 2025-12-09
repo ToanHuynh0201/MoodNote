@@ -24,5 +24,17 @@ export interface TypoProps extends TextProps {
 	underline?: boolean;
 	lineThrough?: boolean;
 	numberOfLines?: number;
+	decorative?: boolean;
 	style?: TextStyle | TextStyle[];
+}
+
+export interface IconButtonProps {
+	icon?: React.ReactNode;
+	label: string;
+	labelStyle?: TypoProps;
+	onPress?: () => void;
+	variant?: "filled" | "outlined" | "tonal";
+	disabled?: boolean;
+	style?: any;
+	iconPosition?: "left" | "right";
 }

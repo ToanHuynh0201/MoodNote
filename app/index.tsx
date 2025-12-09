@@ -1,25 +1,26 @@
-import Typo from "@/components/common/Typo";
+import IconButton from "@/components/common/IconButton";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import { useTheme } from "@/hooks/useTheme";
-
-import React, { useState } from "react";
-import { StyleSheet, Switch, View } from "react-native";
+import { moderateScale } from "@/utils/responsive";
+import { MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 const SplashScreen = () => {
-	const [isEnabled, setIsEnabled] = useState(false);
-	const { theme, themeMode, toggleTheme } = useTheme();
 	return (
 		<ScreenWrapper useGradient={true}>
 			<View style={{ flex: 1, justifyContent: "flex-start" }}>
-				<Typo>{themeMode}</Typo>
-				<Switch
-					trackColor={{ false: "#767577", true: "#81b0ff" }}
-					thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-					onValueChange={() => {
-						toggleTheme();
-						setIsEnabled((previousState) => !previousState);
-					}}
-					value={isEnabled}></Switch>
+				<IconButton
+					icon={
+						<MaterialIcons
+							name="shuffle"
+							size={moderateScale(24)}
+							color="#3D2070"
+						/>
+					}
+					label="Phát ngẫu nhiên"
+					variant="tonal"
+					onPress={() => console.log("Shuffle pressed")}
+				/>
 			</View>
 		</ScreenWrapper>
 	);
