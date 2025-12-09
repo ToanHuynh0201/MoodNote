@@ -9,11 +9,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
 	const [fontsLoaded, fontError] = useFonts({
-		"Segoe UI": require("../assets/fonts/Segoe_UI.ttf"),
-		"Segoe UI Italic": require("../assets/fonts/Segoe_UI_Italic.ttf"),
-		"Segoe UI Bold": require("../assets/fonts/Segoe_UI_Bold.ttf"),
-		"Segoe UI Bold Italic": require("../assets/fonts/Segoe_UI_Bold_Italic.ttf"),
-		Pacifico: require("../assets/fonts/Pacifico.ttf"),
+		"Segoe UI": require("../../assets/fonts/Segoe_UI.ttf"),
+		"Segoe UI Italic": require("../../assets/fonts/Segoe_UI_Italic.ttf"),
+		"Segoe UI Bold": require("../../assets/fonts/Segoe_UI_Bold.ttf"),
+		"Segoe UI Bold Italic": require("../../assets/fonts/Segoe_UI_Bold_Italic.ttf"),
+		Pacifico: require("../../assets/fonts/Pacifico.ttf"),
 	});
 
 	useEffect(() => {
