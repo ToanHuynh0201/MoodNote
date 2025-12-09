@@ -30,6 +30,18 @@ export default function RootLayout() {
 		<ThemeProvider defaultMode="light">
 			<Stack>
 				<Stack.Screen
+					name="splash"
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="onboarding"
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="welcome"
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
 					name="(tabs)"
 					options={{ headerShown: false }}
 				/>
