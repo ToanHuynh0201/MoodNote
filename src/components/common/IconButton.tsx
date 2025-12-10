@@ -113,7 +113,9 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	label: {},
+	label: {
+		lineHeight: moderateScale(24),
+	},
 	disabled: {
 		opacity: 0.5,
 	},

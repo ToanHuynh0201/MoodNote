@@ -33,6 +33,7 @@ const Typo = ({
 			: lineThrough
 			? "line-through"
 			: "none",
+		paddingVertical: 5,
 		// Override fontFamily if decorative is true
 		...(decorative && { fontFamily: FONTS.decorative }),
 	};

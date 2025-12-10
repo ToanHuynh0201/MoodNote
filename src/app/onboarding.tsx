@@ -80,7 +80,10 @@ const OnboardingScreen = () => {
 	const renderSlide = ({ item }: { item: OnboardingSlide }) => (
 		<View style={[styles.slide, { width }]}>
 			<View
-				style={[styles.iconCircle, { backgroundColor: theme.primary }]}>
+				style={[
+					styles.iconCircle,
+					{ backgroundColor: theme.primaryDark },
+				]}>
 				<MaterialIcons
 					name={item.icon}
 					size={moderateScale(80)}
@@ -89,8 +92,8 @@ const OnboardingScreen = () => {
 			</View>
 
 			<Typo
-				variant="headlineLarge"
-				color={theme.text.primary}
+				variant="titleLarge"
+				color={theme.text.dark}
 				align="center"
 				style={styles.title}>
 				{item.title}
@@ -100,7 +103,7 @@ const OnboardingScreen = () => {
 				variant="bodyLarge"
 				color={theme.text.primary}
 				align="center"
-				style={styles.description}>
+				style={[styles.description, { width: width * 0.85 }]}>
 				{item.description}
 			</Typo>
 		</View>
@@ -153,7 +156,7 @@ const OnboardingScreen = () => {
 					onPress={handleSkip}>
 					<Typo
 						variant="labelLarge"
-						color={theme.text.inverse}
+						color={theme.text.dark}
 						style={{ fontSize: moderateScale(24) }}>
 						Bỏ qua
 					</Typo>
@@ -246,16 +249,20 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		marginBottom: moderateScale(16),
-		fontSize: moderateScale(28),
+		fontSize: moderateScale(32),
+		lineHeight: moderateScale(42),
 		textShadowColor: "rgba(0, 0, 0, 0.3)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 4,
+		fontWeight: "700",
 	},
 	description: {
 		lineHeight: moderateScale(26),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 3,
+		fontWeight: "700",
+		fontSize: moderateScale(20),
 	},
 	bottomSection: {
 		paddingBottom: moderateScale(40),

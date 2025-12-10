@@ -68,9 +68,3 @@ export const STATUS_BAR_HEIGHT = Platform.select({
 	android: StatusBar.currentHeight,
 	default: 0,
 });
-
-// Alias ngắn gọn nếu bạn lười gõ tên dài (Optional)
-export const s = scale;
-export const vs = verticalScale;
-export const ms = moderateScale;
-export const mvs = moderateVerticalScale;

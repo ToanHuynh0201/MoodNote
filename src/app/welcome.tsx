@@ -1,7 +1,5 @@
-import IconButton from "@/components/common/IconButton";
-import Typo from "@/components/common/Typo";
-import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import { useTheme } from "@/hooks/useTheme";
+import { IconButton, ScreenWrapper, Typo } from "@/components";
+import { useTheme } from "@/hooks";
 import { moderateScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -17,6 +15,7 @@ const WelcomeScreen = () => {
 	const buttonAnim = useRef(new Animated.Value(0)).current;
 
 	useEffect(() => {
+		// Main entrance animation
 		Animated.sequence([
 			Animated.parallel([
 				Animated.timing(fadeAnim, {
@@ -55,11 +54,17 @@ const WelcomeScreen = () => {
 							transform: [{ translateY: slideUpAnim }],
 						},
 					]}>
-					{/* Welcome Icon */}
-					<View style={styles.iconContainer}>
+					{/* Welcome Icon with Circle Background */}
+					<View
+						style={[
+							styles.iconContainer,
+							{
+								backgroundColor: theme.primaryDark,
+							},
+						]}>
 						<MaterialIcons
 							name="favorite"
-							size={moderateScale(100)}
+							size={moderateScale(80)}
 							color={theme.text.inverse}
 						/>
 					</View>
@@ -67,7 +72,7 @@ const WelcomeScreen = () => {
 					{/* Welcome Text */}
 					<Typo
 						variant="displayMedium"
-						color={theme.text.inverse}
+						color={theme.text.dark}
 						align="center"
 						style={styles.welcomeTitle}>
 						Chào mừng đến với
@@ -76,7 +81,7 @@ const WelcomeScreen = () => {
 					<Typo
 						variant="displayLarge"
 						decorative={true}
-						color={theme.text.inverse}
+						color={theme.text.dark}
 						align="center"
 						style={styles.appName}>
 						MoodNote
@@ -84,7 +89,7 @@ const WelcomeScreen = () => {
 
 					<Typo
 						variant="bodyLarge"
-						color={theme.text.inverse}
+						color={theme.text.primary}
 						align="center"
 						style={styles.description}>
 						Hãy bắt đầu hành trình khám phá cảm xúc và tìm kiếm
@@ -113,7 +118,7 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="login"
 								size={moderateScale(24)}
-								color={theme.primaryDark}
+								color={theme.text.inverse}
 							/>
 						}
 						label="Đăng nhập"
@@ -127,7 +132,7 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="person-add"
 								size={moderateScale(24)}
-								color={theme.text.inverse}
+								color={theme.primaryDark}
 							/>
 						}
 						label="Đăng ký"
@@ -135,15 +140,6 @@ const WelcomeScreen = () => {
 						onPress={handleGetStarted}
 						style={[styles.button, styles.secondaryButton]}
 					/>
-
-					<Typo
-						variant="bodySmall"
-						color={theme.text.inverse}
-						align="center"
-						style={styles.skipText}
-						onPress={handleGetStarted}>
-						Hoặc khám phá ngay →
-					</Typo>
 				</Animated.View>
 			</View>
 		</ScreenWrapper>
@@ -165,43 +161,52 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	iconContainer: {
-		marginBottom: moderateScale(30),
+		width: moderateScale(140),
+		height: moderateScale(140),
+		borderRadius: moderateScale(70),
+		justifyContent: "center",
+		alignItems: "center",
+		marginBottom: moderateScale(40),
+		shadowColor: "#000",
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.3,
+		shadowRadius: 10,
+		elevation: 8,
 	},
 	welcomeTitle: {
 		marginBottom: moderateScale(8),
-		fontSize: moderateScale(32),
-		textShadowColor: "rgba(0, 0, 0, 0.3)",
-		textShadowOffset: { width: 0, height: 2 },
-		textShadowRadius: 4,
+		fontSize: moderateScale(28),
+		textShadowColor: "rgba(0, 0, 0, 0.15)",
+		textShadowOffset: { width: 0, height: 1 },
+		textShadowRadius: 3,
+		fontWeight: "500",
 	},
 	appName: {
 		fontSize: moderateScale(56),
 		marginBottom: moderateScale(24),
-		textShadowColor: "rgba(0, 0, 0, 0.5)",
-		textShadowOffset: { width: 0, height: 3 },
-		textShadowRadius: 10,
+		textShadowColor: "rgba(0, 0, 0, 0.2)",
+		textShadowOffset: { width: 0, height: 2 },
+		textShadowRadius: 6,
 	},
 	description: {
 		lineHeight: moderateScale(26),
 		paddingHorizontal: moderateScale(20),
-		textShadowColor: "rgba(0, 0, 0, 0.2)",
+		textShadowColor: "rgba(0, 0, 0, 0.1)",
 		textShadowOffset: { width: 0, height: 1 },
-		textShadowRadius: 3,
+		textShadowRadius: 2,
+		fontSize: moderateScale(17),
+		fontWeight: "500",
 	},
 	buttonContainer: {
 		width: "100%",
-		gap: moderateScale(12),
+		gap: moderateScale(14),
 	},
 	button: {
 		width: "100%",
 	},
 	secondaryButton: {
-		backgroundColor: "rgba(255, 255, 255, 0.15)",
+		backgroundColor: "rgba(255, 255, 255, 0.9)",
 		borderWidth: 2,
-		borderColor: "rgba(255, 255, 255, 0.3)",
-	},
-	skipText: {
-		marginTop: moderateScale(16),
-		textDecorationLine: "underline",
+		borderColor: "rgba(124, 90, 200, 0.3)",
 	},
 });

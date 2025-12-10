@@ -83,6 +83,7 @@ const FloatingNote = ({ delay, startX, endX, duration, symbol }: any) => {
 
 // Particle component
 const Particle = ({ delay, startX, startY, endX, endY }: any) => {
+	const { theme } = useTheme();
 	const translateX = useRef(new Animated.Value(startX)).current;
 	const translateY = useRef(new Animated.Value(startY)).current;
 	const opacity = useRef(new Animated.Value(0)).current;
@@ -136,6 +137,7 @@ const Particle = ({ delay, startX, startY, endX, endY }: any) => {
 			style={[
 				styles.particle,
 				{
+					backgroundColor: theme.accent.lavender,
 					opacity,
 					transform: [{ translateX }, { translateY }, { scale }],
 				},
@@ -147,7 +149,7 @@ const Particle = ({ delay, startX, startY, endX, endY }: any) => {
 // Sound wave component
 const SoundWave = ({ delay }: any) => {
 	const scaleY = useRef(new Animated.Value(0.3)).current;
-
+	const { theme } = useTheme();
 	useEffect(() => {
 		setTimeout(() => {
 			Animated.loop(
@@ -172,6 +174,7 @@ const SoundWave = ({ delay }: any) => {
 			style={[
 				styles.soundWave,
 				{
+					backgroundColor: theme.primary,
 					transform: [{ scaleY }],
 					marginHorizontal: moderateScale(3),
 				},
@@ -180,54 +183,63 @@ const SoundWave = ({ delay }: any) => {
 	);
 };
 
-// Animated word component for slogan
-const AnimatedWord = ({ word, delay }: any) => {
+// Typewriter effect component for slogan
+const TypewriterText = ({ text, startDelay }: any) => {
 	const { theme } = useTheme();
-	const translateY = useRef(new Animated.Value(-50)).current;
-	const opacity = useRef(new Animated.Value(0)).current;
-	const scale = useRef(new Animated.Value(0.5)).current;
+	const [displayedText, setDisplayedText] = React.useState("");
+	const [showCursor, setShowCursor] = React.useState(true);
 
 	useEffect(() => {
-		setTimeout(() => {
-			Animated.parallel([
-				Animated.spring(translateY, {
-					toValue: 0,
-					tension: 40,
-					friction: 8,
-					useNativeDriver: true,
-				}),
-				Animated.timing(opacity, {
-					toValue: 1,
-					duration: 600,
-					useNativeDriver: true,
-				}),
-				Animated.spring(scale, {
-					toValue: 1,
-					tension: 40,
-					friction: 8,
-					useNativeDriver: true,
-				}),
-			]).start();
-		}, delay);
-	}, []);
+		// Start typing after delay
+		const typingTimeout = setTimeout(() => {
+			let currentIndex = 0;
+			const typingInterval = setInterval(() => {
+				if (currentIndex <= text.length) {
+					setDisplayedText(text.slice(0, currentIndex));
+					currentIndex++;
+				} else {
+					clearInterval(typingInterval);
+				}
+			}, 60); // Speed of typing (60ms per character)
+
+			return () => clearInterval(typingInterval);
+		}, startDelay);
+
+		// Blinking cursor effect
+		const cursorInterval = setInterval(() => {
+			setShowCursor((prev) => !prev);
+		}, 500);
+
+		return () => {
+			clearTimeout(typingTimeout);
+			clearInterval(cursorInterval);
+		};
+	}, [text, startDelay]);
 
 	return (
-		<Animated.View
-			style={{
-				opacity,
-				transform: [{ translateY }, { scale }],
-			}}>
+		<View style={styles.typewriterContainer}>
 			<Text
 				style={[
-					styles.sloganWord,
+					styles.typewriterText,
 					{
-						color: theme.text.secondary,
+						color: theme.text.primary,
 					},
-				]}
-				numberOfLines={1}>
-				{word}
+				]}>
+				{displayedText}
+				{displayedText.length < text.length && (
+					<Text
+						style={[
+							styles.cursor,
+							{
+								opacity: showCursor ? 1 : 0,
+								color: theme.primary,
+							},
+						]}>
+						|
+					</Text>
+				)}
 			</Text>
-		</Animated.View>
+		</View>
 	);
 };
 
@@ -292,7 +304,7 @@ const SplashScreen = () => {
 		// Navigate to onboarding after 2.5 seconds
 		const timer = setTimeout(() => {
 			router.replace("/onboarding");
-		}, 4000);
+		}, 5500);
 
 		return () => clearTimeout(timer);
 	}, []);
@@ -327,9 +339,8 @@ const SplashScreen = () => {
 		index: i,
 	}));
 
-	// Split slogan into words for animation
+	// Slogan text for typewriter effect
 	const sloganText = "Vì tâm tư nào cũng mang dáng hình thanh âm.";
-	const sloganWords = sloganText.split(" ");
 	const baseDelay = 1600; // Start after logo animation completes
 
 	return (
@@ -365,7 +376,7 @@ const SplashScreen = () => {
 						<Typo
 							variant="displayLarge"
 							decorative
-							color={theme.text.primary}
+							color={theme.text.dark}
 							style={styles.appName}>
 							MoodNote
 						</Typo>
@@ -399,7 +410,7 @@ const SplashScreen = () => {
 						</View>
 					</Animated.View>
 
-					{/* Slogan */}
+					{/* Slogan with Typewriter Effect */}
 					<Animated.View
 						style={[
 							styles.sloganContainer,
@@ -408,16 +419,10 @@ const SplashScreen = () => {
 								transform: [{ translateY: slideAnim }],
 							},
 						]}>
-						<View style={styles.sloganGlow} />
-						<View style={styles.sloganWordsContainer}>
-							{sloganWords.map((word, index) => (
-								<AnimatedWord
-									key={index}
-									word={word}
-									delay={baseDelay + index * 150}
-								/>
-							))}
-						</View>
+						<TypewriterText
+							text={sloganText}
+							startDelay={baseDelay}
+						/>
 					</Animated.View>
 				</View>
 			</View>
@@ -457,7 +462,7 @@ const styles = StyleSheet.create({
 		width: moderateScale(6),
 		height: moderateScale(6),
 		borderRadius: moderateScale(3),
-		backgroundColor: "rgba(255, 255, 255, 0.9)",
+		// backgroundColor: "rgba(255, 255, 255, 0.9)",
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.8,
@@ -468,7 +473,7 @@ const styles = StyleSheet.create({
 	soundWave: {
 		width: moderateScale(4),
 		height: moderateScale(40),
-		backgroundColor: "rgba(255, 255, 255, 0.8)",
+		// backgroundColor: "rgba(255, 255, 255, 0.8)",
 		borderRadius: moderateScale(2),
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
@@ -503,6 +508,7 @@ const styles = StyleSheet.create({
 		textShadowColor: "rgba(255, 255, 255, 0.8)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,
+		textAlign: "center",
 		zIndex: 2,
 	},
 	iconContainer: {
@@ -520,59 +526,34 @@ const styles = StyleSheet.create({
 		textShadowRadius: 10,
 		zIndex: 2,
 	},
-	// Slogan
+	// Slogan with Typewriter
 	sloganContainer: {
 		position: "absolute",
-		bottom: moderateScale(60),
+		bottom: moderateScale(100),
 		width: width * 0.9,
-		backgroundColor: "rgba(255, 255, 255, 0.95)",
-		paddingVertical: moderateScale(20),
-		paddingHorizontal: moderateScale(28),
-		borderRadius: moderateScale(28),
-		borderWidth: 2,
-		borderColor: "rgba(124, 90, 200, 0.4)",
-		shadowColor: "#3D2070",
-		shadowOffset: { width: 0, height: 8 },
-		shadowOpacity: 0.3,
-		shadowRadius: 16,
-		elevation: 10,
-		overflow: "hidden",
-	},
-	sloganGlow: {
-		position: "absolute",
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
-		backgroundColor: "rgba(124, 90, 200, 0.08)",
-		borderRadius: moderateScale(28),
-	},
-	sloganWordsContainer: {
-		flexDirection: "row",
-		flexWrap: "wrap",
-		justifyContent: "center",
+		paddingVertical: moderateScale(16),
+		paddingHorizontal: moderateScale(24),
 		alignItems: "center",
-		zIndex: 1,
-		rowGap: moderateScale(4),
-		columnGap: moderateScale(3.5),
 	},
-	sloganWord: {
-		fontStyle: "italic",
-		textShadowColor: "rgba(124, 90, 200, 0.4)",
-		textShadowOffset: { width: 0, height: 1 },
-		textShadowRadius: 4,
-		fontWeight: "600",
-		fontSize: moderateScale(24),
-		lineHeight: moderateScale(26),
+	typewriterContainer: {
+		width: "100%",
+		alignItems: "center",
+		justifyContent: "center",
 	},
-	slogan: {
+	typewriterText: {
 		fontStyle: "italic",
-		textShadowColor: "rgba(124, 90, 200, 0.4)",
+		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 1 },
-		textShadowRadius: 4,
-		fontWeight: "600",
-		fontSize: moderateScale(20),
+		textShadowRadius: 3,
+		fontWeight: "500",
+		fontSize: moderateScale(18),
 		lineHeight: moderateScale(26),
-		zIndex: 1,
+		letterSpacing: 0.5,
+		textAlign: "center",
+	},
+	cursor: {
+		fontStyle: "normal",
+		fontWeight: "300",
+		fontSize: moderateScale(18),
 	},
 });

@@ -1,1 +1,1 @@
-export * from "./ScreenWrapper";
+export { default as ScreenWrapper } from "./ScreenWrapper";
