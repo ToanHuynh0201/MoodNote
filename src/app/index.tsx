@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Index() {
 	useEffect(() => {
 		// Redirect to splash screen
-		router.replace("/splash");
+		router.replace("/(public)/splash");
 	}, []);
 
 	return null;

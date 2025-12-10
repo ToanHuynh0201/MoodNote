@@ -37,9 +37,12 @@ const WelcomeScreen = () => {
 		]).start();
 	}, []);
 
-	const handleGetStarted = () => {
-		// TODO: Check if user is logged in, navigate accordingly
-		router.replace("/(tabs)");
+	const handleLogin = () => {
+		router.push("/login");
+	};
+
+	const handleRegister = () => {
+		router.push("/register");
 	};
 
 	return (
@@ -123,7 +126,7 @@ const WelcomeScreen = () => {
 						}
 						label="Đăng nhập"
 						variant="filled"
-						onPress={handleGetStarted}
+						onPress={handleLogin}
 						style={styles.button}
 					/>
 
@@ -137,7 +140,7 @@ const WelcomeScreen = () => {
 						}
 						label="Đăng ký"
 						variant="outlined"
-						onPress={handleGetStarted}
+						onPress={handleRegister}
 						style={styles.button}
 					/>
 				</Animated.View>

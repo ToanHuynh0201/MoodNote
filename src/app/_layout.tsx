@@ -28,27 +28,14 @@ export default function RootLayout() {
 
 	return (
 		<ThemeProvider defaultMode="dark">
-			<Stack>
-				<Stack.Screen
-					name="splash"
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="onboarding"
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="welcome"
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="(tabs)"
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="index"
-					options={{ headerShown: false }}
-				/>
+			<Stack screenOptions={{ headerShown: false }}>
+				{/* Route Groups */}
+				<Stack.Screen name="(public)" />
+				<Stack.Screen name="(auth)" />
+				<Stack.Screen name="(tabs)" />
+
+				{/* Index sẽ tự động được xử lý */}
+				<Stack.Screen name="index" />
 			</Stack>
 		</ThemeProvider>
 	);

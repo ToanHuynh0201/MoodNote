@@ -1,4 +1,4 @@
-import { TextProps, TextStyle } from "react-native";
+import { TextProps, TextStyle, TextInputProps as RNTextInputProps, ViewStyle } from "react-native";
 export type TypographyVariant =
 	| "displayLarge"
 	| "displayMedium"
@@ -50,4 +50,13 @@ export interface LoadingSpinnerProps {
 	color?: string;
 	/** Màu phụ (cho hiệu ứng gradient của sóng) */
 	secondaryColor?: string;
+}
+
+export interface TextInputProps extends RNTextInputProps {
+	label?: string;
+	error?: string;
+	leftIcon?: string;
+	rightIcon?: string;
+	onRightIconPress?: () => void;
+	containerStyle?: ViewStyle;
 }
