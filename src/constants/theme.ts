@@ -285,6 +285,7 @@ export const lightTheme = {
 		gradient2: "#D946EF", // Hồng tím
 	},
 } as const; // Dark Mode Theme - Nền tối với text sáng
+
 export const darkTheme = {
 	// Background - Nền tối với tông tím
 	background: {

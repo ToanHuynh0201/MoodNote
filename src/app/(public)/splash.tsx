@@ -505,7 +505,7 @@ const styles = StyleSheet.create({
 	appName: {
 		fontSize: moderateScale(56),
 		paddingVertical: moderateVerticalScale(10),
-		textShadowColor: "rgba(255, 255, 255, 0.8)",
+		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,
 		textAlign: "center",

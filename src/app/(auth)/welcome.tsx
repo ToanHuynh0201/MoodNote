@@ -94,7 +94,8 @@ const WelcomeScreen = () => {
 						variant="bodyLarge"
 						color={theme.text.primary}
 						align="center"
-						style={styles.description}>
+						style={styles.description}
+						numberOfLines={3}>
 						Hãy bắt đầu hành trình khám phá cảm xúc và tìm kiếm
 						thanh âm cho tâm hồn bạn
 					</Typo>
@@ -135,7 +136,7 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="person-add"
 								size={moderateScale(24)}
-								color={theme.primary}
+								color={theme.text.primary}
 							/>
 						}
 						label="Đăng kí"

@@ -100,6 +100,7 @@ const OnboardingScreen = () => {
 				variant="bodyLarge"
 				color={theme.text.primary}
 				align="center"
+				numberOfLines={4}
 				style={[styles.description, { width: width * 0.85 }]}>
 				{item.description}
 			</Typo>

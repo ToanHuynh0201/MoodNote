@@ -21,11 +21,11 @@ const IconButton = ({
 		switch (variant) {
 			case "filled":
 				return {
-					backgroundColor: theme.primary,
+					backgroundColor: theme.primaryLight,
 				};
 			case "tonal":
 				return {
-					backgroundColor: theme.primaryLight,
+					backgroundColor: theme.primaryDark,
 				};
 			case "outlined":
 				return {
