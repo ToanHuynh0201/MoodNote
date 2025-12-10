@@ -27,7 +27,7 @@ export default function RootLayout() {
 	}
 
 	return (
-		<ThemeProvider defaultMode="light">
+		<ThemeProvider defaultMode="dark">
 			<Stack
 				screenOptions={{
 					headerShown: false,
