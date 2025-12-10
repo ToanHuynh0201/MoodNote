@@ -33,7 +33,7 @@ const Typo = ({
 			: lineThrough
 			? "line-through"
 			: "none",
-		paddingVertical: 5,
+		includeFontPadding: false,
 		// Override fontFamily if decorative is true
 		...(decorative && { fontFamily: FONTS.decorative }),
 	};
@@ -42,6 +42,7 @@ const Typo = ({
 		<Text
 			style={[textStyle, style]}
 			numberOfLines={numberOfLines}
+			allowFontScaling={false}
 			{...rest}>
 			{children}
 		</Text>

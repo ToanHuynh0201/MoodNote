@@ -38,3 +38,16 @@ export interface IconButtonProps {
 	style?: any;
 	iconPosition?: "left" | "right";
 }
+
+export interface LoadingSpinnerProps {
+	/** Có hiển thị hay không */
+	visible?: boolean;
+	/** True: Che toàn màn hình (Overlay) | False: Nằm trong view cha */
+	fullScreen?: boolean;
+	/** Danh sách câu text sẽ chạy. Nếu không truyền sẽ dùng mặc định */
+	messages?: string[];
+	/** Màu chủ đạo của sóng và chữ */
+	color?: string;
+	/** Màu phụ (cho hiệu ứng gradient của sóng) */
+	secondaryColor?: string;
+}

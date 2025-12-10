@@ -80,10 +80,7 @@ const OnboardingScreen = () => {
 	const renderSlide = ({ item }: { item: OnboardingSlide }) => (
 		<View style={[styles.slide, { width }]}>
 			<View
-				style={[
-					styles.iconCircle,
-					{ backgroundColor: theme.primaryDark },
-				]}>
+				style={[styles.iconCircle, { backgroundColor: theme.primary }]}>
 				<MaterialIcons
 					name={item.icon}
 					size={moderateScale(80)}
@@ -93,7 +90,7 @@ const OnboardingScreen = () => {
 
 			<Typo
 				variant="titleLarge"
-				color={theme.text.dark}
+				color={theme.text.primary}
 				align="center"
 				style={styles.title}>
 				{item.title}
@@ -138,7 +135,7 @@ const OnboardingScreen = () => {
 							{
 								width: dotWidth,
 								opacity,
-								backgroundColor: theme.text.secondary,
+								backgroundColor: theme.primary,
 							},
 						]}
 					/>
@@ -156,7 +153,7 @@ const OnboardingScreen = () => {
 					onPress={handleSkip}>
 					<Typo
 						variant="labelLarge"
-						color={theme.text.dark}
+						color={theme.text.primary}
 						style={{ fontSize: moderateScale(24) }}>
 						Bỏ qua
 					</Typo>

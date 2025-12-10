@@ -61,7 +61,7 @@ export const TYPOGRAPHY = {
 	titleLarge: {
 		fontFamily: FONTS.regular,
 		fontSize: moderateScale(18),
-		lineHeight: moderateScale(24),
+		lineHeight: moderateScale(22),
 		letterSpacing: 0,
 		fontWeight: "700" as const,
 	},
@@ -128,41 +128,44 @@ export const TYPOGRAPHY = {
 };
 
 export const COLORS = {
-	// Brand Colors - Màu thương hiệu (tone tím nhẹ nhàng cho app sức khỏe tinh thần)
+	// Brand Colors - Màu tím chủ đạo (Purple theme)
 	primary: {
-		100: "#FAF7FF", // Tím cực nhạt - background thoáng
-		200: "#F0E8FF", // Tím rất nhạt
-		300: "#E0D4F7", // Tím pastel nhẹ
-		400: "#C5B3E6", // Tím lavender
-		500: "#9B7FDB", // Tím chính (main purple)
-		600: "#8268C8", // Tím medium
-		700: "#6B50B5", // Tím đậm
-		800: "#543D9E", // Tím rất đậm
-		900: "#3D2870", // Tím đen
+		50: "#FAF5FF", // Tím cực nhạt
+		100: "#F3E8FF", // Tím rất nhạt - background
+		200: "#E9D5FF", // Tím nhạt
+		300: "#D8B4FE", // Tím pastel
+		400: "#C084FC", // Tím lavender
+		500: "#A855F7", // Tím chính (main purple)
+		600: "#9333EA", // Tím đậm
+		700: "#7E22CE", // Tím rất đậm
+		800: "#6B21A8", // Tím tối
+		900: "#581C87", // Tím đen
+		950: "#3B0764", // Tím cực tối
 	},
 
 	secondary: {
-		100: "#FFF5FB", // Hồng tím cực nhạt
-		200: "#FFE8F7", // Hồng pastel nhẹ nhàng
-		300: "#FFD6F0", // Hồng tím pastel
-		400: "#F5C2E7", // Hồng lavender
-		500: "#E5A4D5", // Hồng tím soft
-		600: "#D084C4", // Hồng tím ấm
-		700: "#B865AB", // Hồng tím đậm
-		800: "#9B4D92", // Hồng tím rất đậm
-		900: "#7A3575", // Hồng tím đen
+		50: "#FDF4FF", // Hồng tím cực nhạt
+		100: "#FAE8FF", // Hồng tím nhạt
+		200: "#F5D0FE", // Hồng tím pastel
+		300: "#F0ABFC", // Hồng tím sáng
+		400: "#E879F9", // Hồng tím
+		500: "#D946EF", // Hồng tím đậm
+		600: "#C026D3", // Hồng tím rất đậm
+		700: "#A21CAF", // Hồng tím tối
+		800: "#86198F", // Hồng tím cực tối
+		900: "#701A75", // Hồng tím đen
 	},
 
-	// Emotion Colors - Màu cho các cảm xúc
+	// Emotion Colors - Màu cảm xúc
 	emotions: {
-		happy: "#FFD93D", // Vàng tươi - Vui vẻ
-		excited: "#FF6B9D", // Hồng sáng - Hào hứng
-		calm: "#6BCF7F", // Xanh lá nhẹ - Bình thản
-		sad: "#5B8DEF", // Xanh dương - Buồn
+		happy: "#FBBF24", // Vàng ấm - Vui vẻ
+		excited: "#F472B6", // Hồng sáng - Hào hứng
+		calm: "#34D399", // Xanh lá - Bình thản
+		sad: "#60A5FA", // Xanh dương - Buồn
 		anxious: "#A78BFA", // Tím nhạt - Lo lắng
-		angry: "#F87171", // Đỏ cam - Tức giận
+		angry: "#F87171", // Đỏ - Tức giận
 		tired: "#94A3B8", // Xám xanh - Mệt mỏi
-		grateful: "#FDB777", // Cam nhẹ - Biết ơn
+		grateful: "#FB923C", // Cam - Biết ơn
 	},
 
 	// Neutral Colors - Màu trung tính
@@ -177,6 +180,7 @@ export const COLORS = {
 		700: "#404040",
 		800: "#262626",
 		900: "#171717",
+		950: "#0A0A0A",
 	},
 
 	// Semantic Colors - Màu ngữ nghĩa
@@ -203,61 +207,59 @@ export const COLORS = {
 } as const;
 
 export const lightTheme = {
-	// Background - Tông màu nhẹ nhàng, thoáng đãng
+	// Background - Nền sáng, thoáng đãng
 	background: {
-		primary: "#FAF7FF", // Nền tím cực nhạt, thoáng mát
-		secondary: "#FFFFFF", // Nền trắng cho cards
-		tertiary: "#F0E8FF", // Nền tím rất nhạt
-		elevated: "#FFFFFF",
-		// Radial gradient: trắng ở giữa, tím pastel đậm ở góc (theo thiết kế)
+		primary: "#FFFFFF", // Nền trắng chính
+		secondary: "#FAF5FF", // Nền tím cực nhạt cho cards
+		tertiary: "#F3E8FF", // Nền tím nhạt
+		elevated: "#FFFFFF", // Nền cho elevated elements
 		gradient: [
-			"#FFFFFF", // Trắng ở trung tâm
-			"#F5EFFF", // Tím cực nhạt - base
-			"#E8DEFF", // Tím nhạt
-			"#BFA8E8", // Tím pastel đậm ở góc
-			"#9B7FDB", // Tím chính (đậm hơn)
+			"#FFFFFF", // Trắng ở giữa
+			"#FAF5FF", // Tím cực nhạt
+			"#F3E8FF", // Tím nhạt hơn
+			"#E9D5FF", // Tím pastel
 		] as const,
 	},
 
-	// Text - Dùng màu tím để phù hợp với theme
+	// Text - Text tối trên nền sáng (độ tương phản tốt)
 	text: {
-		primary: "#6B50B5", // Tím đậm cho text chính
-		secondary: "#8268C8", // Tím medium cho text phụ
-		tertiary: "#9B7FDB", // Tím chính cho text tertiary/accent
-		disabled: "#B5A8CC", // Tím xám nhạt
-		inverse: "#FFFFFF",
-		dark: "#2F1B5A",
+		primary: "#1F2937", // Xám đen - text chính (dễ đọc)
+		secondary: "#4B5563", // Xám tối - text phụ
+		tertiary: "#6B7280", // Xám medium - text tertiary
+		disabled: "#9CA3AF", // Xám nhạt - disabled
+		inverse: "#FFFFFF", // Trắng - text trên nền tối
+		bold: "#111827", // Đen - text đậm
 	},
 
 	// Surface
 	surface: {
 		primary: "#FFFFFF",
-		secondary: "#F8FAFC",
+		secondary: "#FAF5FF",
 		elevated: "#FFFFFF",
 		overlay: "rgba(0, 0, 0, 0.5)",
 	},
 
 	// Border
 	border: {
-		light: "#E8E0F0",
-		main: "#D4C2E6",
-		dark: "#9B7FDB",
+		light: "#F3E8FF", // Tím cực nhạt
+		main: "#E9D5FF", // Tím nhạt
+		dark: "#D8B4FE", // Tím pastel
 	},
 
-	// Brand - Sử dụng màu tím và hồng tím ấm áp
-	primary: COLORS.primary[500],
-	primaryLight: COLORS.primary[200],
-	primaryDark: COLORS.primary[700],
+	// Brand - Màu tím chủ đạo
+	primary: COLORS.primary[600], // Tím đậm cho primary
+	primaryLight: COLORS.primary[100], // Tím nhạt
+	primaryDark: COLORS.primary[700], // Tím rất đậm
 
-	secondary: COLORS.secondary[500], // Hồng tím ấm áp
-	secondaryLight: COLORS.secondary[200],
-	secondaryDark: COLORS.secondary[700],
+	secondary: COLORS.secondary[500], // Hồng tím
+	secondaryLight: COLORS.secondary[100], // Hồng tím nhạt
+	secondaryDark: COLORS.secondary[700], // Hồng tím đậm
 
-	// Accent Colors - Thêm màu accent ấm áp
+	// Accent Colors
 	accent: {
-		warm: "#FFD6F0", // Hồng pastel ấm áp
-		soft: "#E5A4D5", // Hồng tím soft
-		lavender: "#C5B3E6", // Lavender nhẹ nhàng
+		warm: "#F0ABFC", // Hồng tím sáng
+		soft: "#E879F9", // Hồng tím
+		lavender: "#C084FC", // Tím lavender
 	},
 
 	// Emotions
@@ -270,104 +272,85 @@ export const lightTheme = {
 	info: COLORS.info.main,
 
 	// Special
-	shadow: "rgba(0, 0, 0, 0.1)",
-	shadowMedium: "rgba(0, 0, 0, 0.15)",
-	shadowLarge: "rgba(0, 0, 0, 0.2)",
+	shadow: "rgba(0, 0, 0, 0.08)",
+	shadowMedium: "rgba(0, 0, 0, 0.12)",
+	shadowLarge: "rgba(0, 0, 0, 0.16)",
 
-	// Chart COLORS
+	// Chart colors
 	chart: {
 		positive: "#10B981",
 		negative: "#EF4444",
 		neutral: "#6B7280",
-		gradient1: "#6366F1",
-		gradient2: "#06B6D4",
+		gradient1: "#A855F7", // Tím
+		gradient2: "#D946EF", // Hồng tím
 	},
-} as const;
-
-export const withOpacity = (color: string, opacity: number): string => {
-	// For hex colors
-	if (color.startsWith("#")) {
-		const hex = color.replace("#", "");
-		const r = parseInt(hex.substring(0, 2), 16);
-		const g = parseInt(hex.substring(2, 4), 16);
-		const b = parseInt(hex.substring(4, 6), 16);
-		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-	}
-	// For rgb/rgba colors
-	if (color.startsWith("rgb")) {
-		return color.replace(/[\d.]+\)$/g, `${opacity})`);
-	}
-	return color;
-};
-
-// Dark Mode Theme - Tông tím ấm cho dark mode
+} as const; // Dark Mode Theme - Nền tối với text sáng
 export const darkTheme = {
-	// Background
+	// Background - Nền tối với tông tím
 	background: {
-		primary: "#1F1B2E", // Tím đen nhẹ
-		secondary: "#2A2438", // Tím đen medium
-		tertiary: "#3D2870", // Tím đậm
-		elevated: "#2A2438",
+		primary: "#0F0A1A", // Tím đen cực tối
+		secondary: "#1A0F2E", // Tím đen tối
+		tertiary: "#2D1B4E", // Tím đen
+		elevated: "#1A0F2E", // Elevated surface
 		gradient: [
-			"#1F1B2E", // Tím đen - BẮT ĐẦU từ tối
-			"#2A2438", // Tím đen medium
-			"#3D2870", // Tím đậm
-			"#543D9E", // Tím medium
-			"#6B50B5", // Tím sáng - KẾT THÚC sáng hơn
+			"#0F0A1A", // Tím đen cực tối - bắt đầu
+			"#1A0F2E", // Tím đen tối
+			"#2D1B4E", // Tím đen
+			"#3B0764", // Tím tối
 		] as const,
 	},
 
-	// Text
+	// Text - Text sáng trên nền tối (độ tương phản tốt)
 	text: {
-		primary: "#F8F5FF", // Trắng tím rất nhạt
-		secondary: "#E0D4F7", // Tím pastel sáng
-		tertiary: "#C5B3E6", // Lavender
-		disabled: "#8268C8", // Tím xám
-		inverse: "#1F1B2E",
-		dark: "#2F1B5A",
+		primary: "#F9FAFB", // Trắng nhẹ - text chính (dễ đọc)
+		secondary: "#E5E7EB", // Xám sáng - text phụ
+		tertiary: "#D1D5DB", // Xám - text tertiary
+		disabled: "#9CA3AF", // Xám tối - disabled
+		inverse: "#111827", // Đen - text trên nền sáng
+		bold: "#FFFFFF", // Trắng - text đậm
 	},
 
 	// Surface
 	surface: {
-		primary: "#2A2438",
-		secondary: "#3D2870",
-		elevated: "#543D9E",
-		overlay: "rgba(0, 0, 0, 0.7)",
+		primary: "#1A0F2E",
+		secondary: "#2D1B4E",
+		elevated: "#3B0764",
+		overlay: "rgba(0, 0, 0, 0.75)",
 	},
 
 	// Border
 	border: {
-		light: "#3D2870",
-		main: "#543D9E",
-		dark: "#6B50B5",
+		light: "#2D1B4E", // Tím đen
+		main: "#3B0764", // Tím tối
+		dark: "#581C87", // Tím
 	},
 
-	// Brand
-	primary: COLORS.primary[400],
-	primaryLight: COLORS.primary[300],
-	primaryDark: COLORS.primary[600],
+	// Brand - Màu tím sáng hơn cho dark mode
+	primary: COLORS.primary[400], // Tím lavender
+	primaryLight: COLORS.primary[200], // Tím nhạt
+	primaryDark: COLORS.primary[600], // Tím đậm
 
-	secondary: COLORS.secondary[400],
-	secondaryLight: COLORS.secondary[300],
-	secondaryDark: COLORS.secondary[600],
+	secondary: COLORS.secondary[400], // Hồng tím
+	secondaryLight: COLORS.secondary[200], // Hồng tím nhạt
+	secondaryDark: COLORS.secondary[600], // Hồng tím đậm
 
-	// Accent Colors - Thêm màu accent ấm áp cho dark mode
+	// Accent Colors
 	accent: {
-		warm: "#FFD6F0", // Hồng pastel ấm áp
-		soft: "#E5A4D5", // Hồng tím soft
-		lavender: "#C5B3E6", // Lavender nhẹ nhàng
+		warm: "#F0ABFC", // Hồng tím sáng
+		soft: "#E879F9", // Hồng tím
+		lavender: "#C084FC", // Tím lavender
 	},
 
-	// Emotions (adjusted for dark mode)
+	// Emotions (sáng hơn cho dark mode)
 	emotions: {
-		happy: "#FDE047", // Vàng sáng hơn cho dark mode
-		excited: "#FB7185", // Hồng sáng hơn
-		calm: "#86EFAC", // Xanh lá sáng hơn
-		sad: "#60A5FA", // Xanh dương sáng hơn
-		anxious: "#C4B5FD", // Tím sáng hơn
-		angry: "#FCA5A5", // Đỏ sáng hơn
-		tired: "#CBD5E1", // Xám sáng hơn
-		grateful: "#FDBA74", // Cam sáng hơn
+		happy: "#FCD34D", // Vàng sáng
+		excited: "#F9A8D4", // Hồng sáng
+		calm: "#6EE7B7", // Xanh lá sáng
+		sad: "#93C5FD", // Xanh dương sáng
+		anxious: "#C4B5FD", // Tím sáng
+		angry: "#FCA5A5", // Đỏ sáng
+		tired: "#CBD5E1", // Xám sáng
+		grateful: "#FDBA74", // Cam sáng
 	},
 
 	// Status
@@ -386,10 +369,25 @@ export const darkTheme = {
 		positive: "#34D399",
 		negative: "#F87171",
 		neutral: "#9CA3AF",
-		gradient1: "#818CF8",
-		gradient2: "#22D3EE",
+		gradient1: "#C084FC", // Tím lavender
+		gradient2: "#F0ABFC", // Hồng tím sáng
 	},
 } as const;
+export const withOpacity = (color: string, opacity: number): string => {
+	// For hex colors
+	if (color.startsWith("#")) {
+		const hex = color.replace("#", "");
+		const r = parseInt(hex.substring(0, 2), 16);
+		const g = parseInt(hex.substring(2, 4), 16);
+		const b = parseInt(hex.substring(4, 6), 16);
+		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+	}
+	// For rgb/rgba colors
+	if (color.startsWith("rgb")) {
+		return color.replace(/[\d.]+\)$/g, `${opacity})`);
+	}
+	return color;
+};
 
 export type ColorPalette = typeof COLORS;
 export type EmotionColors = typeof COLORS.emotions;
@@ -409,7 +407,7 @@ export interface ThemeColors {
 		tertiary: string;
 		disabled: string;
 		inverse: string;
-		dark: string;
+		bold: string;
 	};
 	surface: {
 		primary: string;

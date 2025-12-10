@@ -21,27 +21,23 @@ const ScreenWrapper = ({
 }: ScreenWrapperProps) => {
 	const { theme } = useTheme();
 
+	// Convert gradient array to proper type
+	const gradientColors = theme.background.gradient.slice() as [
+		string,
+		string,
+		...string[],
+	];
+
 	return (
 		<View style={styles.gradient}>
 			{useGradient ? (
-				// Tạo radial gradient theo thiết kế Figma
-				<>
-					{/* Lớp nền chính - Gradient radial từ góc trên trái: tím đậm -> tím nhạt */}
-					<LinearGradient
-						colors={["rgba(124, 77, 214, 0.5)", "#FFF"]}
-						style={[StyleSheet.absoluteFillObject]}
-						start={{ x: -0.05, y: -0.04 }}
-						end={{ x: 0.55, y: 0.55 }}
-					/>
-
-					{/* Lớp gradient radial 1 - Tím nhạt ở vị trí 18% 68% */}
-					<LinearGradient
-						colors={["rgba(201, 123, 255, 0.25)", "transparent"]}
-						style={[StyleSheet.absoluteFillObject]}
-						start={{ x: 0, y: 0.6 }}
-						end={{ x: 0.2, y: 0.4 }}
-					/>
-				</>
+				// Gradient động theo theme (light/dark mode)
+				<LinearGradient
+					colors={gradientColors}
+					style={[StyleSheet.absoluteFillObject]}
+					start={{ x: 0, y: 0 }}
+					end={{ x: 1, y: 1 }}
+				/>
 			) : (
 				<View
 					style={[

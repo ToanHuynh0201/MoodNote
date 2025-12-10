@@ -21,7 +21,7 @@ const IconButton = ({
 		switch (variant) {
 			case "filled":
 				return {
-					backgroundColor: theme.primaryDark,
+					backgroundColor: theme.primary,
 				};
 			case "tonal":
 				return {
@@ -81,12 +81,13 @@ export default IconButton;
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: verticalScale(12),
-		paddingHorizontal: scale(24),
+		paddingVertical: verticalScale(16),
+		paddingHorizontal: scale(10),
 		borderRadius: moderateScale(100),
 		alignItems: "center",
 		justifyContent: "center",
-		minHeight: verticalScale(48),
+		minHeight: verticalScale(60),
+		overflow: "visible",
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
 	content: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: scale(8),
+		gap: scale(10),
 	},
 	contentReverse: {
 		flexDirection: "row-reverse",
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	label: {
-		lineHeight: moderateScale(24),
+		// Remove any extra padding to prevent text clipping
 	},
 	disabled: {
 		opacity: 0.5,

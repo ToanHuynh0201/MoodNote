@@ -376,7 +376,7 @@ const SplashScreen = () => {
 						<Typo
 							variant="displayLarge"
 							decorative
-							color={theme.text.dark}
+							color={theme.primary}
 							style={styles.appName}>
 							MoodNote
 						</Typo>
@@ -385,11 +385,10 @@ const SplashScreen = () => {
 						<View style={styles.iconContainer}>
 							<Typo
 								variant="displayLarge"
-								color={theme.text.primary}
+								color={theme.primary}
 								style={styles.musicIcon}>
 								♪
 							</Typo>
-
 							{/* Particles around icon */}
 							{particles.map((particle) => (
 								<Particle
@@ -505,9 +504,9 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: moderateScale(56),
-		textShadowColor: "rgba(255, 255, 255, 0.8)",
-		textShadowOffset: { width: 0, height: 3 },
-		textShadowRadius: 10,
+		// textShadowColor: "rgba(255, 255, 255, 0.8)",
+		// textShadowOffset: { width: 0, height: 3 },
+		// textShadowRadius: 10,
 		textAlign: "center",
 		zIndex: 2,
 	},

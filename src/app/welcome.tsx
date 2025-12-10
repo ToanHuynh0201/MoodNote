@@ -59,7 +59,7 @@ const WelcomeScreen = () => {
 						style={[
 							styles.iconContainer,
 							{
-								backgroundColor: theme.primaryDark,
+								backgroundColor: theme.primary,
 							},
 						]}>
 						<MaterialIcons
@@ -72,7 +72,7 @@ const WelcomeScreen = () => {
 					{/* Welcome Text */}
 					<Typo
 						variant="displayMedium"
-						color={theme.text.dark}
+						color={theme.text.primary}
 						align="center"
 						style={styles.welcomeTitle}>
 						Chào mừng đến với
@@ -81,7 +81,7 @@ const WelcomeScreen = () => {
 					<Typo
 						variant="displayLarge"
 						decorative={true}
-						color={theme.text.dark}
+						color={theme.primary}
 						align="center"
 						style={styles.appName}>
 						MoodNote
@@ -132,13 +132,13 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="person-add"
 								size={moderateScale(24)}
-								color={theme.primaryDark}
+								color={theme.primary}
 							/>
 						}
 						label="Đăng ký"
 						variant="outlined"
 						onPress={handleGetStarted}
-						style={[styles.button, styles.secondaryButton]}
+						style={styles.button}
 					/>
 				</Animated.View>
 			</View>
@@ -203,10 +203,5 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		width: "100%",
-	},
-	secondaryButton: {
-		backgroundColor: "rgba(255, 255, 255, 0.9)",
-		borderWidth: 2,
-		borderColor: "rgba(124, 90, 200, 0.3)",
 	},
 });
