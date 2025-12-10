@@ -1,6 +1,6 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
 import { useTheme } from "@/hooks";
-import { moderateScale } from "@/utils/responsive";
+import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
@@ -138,8 +138,8 @@ const WelcomeScreen = () => {
 								color={theme.primary}
 							/>
 						}
-						label="Đăng ký"
-						variant="outlined"
+						label="Đăng kí"
+						variant="tonal"
 						onPress={handleRegister}
 						style={styles.button}
 					/>
@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
 	appName: {
 		fontSize: moderateScale(56),
 		marginBottom: moderateScale(24),
+		paddingVertical: moderateVerticalScale(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 6,

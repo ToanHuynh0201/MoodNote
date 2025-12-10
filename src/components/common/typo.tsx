@@ -11,7 +11,7 @@ const Typo = ({
 	italic = false,
 	underline = false,
 	lineThrough = false,
-	numberOfLines,
+	numberOfLines = 1,
 	style,
 	decorative = false,
 	children,
@@ -33,7 +33,7 @@ const Typo = ({
 			: lineThrough
 			? "line-through"
 			: "none",
-		includeFontPadding: false,
+		includeFontPadding: true,
 		// Override fontFamily if decorative is true
 		...(decorative && { fontFamily: FONTS.decorative }),
 	};

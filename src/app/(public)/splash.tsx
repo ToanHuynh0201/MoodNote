@@ -1,7 +1,7 @@
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { moderateScale } from "@/utils/responsive";
+import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
@@ -73,7 +73,7 @@ const FloatingNote = ({ delay, startX, endX, duration, symbol }: any) => {
 			]}>
 			<Typo
 				variant="displayMedium"
-				color={theme.text.primary}
+				color={theme.accent.warm}
 				style={styles.noteSymbol}>
 				{symbol}
 			</Typo>
@@ -313,7 +313,7 @@ const SplashScreen = () => {
 	const musicNotes = ["♪", "♫", "♬", "♩", "♭", "♮", "♯"];
 	const floatingNotes = Array.from({ length: 15 }, (_, i) => ({
 		id: i,
-		delay: i * 1000,
+		delay: i * 300,
 		startX: (Math.random() * 2 - 1) * width,
 		endX: (Math.random() * 2 - 1) * width,
 		startY: (Math.random() * 2 - 1) * height,
@@ -504,9 +504,10 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: moderateScale(56),
-		// textShadowColor: "rgba(255, 255, 255, 0.8)",
-		// textShadowOffset: { width: 0, height: 3 },
-		// textShadowRadius: 10,
+		paddingVertical: moderateVerticalScale(10),
+		textShadowColor: "rgba(255, 255, 255, 0.8)",
+		textShadowOffset: { width: 0, height: 3 },
+		textShadowRadius: 10,
 		textAlign: "center",
 		zIndex: 2,
 	},

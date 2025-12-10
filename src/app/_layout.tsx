@@ -27,15 +27,43 @@ export default function RootLayout() {
 	}
 
 	return (
-		<ThemeProvider defaultMode="dark">
-			<Stack screenOptions={{ headerShown: false }}>
-				{/* Route Groups */}
-				<Stack.Screen name="(public)" />
-				<Stack.Screen name="(auth)" />
-				<Stack.Screen name="(tabs)" />
+		<ThemeProvider defaultMode="light">
+			<Stack
+				screenOptions={{
+					headerShown: false,
+					animation: "fade",
+					animationDuration: 200,
+					contentStyle: { backgroundColor: "transparent" },
+				}}>
+				<Stack.Screen
+					name="(public)"
+					options={{
+						animation: "fade",
+						animationDuration: 200,
+					}}
+				/>
+				<Stack.Screen
+					name="(auth)"
+					options={{
+						animation: "fade",
+						animationDuration: 200,
+					}}
+				/>
+				<Stack.Screen
+					name="(tabs)"
+					options={{
+						animation: "fade",
+						animationDuration: 200,
+					}}
+				/>
 
-				{/* Index sẽ tự động được xử lý */}
-				<Stack.Screen name="index" />
+				<Stack.Screen
+					name="index"
+					options={{
+						animation: "fade",
+						animationDuration: 200,
+					}}
+				/>
 			</Stack>
 		</ThemeProvider>
 	);

@@ -1,17 +1,21 @@
+import { useTheme } from "@/hooks";
 import { LoadingSpinnerProps } from "@/types";
 import React, { useEffect, useRef, useState } from "react";
-import { Animated, Dimensions, Easing, StyleSheet, View } from "react-native";
-
-const { width, height } = Dimensions.get("window");
+import { Animated, Easing, StyleSheet, View } from "react-native";
 
 const LoadingSpinner = ({
 	visible = true,
-	fullScreen = false,
+	fullScreen = true,
 	messages = ["Đang tải dữ liệu...", "Vui lòng đợi giây lát..."],
-	color = "#6C63FF", // Màu tím hiện đại
-	secondaryColor = "#FF6584", // Màu hồng
+	color,
+	secondaryColor,
 }: LoadingSpinnerProps) => {
-	// === LOGIC 1: SÓNG ÂM (WAVES) ===
+	const { theme } = useTheme();
+
+	// Sử dụng theme colors nếu không có color được truyền vào
+	const primaryColor = color || theme.primary;
+	const accentColor = secondaryColor || theme.secondary;
+	// SÓNG ÂM (WAVES) ===
 	const waveCount = 5;
 	const waveAnims = useRef(
 		[...Array(waveCount)].map(() => new Animated.Value(0)),
@@ -64,10 +68,10 @@ const LoadingSpinner = ({
 
 	const interpolatedColor = colorAnim.interpolate({
 		inputRange: [0, 1],
-		outputRange: [color, secondaryColor],
+		outputRange: [primaryColor, accentColor],
 	});
 
-	// === LOGIC 2: TEXT THAY ĐỔI (TEXT STREAM) ===
+	//TEXT THAY ĐỔI (TEXT STREAM)
 	const [msgIndex, setMsgIndex] = useState(0);
 	const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -136,7 +140,10 @@ const LoadingSpinner = ({
 
 			{/* Text Thông Báo */}
 			<Animated.Text
-				style={[styles.text, { opacity: fadeAnim, color: color }]}>
+				style={[
+					styles.text,
+					{ opacity: fadeAnim, color: primaryColor },
+				]}>
 				{messages[msgIndex]}
 			</Animated.Text>
 		</View>
@@ -145,7 +152,12 @@ const LoadingSpinner = ({
 	// Nếu là fullScreen, bọc trong Absolute view đè lên tất cả
 	if (fullScreen) {
 		return (
-			<View style={[StyleSheet.absoluteFillObject, styles.overlay]}>
+			<View
+				style={[
+					StyleSheet.absoluteFillObject,
+					styles.overlay,
+					{ backgroundColor: theme.surface.overlay },
+				]}>
 				{Content}
 			</View>
 		);
@@ -156,8 +168,6 @@ const LoadingSpinner = ({
 
 const styles = StyleSheet.create({
 	overlay: {
-		backgroundColor: "rgba(255, 255, 255, 0.95)", // Nền trắng mờ che app
-		// Nếu app dark mode thì đổi thành 'rgba(0,0,0, 0.9)'
 		zIndex: 9999,
 		justifyContent: "center",
 		alignItems: "center",

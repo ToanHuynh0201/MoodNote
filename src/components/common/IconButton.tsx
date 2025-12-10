@@ -31,7 +31,7 @@ const IconButton = ({
 				return {
 					backgroundColor: "transparent",
 					borderWidth: 1,
-					borderColor: theme.border.main,
+					borderColor: theme.border.dark,
 				};
 			default:
 				return {};
@@ -82,24 +82,24 @@ export default IconButton;
 const styles = StyleSheet.create({
 	button: {
 		paddingVertical: verticalScale(16),
-		paddingHorizontal: scale(10),
+		paddingHorizontal: scale(24),
 		borderRadius: moderateScale(100),
 		alignItems: "center",
 		justifyContent: "center",
 		minHeight: verticalScale(60),
-		overflow: "visible",
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
 			height: verticalScale(2),
 		},
 		shadowOpacity: 0.1,
-		shadowRadius: moderateScale(4),
+		shadowRadius: moderateScale(100),
 		elevation: 3,
 	},
 	content: {
 		flexDirection: "row",
 		alignItems: "center",
+		justifyContent: "center",
 		gap: scale(10),
 	},
 	contentReverse: {
@@ -113,9 +113,11 @@ const styles = StyleSheet.create({
 		height: moderateScale(24),
 		alignItems: "center",
 		justifyContent: "center",
+		flexShrink: 0,
 	},
 	label: {
-		// Remove any extra padding to prevent text clipping
+		textAlign: "center",
+		paddingVertical: verticalScale(2),
 	},
 	disabled: {
 		opacity: 0.5,
