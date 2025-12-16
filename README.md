@@ -2,6 +2,21 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Environment Setup
+
+This project uses environment variables for configuration. Before starting, you need to set up your environment:
+
+```bash
+# Copy the example environment file
+cp .env.example .env
+
+# Edit .env with your configuration
+# Then install dependencies
+npm install
+```
+
+**Important:** Never commit `.env` files to version control. See [Environment Setup Guide](./docs/ENVIRONMENT_SETUP.md) for detailed instructions.
+
 ## Get started
 
 1. Install dependencies

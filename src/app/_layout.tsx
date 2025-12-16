@@ -3,9 +3,16 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { printValidation } from "@/config/validateEnv";
+import { env } from "@/config/env";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
+
+// Validate environment on app startup (development only)
+if (env.isDevelopment() || __DEV__) {
+	printValidation();
+}
 
 export default function RootLayout() {
 	const [fontsLoaded, fontError] = useFonts({
