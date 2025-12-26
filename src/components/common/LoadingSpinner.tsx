@@ -1,5 +1,7 @@
+import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks";
 import { LoadingSpinnerProps } from "@/types";
+import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, Easing, StyleSheet, View } from "react-native";
 
@@ -180,25 +182,25 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 20,
+		padding: scale(SPACING.padding.lg),
 	},
 	waveContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		height: 60,
-		marginBottom: 20,
+		height: moderateScale(SIZES.container.loadingWave.height),
+		marginBottom: verticalScale(SPACING.margin.lg),
 	},
 	bar: {
-		width: 6,
-		borderRadius: 4,
-		marginHorizontal: 4,
+		width: moderateScale(SIZES.icon.xs / 2.67), // 6 pixels (16/2.67 ≈ 6)
+		borderRadius: moderateScale(BORDER_RADIUS.xs),
+		marginHorizontal: scale(SPACING.micro.xs),
 	},
 	text: {
-		fontSize: 15,
+		fontSize: moderateScale(15),
 		fontWeight: "600",
 		letterSpacing: 0.5,
 		textAlign: "center",
-		minHeight: 24, // Giữ chỗ để không bị nhảy layout khi text đổi
+		minHeight: verticalScale(SPACING.padding.xl), // 24 pixels
 	},
 });
 

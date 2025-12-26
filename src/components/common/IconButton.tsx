@@ -1,3 +1,4 @@
+import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks/useTheme";
 import { IconButtonProps } from "@/types";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
@@ -80,40 +81,40 @@ export default IconButton;
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: verticalScale(16),
-		paddingHorizontal: scale(24),
-		borderRadius: moderateScale(100),
+		paddingVertical: verticalScale(SPACING.button.paddingVertical),
+		paddingHorizontal: scale(SPACING.button.paddingHorizontal),
+		borderRadius: moderateScale(BORDER_RADIUS.xxl),
 		alignItems: "center",
 		justifyContent: "center",
-		minHeight: verticalScale(60),
+		minHeight: verticalScale(SIZES.button.height),
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
-			height: verticalScale(2),
+			height: verticalScale(SPACING.micro.xxs),
 		},
 		shadowOpacity: 0.1,
-		shadowRadius: moderateScale(100),
+		shadowRadius: moderateScale(BORDER_RADIUS.xxl),
 		elevation: 3,
 	},
 	content: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		gap: scale(10),
+		gap: scale(SPACING.button.gap),
 	},
 	contentReverse: {
 		flexDirection: "row-reverse",
 	},
 	iconContainer: {
-		width: moderateScale(24),
-		height: moderateScale(24),
+		width: moderateScale(SIZES.icon.md),
+		height: moderateScale(SIZES.icon.md),
 		alignItems: "center",
 		justifyContent: "center",
 		flexShrink: 0,
 	},
 	label: {
 		textAlign: "center",
-		paddingVertical: verticalScale(2),
+		paddingVertical: verticalScale(SPACING.micro.xxs),
 	},
 	disabled: {
 		opacity: 0.5,
