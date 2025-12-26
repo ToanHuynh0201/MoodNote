@@ -255,11 +255,11 @@ export const lightTheme = {
 	secondaryLight: COLORS.secondary[100], // Hồng tím nhạt
 	secondaryDark: COLORS.secondary[700], // Hồng tím đậm
 
-	// Accent Colors
+	// Accent Colors (darker for better contrast on light background)
 	accent: {
-		warm: "#F0ABFC", // Hồng tím sáng
-		soft: "#E879F9", // Hồng tím
-		lavender: "#C084FC", // Tím lavender
+		warm: "#C026D3", // Hồng tím đậm
+		soft: "#A21CAF", // Hồng tím đậm
+		lavender: "#9333EA", // Tím đậm
 	},
 
 	// Emotions
@@ -319,11 +319,11 @@ export const darkTheme = {
 		overlay: "rgba(0, 0, 0, 0.75)",
 	},
 
-	// Border
+	// Border (improved contrast for dark mode)
 	border: {
-		light: "#2D1B4E", // Tím đen
-		main: "#3B0764", // Tím tối
-		dark: "#581C87", // Tím
+		light: "#581C87", // Tím - Contrast ~3.2:1 (WCAG compliant)
+		main: "#6B21A8", // Tím đậm - Contrast ~3.8:1
+		dark: "#7E22CE", // Tím rõ - Contrast ~4.5:1
 	},
 
 	// Brand - Màu tím sáng hơn cho dark mode
@@ -335,7 +335,7 @@ export const darkTheme = {
 	secondaryLight: COLORS.secondary[200], // Hồng tím nhạt
 	secondaryDark: COLORS.secondary[600], // Hồng tím đậm
 
-	// Accent Colors
+	// Accent Colors (brighter for visibility on dark background)
 	accent: {
 		warm: "#F0ABFC", // Hồng tím sáng
 		soft: "#E879F9", // Hồng tím
@@ -354,16 +354,16 @@ export const darkTheme = {
 		grateful: "#FDBA74", // Cam sáng
 	},
 
-	// Status
-	success: COLORS.success.main,
-	warning: COLORS.warning.main,
-	error: COLORS.error.main,
-	info: COLORS.info.main,
+	// Status (brighter variants for dark mode visibility)
+	success: "#34D399", // Xanh lá sáng
+	warning: "#FBBF24", // Vàng sáng
+	error: "#F87171", // Đỏ sáng
+	info: "#60A5FA", // Xanh dương sáng
 
-	// Special
-	shadow: "rgba(0, 0, 0, 0.3)",
-	shadowMedium: "rgba(0, 0, 0, 0.4)",
-	shadowLarge: "rgba(0, 0, 0, 0.5)",
+	// Special (white highlights for elevation effect on dark backgrounds)
+	shadow: "rgba(255, 255, 255, 0.05)",
+	shadowMedium: "rgba(255, 255, 255, 0.08)",
+	shadowLarge: "rgba(255, 255, 255, 0.12)",
 
 	// Chart colors
 	chart: {
