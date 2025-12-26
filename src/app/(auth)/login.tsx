@@ -11,7 +11,7 @@ import {
 import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@/hooks";
-import { Typo, TextInput, IconButton, LoadingSpinner } from "@/components";
+import { Typo, TextInput, Button, LoadingSpinner } from "@/components";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 import { ScreenWrapper } from "@/components/layout";
 
@@ -187,7 +187,7 @@ const LoginScreen = () => {
                 </Typo>
               </TouchableOpacity>
 
-              <IconButton
+              <Button
                 label="Đăng nhập"
                 onPress={handleLogin}
                 variant="filled"

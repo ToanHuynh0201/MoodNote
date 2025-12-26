@@ -1,20 +1,18 @@
 import { useTheme } from "@/hooks/useTheme";
-import { IconButtonProps } from "@/types";
+import { ButtonProps } from "@/types";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
 import Typo from "./Typo";
 
-const IconButton = ({
-	icon,
+const Button = ({
 	label,
 	labelStyle,
 	onPress,
 	variant = "filled",
 	disabled = false,
 	style,
-	iconPosition = "left",
-}: IconButtonProps) => {
+}: ButtonProps) => {
 	const { theme } = useTheme();
 
 	const getButtonStyle = (): ViewStyle => {
@@ -58,12 +56,7 @@ const IconButton = ({
 			onPress={onPress}
 			disabled={disabled}
 			activeOpacity={0.7}>
-			<View
-				style={[
-					styles.content,
-					iconPosition === "right" && styles.contentReverse,
-				]}>
-				<View style={styles.iconContainer}>{icon}</View>
+			<View style={styles.content}>
 				<Typo
 					variant="titleLarge"
 					color={getTextColor()}
@@ -76,7 +69,7 @@ const IconButton = ({
 	);
 };
 
-export default IconButton;
+export default Button;
 
 const styles = StyleSheet.create({
 	button: {
@@ -99,17 +92,6 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		gap: scale(10),
-	},
-	contentReverse: {
-		flexDirection: "row-reverse",
-	},
-	iconContainer: {
-		width: moderateScale(24),
-		height: moderateScale(24),
-		alignItems: "center",
-		justifyContent: "center",
-		flexShrink: 0,
 	},
 	label: {
 		textAlign: "center",

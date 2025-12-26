@@ -28,8 +28,17 @@ export interface TypoProps extends TextProps {
 	style?: TextStyle | TextStyle[];
 }
 
+export interface ButtonProps {
+	label: string;
+	labelStyle?: TypoProps;
+	onPress?: () => void;
+	variant?: "filled" | "outlined" | "tonal";
+	disabled?: boolean;
+	style?: any;
+}
+
 export interface IconButtonProps {
-	icon?: React.ReactNode;
+	icon: React.ReactNode;
 	label: string;
 	labelStyle?: TypoProps;
 	onPress?: () => void;
