@@ -127,128 +127,6 @@ export const TYPOGRAPHY = {
 	},
 };
 
-// Spacing Constants - Semantic spacing system for scalable design
-// These values should be used with responsive scaling functions (scale, verticalScale, moderateScale)
-// Example: paddingHorizontal: scale(SPACING.padding.md)
-export const SPACING = {
-	// Padding values (internal component spacing)
-	padding: {
-		xs: 8, // Small components (chips, tags)
-		sm: 12, // Compact components (icon buttons)
-		md: 16, // Standard components (buttons, inputs)
-		lg: 20, // Large components (cards)
-		xl: 24, // Extra large (containers)
-		xxl: 32, // Screen sections
-	},
-
-	// Margin values (spacing between elements)
-	margin: {
-		xs: 8, // Tight spacing (inline elements)
-		sm: 12, // Small spacing (related elements)
-		md: 16, // Standard spacing (list items)
-		lg: 20, // Large spacing (sections)
-		xl: 24, // Extra large (major sections)
-		xxl: 32, // Between major sections
-		xxxl: 40, // Screen-level sections
-	},
-
-	// Gap values (flexbox/grid gaps)
-	gap: {
-		xs: 4, // Tight gap (icon + text in button)
-		sm: 8, // Small gap (chip list)
-		md: 12, // Medium gap (form fields)
-		lg: 16, // Large gap (grid items)
-		xl: 24, // Extra large gap (card grid)
-	},
-
-	// Screen/Layout constants
-	screen: {
-		horizontal: 24, // Standard horizontal screen padding
-		vertical: 20, // Standard vertical screen padding
-		section: 40, // Between major screen sections
-	},
-
-	// Component shortcuts (common patterns)
-	button: {
-		paddingHorizontal: 24,
-		paddingVertical: 16,
-		gap: 12,
-	},
-	input: {
-		padding: 16,
-		marginBottom: 16,
-	},
-	card: {
-		padding: 20,
-		margin: 16,
-		gap: 16,
-	},
-
-	// Micro values (for fine-tuning)
-	micro: {
-		xxs: 2, // Label offsets, fine details
-		xs: 4, // Error message spacing, small adjustments
-	},
-
-	// Large values (for special cases)
-	large: {
-		sm: 40, // Icon containers, slide padding
-		md: 60, // Logo containers, splash screens
-		lg: 80, // Extra large containers
-	},
-} as const;
-
-// Border Radius Constants
-export const BORDER_RADIUS = {
-	xxxs: 2, // Extra extra extra small - sound waves, tiny bars
-	xs: 4, // Small elements - bars, chips
-	sm: 8, // Medium elements
-	md: 12, // Inputs, cards
-	lg: 20, // Large buttons
-	xl: 28, // Extra large circles
-	xxl: 100, // Pill-shaped buttons
-	round: 999, // Fully round elements
-} as const;
-
-// Component Size Constants
-export const SIZES = {
-	icon: {
-		xs: 16,
-		sm: 20,
-		md: 24,
-		lg: 32,
-		xl: 40,
-		xxl: 56,
-		xxxl: 80,
-	},
-	button: {
-		height: 60,
-		minWidth: 200,
-	},
-	input: {
-		height: 52,
-	},
-	avatar: {
-		sm: 40,
-		md: 56,
-		lg: 80,
-		xl: 140,
-		xxl: 160,
-	},
-	container: {
-		soundWave: {
-			width: 40,
-			height: 50,
-		},
-		dots: {
-			height: 20,
-		},
-		loadingWave: {
-			height: 60,
-		},
-	},
-} as const;
-
 export const COLORS = {
 	// Brand Colors - Màu tím chủ đạo (Purple theme)
 	primary: {
@@ -580,20 +458,8 @@ export interface ThemeColors {
 	};
 }
 
-// TypeScript type helpers for SPACING
-export type SpacingKey = keyof typeof SPACING;
-export type PaddingSize = keyof typeof SPACING.padding;
-export type MarginSize = keyof typeof SPACING.margin;
-export type GapSize = keyof typeof SPACING.gap;
-export type ScreenSpacingKey = keyof typeof SPACING.screen;
-export type MicroSize = keyof typeof SPACING.micro;
-export type LargeSize = keyof typeof SPACING.large;
-
 export default {
 	COLORS,
-	SPACING,
-	BORDER_RADIUS,
-	SIZES,
 	lightTheme,
 	darkTheme,
 	withOpacity,

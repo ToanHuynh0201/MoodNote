@@ -1,5 +1,4 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks";
 import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -157,8 +156,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: "space-between",
-		paddingVertical: moderateScale(SPACING.large.md),
-		paddingHorizontal: moderateScale(SPACING.padding.lg),
+		paddingVertical: moderateScale(60),
+		paddingHorizontal: moderateScale(20),
 	},
 	contentContainer: {
 		flex: 1,
@@ -166,12 +165,12 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	iconContainer: {
-		width: moderateScale(SIZES.avatar.xl),
-		height: moderateScale(SIZES.avatar.xl),
-		borderRadius: moderateScale(BORDER_RADIUS.xl * 2.5), // 70 (28 * 2.5)
+		width: moderateScale(140),
+		height: moderateScale(140),
+		borderRadius: moderateScale(70),
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(SPACING.margin.xxxl),
+		marginBottom: moderateScale(40),
 		shadowColor: "#000",
 		shadowOffset: { width: 0, height: 4 },
 		shadowOpacity: 0.3,
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
 		elevation: 8,
 	},
 	welcomeTitle: {
-		marginBottom: moderateScale(SPACING.margin.xs),
+		marginBottom: moderateScale(8),
 		fontSize: moderateScale(28),
 		textShadowColor: "rgba(0, 0, 0, 0.15)",
 		textShadowOffset: { width: 0, height: 1 },
@@ -188,15 +187,15 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: moderateScale(56),
-		marginBottom: moderateScale(SPACING.margin.xl),
-		paddingVertical: moderateVerticalScale(SPACING.padding.sm / 1.2), // 10 (12/1.2)
+		marginBottom: moderateScale(24),
+		paddingVertical: moderateVerticalScale(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 6,
 	},
 	description: {
 		lineHeight: moderateScale(26),
-		paddingHorizontal: moderateScale(SPACING.padding.lg),
+		paddingHorizontal: moderateScale(20),
 		textShadowColor: "rgba(0, 0, 0, 0.1)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 2,
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		width: "100%",
-		gap: moderateScale(SPACING.gap.sm + 2), // 14 (8 + 2 = 10, but kept +2 for original intent)
+		gap: moderateScale(14),
 	},
 	button: {
 		width: "100%",

@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks";
 import { Typo, TextInput, Button, LoadingSpinner } from "@/components";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
@@ -292,62 +291,62 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingHorizontal: scale(SPACING.screen.horizontal),
-    paddingTop: verticalScale(SPACING.screen.vertical),
+    paddingHorizontal: scale(24),
+    paddingTop: verticalScale(20),
   },
   header: {
-    marginBottom: verticalScale(SPACING.margin.xxl),
+    marginBottom: verticalScale(32),
   },
   backButton: {
-    width: moderateScale(SIZES.avatar.sm),
-    height: moderateScale(SIZES.avatar.sm),
-    borderRadius: moderateScale(BORDER_RADIUS.lg),
+    width: moderateScale(40),
+    height: moderateScale(40),
+    borderRadius: moderateScale(20),
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: verticalScale(SPACING.margin.lg),
+    marginBottom: verticalScale(20),
   },
   titleContainer: {
-    marginBottom: verticalScale(SPACING.margin.xs),
+    marginBottom: verticalScale(8),
   },
   title: {
-    marginBottom: verticalScale(SPACING.margin.xs),
+    marginBottom: verticalScale(8),
   },
   subtitle: {
     opacity: 0.8,
   },
   form: {
-    marginBottom: verticalScale(SPACING.margin.xl),
+    marginBottom: verticalScale(24),
   },
   forgotPassword: {
     alignSelf: "flex-end",
-    marginTop: verticalScale(-SPACING.margin.xs),
-    marginBottom: verticalScale(SPACING.margin.xl),
+    marginTop: verticalScale(-8),
+    marginBottom: verticalScale(24),
   },
   loginButton: {
-    marginTop: verticalScale(SPACING.margin.xs),
+    marginTop: verticalScale(8),
   },
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: verticalScale(SPACING.margin.xl),
+    marginVertical: verticalScale(24),
   },
   divider: {
     flex: 1,
     height: 1,
   },
   dividerText: {
-    marginHorizontal: scale(SPACING.margin.md),
+    marginHorizontal: scale(16),
   },
   socialContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    gap: scale(SPACING.gap.md),
-    marginBottom: verticalScale(SPACING.margin.xl),
+    gap: scale(16),
+    marginBottom: verticalScale(24),
   },
   socialButton: {
-    width: moderateScale(SIZES.icon.xxl),
-    height: moderateScale(SIZES.icon.xxl),
-    borderRadius: moderateScale(BORDER_RADIUS.xl),
+    width: moderateScale(56),
+    height: moderateScale(56),
+    borderRadius: moderateScale(28),
     alignItems: "center",
     justifyContent: "center",
   },
@@ -355,7 +354,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: verticalScale(SPACING.margin.xl),
+    marginBottom: verticalScale(24),
   },
 });
 

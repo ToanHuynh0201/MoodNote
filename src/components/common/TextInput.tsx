@@ -1,4 +1,3 @@
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -110,33 +109,33 @@ export default TextInput;
 
 const styles = StyleSheet.create({
 	container: {
-		marginBottom: verticalScale(SPACING.input.marginBottom),
+		marginBottom: verticalScale(16),
 	},
 	label: {
-		marginBottom: verticalScale(SPACING.margin.xs),
+		marginBottom: verticalScale(8),
 	},
 	inputContainer: {
 		flexDirection: "row",
 		alignItems: "center",
 		borderWidth: 1.5,
-		borderRadius: moderateScale(BORDER_RADIUS.md),
-		paddingHorizontal: scale(SPACING.input.padding),
-		height: verticalScale(SIZES.input.height),
+		borderRadius: moderateScale(12),
+		paddingHorizontal: scale(16),
+		height: verticalScale(52),
 	},
 	input: {
 		flex: 1,
-		fontSize: moderateScale(SPACING.input.padding),
+		fontSize: moderateScale(16),
 		fontFamily: "Segoe UI",
 	},
 	leftIcon: {
-		marginRight: scale(SPACING.gap.sm),
+		marginRight: scale(12),
 	},
 	rightIcon: {
-		marginLeft: scale(SPACING.gap.sm),
-		padding: moderateScale(SPACING.micro.xs),
+		marginLeft: scale(12),
+		padding: moderateScale(4),
 	},
 	error: {
-		marginTop: verticalScale(SPACING.micro.xs),
-		marginLeft: scale(SPACING.micro.xs),
+		marginTop: verticalScale(4),
+		marginLeft: scale(4),
 	},
 });

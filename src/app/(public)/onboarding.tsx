@@ -1,7 +1,6 @@
 import IconButton from "@/components/common/IconButton";
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks/useTheme";
 import { moderateScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -222,24 +221,24 @@ const styles = StyleSheet.create({
 	},
 	skipButton: {
 		position: "absolute",
-		top: moderateScale(SPACING.padding.lg),
-		right: moderateScale(SPACING.padding.lg),
+		top: moderateScale(20),
+		right: moderateScale(20),
 		zIndex: 10,
-		padding: moderateScale(SPACING.padding.sm / 1.2), // 10 (12/1.2)
+		padding: moderateScale(10),
 	},
 	slide: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: moderateScale(SPACING.large.sm),
+		paddingHorizontal: moderateScale(40),
 	},
 	iconCircle: {
-		width: moderateScale(SIZES.avatar.xxl),
-		height: moderateScale(SIZES.avatar.xxl),
-		borderRadius: BORDER_RADIUS.xl * 2.86, // 80 (28 * 2.86)
+		width: moderateScale(160),
+		height: moderateScale(160),
+		borderRadius: 80,
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(SPACING.margin.xxxl),
+		marginBottom: moderateScale(40),
 		shadowColor: "#000",
 		shadowOffset: { width: 2, height: 4 },
 		shadowOpacity: 0.3,
@@ -247,7 +246,7 @@ const styles = StyleSheet.create({
 		elevation: 5,
 	},
 	title: {
-		marginBottom: moderateScale(SPACING.margin.md),
+		marginBottom: moderateScale(16),
 		fontSize: moderateScale(32),
 		lineHeight: moderateScale(42),
 		textShadowColor: "rgba(0, 0, 0, 0.3)",
@@ -261,28 +260,28 @@ const styles = StyleSheet.create({
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 3,
 		fontWeight: "700",
-		fontSize: moderateScale(SPACING.padding.lg),
+		fontSize: moderateScale(20),
 	},
 	bottomSection: {
-		paddingBottom: moderateScale(SPACING.screen.section),
-		paddingHorizontal: moderateScale(SPACING.padding.lg),
+		paddingBottom: moderateScale(40),
+		paddingHorizontal: moderateScale(20),
 	},
 	dotsContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(SPACING.margin.xxl - 2), // 30 (32 - 2)
-		height: moderateScale(SIZES.container.dots.height),
+		marginBottom: moderateScale(30),
+		height: moderateScale(20),
 	},
 	dot: {
-		height: moderateScale(SPACING.padding.sm - 2), // 10 (12 - 2)
-		borderRadius: moderateScale(BORDER_RADIUS.xs + 1), // 5 (4 + 1)
-		marginHorizontal: moderateScale(SPACING.micro.xs),
+		height: moderateScale(10),
+		borderRadius: moderateScale(5),
+		marginHorizontal: moderateScale(4),
 	},
 	buttonContainer: {
 		alignItems: "center",
 	},
 	nextButton: {
-		minWidth: moderateScale(SIZES.button.minWidth),
+		minWidth: moderateScale(200),
 	},
 });

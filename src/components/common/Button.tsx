@@ -1,4 +1,3 @@
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks/useTheme";
 import { ButtonProps } from "@/types";
 import { moderateScale, scale, verticalScale } from "@/utils/responsive";
@@ -74,19 +73,19 @@ export default Button;
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: verticalScale(SPACING.button.paddingVertical),
-		paddingHorizontal: scale(SPACING.button.paddingHorizontal),
-		borderRadius: moderateScale(BORDER_RADIUS.xxl),
+		paddingVertical: verticalScale(16),
+		paddingHorizontal: scale(24),
+		borderRadius: moderateScale(100),
 		alignItems: "center",
 		justifyContent: "center",
-		minHeight: verticalScale(SIZES.button.height),
+		minHeight: verticalScale(60),
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
-			height: verticalScale(SPACING.micro.xxs),
+			height: verticalScale(2),
 		},
 		shadowOpacity: 0.1,
-		shadowRadius: moderateScale(BORDER_RADIUS.xxl),
+		shadowRadius: moderateScale(100),
 		elevation: 3,
 	},
 	content: {
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
 	},
 	label: {
 		textAlign: "center",
-		paddingVertical: verticalScale(SPACING.micro.xxs),
+		paddingVertical: verticalScale(2),
 	},
 	disabled: {
 		opacity: 0.5,

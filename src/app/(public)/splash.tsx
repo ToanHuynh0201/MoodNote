@@ -1,6 +1,5 @@
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
-import { BORDER_RADIUS, SIZES, SPACING } from "@/constants/theme";
 import { useTheme } from "@/hooks/useTheme";
 import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { router } from "expo-router";
@@ -177,7 +176,7 @@ const SoundWave = ({ delay }: any) => {
 				{
 					backgroundColor: theme.primary,
 					transform: [{ scaleY }],
-					marginHorizontal: moderateScale(SPACING.micro.xxs + 1), // 3 (2 + 1)
+					marginHorizontal: moderateScale(3),
 				},
 			]}
 		/>
@@ -437,7 +436,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: moderateScale(SPACING.padding.lg),
+		paddingHorizontal: moderateScale(20),
 	},
 	centerContent: {
 		flex: 1,
@@ -459,9 +458,9 @@ const styles = StyleSheet.create({
 	// Particles
 	particle: {
 		position: "absolute",
-		width: moderateScale(SIZES.icon.xs / 2.67), // 6 (16/2.67)
-		height: moderateScale(SIZES.icon.xs / 2.67), // 6 (16/2.67)
-		borderRadius: moderateScale(BORDER_RADIUS.xs - 1), // 3 (4 - 1)
+		width: moderateScale(6),
+		height: moderateScale(6),
+		borderRadius: moderateScale(3),
 		// backgroundColor: "rgba(255, 255, 255, 0.9)",
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
@@ -471,10 +470,10 @@ const styles = StyleSheet.create({
 	},
 	// Sound waves
 	soundWave: {
-		width: moderateScale(SPACING.micro.xs),
-		height: moderateScale(SIZES.container.soundWave.width),
+		width: moderateScale(4),
+		height: moderateScale(40),
 		// backgroundColor: "rgba(255, 255, 255, 0.8)",
-		borderRadius: moderateScale(BORDER_RADIUS.xxxs), // 2
+		borderRadius: moderateScale(2),
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.6,
@@ -484,13 +483,13 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		marginTop: moderateScale(SPACING.margin.lg),
-		height: moderateScale(SIZES.container.soundWave.height),
+		marginTop: moderateScale(20),
+		height: moderateScale(50),
 	},
 	// Logo and main content
 	logoContainer: {
 		alignItems: "center",
-		marginBottom: moderateScale(SPACING.large.md),
+		marginBottom: moderateScale(60),
 		position: "relative",
 		overflow: "visible",
 	},
@@ -498,14 +497,14 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		top: 0,
 		left: -width,
-		width: moderateScale(BORDER_RADIUS.xxl),
+		width: moderateScale(100),
 		height: "100%",
 		backgroundColor: "rgba(255, 255, 255, 0.3)",
 		transform: [{ skewX: "-20deg" }],
 	},
 	appName: {
 		fontSize: moderateScale(56),
-		paddingVertical: moderateVerticalScale(SPACING.padding.sm / 1.2), // 10 (12/1.2)
+		paddingVertical: moderateVerticalScale(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,
@@ -513,12 +512,12 @@ const styles = StyleSheet.create({
 		zIndex: 2,
 	},
 	iconContainer: {
-		marginTop: moderateScale(SPACING.padding.sm / 1.2), // 10 (12/1.2)
+		marginTop: moderateScale(10),
 		position: "relative",
 		alignItems: "center",
 		justifyContent: "center",
-		width: moderateScale(SIZES.icon.xxxl),
-		height: moderateScale(SIZES.icon.xxxl),
+		width: moderateScale(80),
+		height: moderateScale(80),
 	},
 	musicIcon: {
 		fontSize: moderateScale(52),
@@ -530,10 +529,10 @@ const styles = StyleSheet.create({
 	// Slogan with Typewriter
 	sloganContainer: {
 		position: "absolute",
-		bottom: moderateScale(BORDER_RADIUS.xxl),
+		bottom: moderateScale(100),
 		width: width * 0.9,
-		paddingVertical: moderateScale(SPACING.padding.md),
-		paddingHorizontal: moderateScale(SPACING.padding.xl),
+		paddingVertical: moderateScale(16),
+		paddingHorizontal: moderateScale(24),
 		alignItems: "center",
 	},
 	typewriterContainer: {
