@@ -53,3 +53,5 @@ app-example
 
 .vscode/
 
+#AI setting
+.claude
