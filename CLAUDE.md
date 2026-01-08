@@ -52,24 +52,24 @@ npm run build:prod:ios         # Production build for iOS
 
 The app uses Expo Router with route groups:
 
-- `src/app/(public)/` - Public screens (splash, onboarding)
-- `src/app/(auth)/` - Authentication screens (welcome, login, register)
-- `src/app/(tabs)/` - Main app tabs (requires authentication)
-- `src/app/_layout.tsx` - Root layout with ThemeProvider and font loading
+-   `src/app/(public)/` - Public screens (splash, onboarding)
+-   `src/app/(auth)/` - Authentication screens (welcome, login, register)
+-   `src/app/(tabs)/` - Main app tabs (requires authentication)
+-   `src/app/_layout.tsx` - Root layout with ThemeProvider and font loading
 
 ### Directory Structure
 
-- `src/app/` - File-based routing screens
-- `src/components/` - Reusable UI components
-  - `common/` - Generic components (Button, TextInput, Typo, IconButton, LoadingSpinner)
-  - `layout/` - Layout components (ScreenWrapper)
-- `src/contexts/` - React contexts (AuthContext, ThemeContext)
-- `src/hooks/` - Custom React hooks (useAuth, useTheme)
-- `src/services/` - API and business logic (authService)
-- `src/config/` - Environment and API configuration
-- `src/constants/` - Design system constants (theme, auth, design)
-- `src/types/` - TypeScript type definitions
-- `src/utils/` - Utility functions (storage, responsive, colorUtils)
+-   `src/app/` - File-based routing screens
+-   `src/components/` - Reusable UI components
+    -   `common/` - Generic components (Button, TextInput, Typo, IconButton, LoadingSpinner)
+    -   `layout/` - Layout components (ScreenWrapper)
+-   `src/contexts/` - React contexts (AuthContext, ThemeContext)
+-   `src/hooks/` - Custom React hooks (useAuth, useTheme)
+-   `src/services/` - API and business logic (authService)
+-   `src/config/` - Environment and API configuration
+-   `src/constants/` - Design system constants (theme, auth, design)
+-   `src/types/` - TypeScript type definitions
+-   `src/utils/` - Utility functions (storage, responsive, colorUtils)
 
 ### Path Aliases
 
@@ -83,8 +83,8 @@ import { TYPOGRAPHY } from "@/constants/theme";
 
 ### State Management
 
-- **AuthContext** (`src/contexts/AuthContext.tsx`): Manages authentication state, login/register/logout, user data
-- **ThemeContext** (referenced in index): Manages light/dark theme mode
+-   **AuthContext** (`src/contexts/AuthContext.tsx`): Manages authentication state, login/register/logout, user data
+-   **ThemeContext** (referenced in index): Manages light/dark theme mode
 
 ### Design System
 
@@ -94,29 +94,29 @@ The app uses a comprehensive design system with responsive scaling:
 
 Based on a 375x812 base dimension (iPhone X/11/12/13/14 Pro):
 
-- `scale(size)` - Horizontal scaling for padding, margins, widths
-- `verticalScale(size)` - Vertical scaling for heights
-- `moderateScale(size, factor)` - Moderate scaling for fonts, border radius, icons (default factor: 0.5)
+-   `scale(size)` - Horizontal scaling for padding, margins, widths
+-   `verticalScale(size)` - Vertical scaling for heights
+-   `moderateScale(size, factor)` - Moderate scaling for fonts, border radius, icons (default factor: 0.5)
 
 #### Design Constants (`src/constants/design.ts`)
 
 Centralized sizing with semantic naming:
 
-- `spacingScale` - Horizontal spacing (xxs to xxxxl)
-- `verticalSpacing` - Vertical spacing (xxs to xxxl)
-- `borderRadius` - Border radius values (xs to full)
-- `componentSizes` - Fixed component dimensions (icons, buttons, inputs, etc.)
-- `commonSpacing` - Pre-configured spacing for common patterns
+-   `spacingScale` - Horizontal spacing (xxs to xxxxl)
+-   `verticalSpacing` - Vertical spacing (xxs to xxxl)
+-   `borderRadius` - Border radius values (xs to full)
+-   `componentSizes` - Fixed component dimensions (icons, buttons, inputs, etc.)
+-   `commonSpacing` - Pre-configured spacing for common patterns
 
 Always use design constants instead of hardcoded values.
 
 #### Theme System (`src/constants/theme.ts`)
 
-- `FONTS` - Font family constants (Segoe UI family + Pacifico decorative)
-- `TYPOGRAPHY` - Material Design 3-inspired type scale (display, headline, title, body, label)
-- `COLORS` - Color palette with primary (purple), secondary (pink-purple), emotions, semantic
-- `lightTheme` / `darkTheme` - Complete theme objects with background, text, surface, border, brand, accent, status colors
-- `withOpacity(color, opacity)` - Utility for adding opacity to colors
+-   `FONTS` - Font family constants (Segoe UI family + Pacifico decorative)
+-   `TYPOGRAPHY` - Material Design 3-inspired type scale (display, headline, title, body, label)
+-   `COLORS` - Color palette with primary (purple), secondary (pink-purple), emotions, semantic
+-   `lightTheme` / `darkTheme` - Complete theme objects with background, text, surface, border, brand, accent, status colors
+-   `withOpacity(color, opacity)` - Utility for adding opacity to colors
 
 Purple (#A855F7 / COLORS.primary[500]) is the primary brand color.
 
@@ -133,10 +133,10 @@ import { TYPOGRAPHY } from "@/constants/theme";
 
 API client is configured in `src/config/api.ts`:
 
-- Axios instance with automatic token injection from SecureStore
-- Request/response interceptors for logging (development only)
-- Base URL and timeout from environment variables
-- Error handling for 401 responses
+-   Axios instance with automatic token injection from SecureStore
+-   Request/response interceptors for logging (development only)
+-   Base URL and timeout from environment variables
+-   Error handling for 401 responses
 
 ### Authentication Flow
 
@@ -153,19 +153,19 @@ Access tokens are automatically injected into API requests via interceptor.
 
 All common components follow the design system:
 
-- **Button**: Primary/secondary variants, supports icons, loading states
-- **TextInput**: Labeled inputs with error states, secure text entry, left/right icons
-- **Typo**: Typography component with variant prop matching TYPOGRAPHY constants
-- **IconButton**: Touchable icon buttons with ripple effect
-- **LoadingSpinner**: Custom animated loading indicator
-- **ScreenWrapper**: Standard screen container with safe areas
+-   **Button**: Primary/secondary variants, supports icons, loading states
+-   **TextInput**: Labeled inputs with error states, secure text entry, left/right icons
+-   **Typo**: Typography component with variant prop matching TYPOGRAPHY constants
+-   **IconButton**: Touchable icon buttons with ripple effect
+-   **LoadingSpinner**: Custom animated loading indicator
+-   **ScreenWrapper**: Standard screen container with safe areas
 
 ### Custom Fonts
 
 The app loads custom fonts in `src/app/_layout.tsx`:
 
-- Segoe UI (Regular, Italic, Bold, Bold Italic)
-- Pacifico (Decorative)
+-   Segoe UI (Regular, Italic, Bold, Bold Italic)
+-   Pacifico (Decorative)
 
 Fonts are loaded via `useFonts` hook before rendering the app.
 
@@ -173,54 +173,63 @@ Fonts are loaded via `useFonts` hook before rendering the app.
 
 ### Spacing and Layout
 
-- Use `spacingScale` for horizontal spacing (paddingHorizontal, marginHorizontal, gap)
-- Use `verticalSpacing` for vertical spacing (paddingVertical, marginVertical)
-- Use `borderRadius` constants for all rounded corners
-- Use `componentSizes` for component dimensions
+-   Use `spacingScale` for horizontal spacing (paddingHorizontal, marginHorizontal, gap)
+-   Use `verticalSpacing` for vertical spacing (paddingVertical, marginVertical)
+-   Use `borderRadius` constants for all rounded corners
+-   Use `componentSizes` for component dimensions
 
 Example:
+
 ```typescript
-import { spacingScale, verticalSpacing, borderRadius } from "@/constants/design";
+import {
+	spacingScale,
+	verticalSpacing,
+	borderRadius,
+} from "@/constants/design";
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: spacingScale.xxl,  // 24px scaled
-    paddingVertical: verticalSpacing.lg,   // 20px scaled
-    borderRadius: borderRadius.md,         // 12px scaled
-  }
+	container: {
+		paddingHorizontal: spacingScale.xxl, // 24px scaled
+		paddingVertical: verticalSpacing.lg, // 20px scaled
+		borderRadius: borderRadius.md, // 12px scaled
+	},
 });
 ```
 
 ### Typography
 
-- Use `TYPOGRAPHY` constants instead of custom font styles
-- Use `Typo` component when possible for consistent text rendering
-- Font sizes use `moderateScale` for better tablet support
+-   Use `TYPOGRAPHY` constants instead of custom font styles
+-   Use `Typo` component when possible for consistent text rendering
+-   Font sizes use `moderateScale` for better tablet support
 
 ### Colors
 
-- Access theme colors through `useTheme()` hook
-- Use semantic color names (primary, secondary, success, error, etc.)
-- For emotion-related features, use `colors.emotions` palette
-- Ensure proper contrast ratios (dark mode has improved border contrast)
+-   Access theme colors through `useTheme()` hook
+-   Use semantic color names (primary, secondary, success, error, etc.)
+-   For emotion-related features, use `colors.emotions` palette
+-   Ensure proper contrast ratios (dark mode has improved border contrast)
 
 ### Environment Variables
 
-- Access via `env.get('KEY')` or `env.getAll()`
-- Check environment with `env.isDevelopment()`, `env.isProduction()`, `env.isPreview()`
-- Check feature flags with `env.isFeatureEnabled('FEATURE_NAME')`
+-   Access via `env.get('KEY')` or `env.getAll()`
+-   Check environment with `env.isDevelopment()`, `env.isProduction()`, `env.isPreview()`
+-   Check feature flags with `env.isFeatureEnabled('FEATURE_NAME')`
 
 ### Storage
 
 Use utilities from `src/utils/storage.ts`:
 
 ```typescript
-import { getStorageItem, setStorageItem, removeStorageItem } from "@/utils/storage";
+import {
+	getStorageItem,
+	setStorageItem,
+	removeStorageItem,
+} from "@/utils/storage";
 
 // Secure storage via expo-secure-store
-await setStorageItem('key', 'value');
-const value = await getStorageItem('key');
-await removeStorageItem('key');
+await setStorageItem("key", "value");
+const value = await getStorageItem("key");
+await removeStorageItem("key");
 ```
 
 Storage keys for auth are defined in `src/constants/auth.ts` as `STORAGE_KEYS`.
@@ -229,9 +238,9 @@ Storage keys for auth are defined in `src/constants/auth.ts` as `STORAGE_KEYS`.
 
 EAS Build profiles (eas.json):
 
-- **development**: Development client with debugging, internal distribution
-- **preview**: Preview builds (APK), internal distribution, preview environment
-- **production**: Production builds with auto-increment, production environment
+-   **development**: Development client with debugging, internal distribution
+-   **preview**: Preview builds (APK), internal distribution, preview environment
+-   **production**: Production builds with auto-increment, production environment
 
 Environment variables are injected via the `env` field in each profile.
 
@@ -241,10 +250,10 @@ Unit tests are located in `src/utils/__tests__/`. The project uses a standard Re
 
 ## Important Notes
 
-- All environment variables must be prefixed with `EXPO_PUBLIC_` to be accessible in client code
-- Never commit `.env` files or actual API keys to version control
-- The design system is responsive and scales based on screen dimensions
-- Authentication tokens are stored in expo-secure-store for security
-- API client automatically injects auth tokens from storage
-- Theme mode (light/dark) can be toggled via ThemeContext
-- Font loading is handled in root layout; splash screen stays visible until fonts load
+-   All environment variables must be prefixed with `EXPO_PUBLIC_` to be accessible in client code
+-   Never commit `.env` files or actual API keys to version control
+-   The design system is responsive and scales based on screen dimensions
+-   Authentication tokens are stored in expo-secure-store for security
+-   API client automatically injects auth tokens from storage
+-   Theme mode (light/dark) can be toggled via ThemeContext
+-   Font loading is handled in root layout; splash screen stays visible until fonts load
