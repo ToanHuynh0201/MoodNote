@@ -1,5 +1,6 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
 import { useTheme } from "@/hooks";
+import { componentSizes, borderRadius, spacingScale, verticalSpacing } from "@/constants/design";
 import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "space-between",
 		paddingVertical: moderateScale(60),
-		paddingHorizontal: moderateScale(20),
+		paddingHorizontal: componentSizes.screen.paddingVertical,
 	},
 	contentContainer: {
 		flex: 1,
@@ -165,12 +166,12 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	iconContainer: {
-		width: moderateScale(140),
-		height: moderateScale(140),
-		borderRadius: moderateScale(70),
+		width: componentSizes.iconContainer.small,
+		height: componentSizes.iconContainer.small,
+		borderRadius: borderRadius.xxl,
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(40),
+		marginBottom: spacingScale.xxxxl,
 		shadowColor: "#000",
 		shadowOffset: { width: 0, height: 4 },
 		shadowOpacity: 0.3,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
 		elevation: 8,
 	},
 	welcomeTitle: {
-		marginBottom: moderateScale(8),
+		marginBottom: verticalSpacing.sm,
 		fontSize: moderateScale(28),
 		textShadowColor: "rgba(0, 0, 0, 0.15)",
 		textShadowOffset: { width: 0, height: 1 },
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: moderateScale(56),
-		marginBottom: moderateScale(24),
+		marginBottom: verticalSpacing.xl,
 		paddingVertical: moderateVerticalScale(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 2 },
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
 	},
 	description: {
 		lineHeight: moderateScale(26),
-		paddingHorizontal: moderateScale(20),
+		paddingHorizontal: componentSizes.screen.paddingVertical,
 		textShadowColor: "rgba(0, 0, 0, 0.1)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 2,

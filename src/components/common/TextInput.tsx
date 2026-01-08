@@ -1,5 +1,6 @@
 import { useTheme } from "@/hooks";
-import { moderateScale, scale, verticalScale } from "@/utils/responsive";
+import { componentSizes, borderRadius } from "@/constants/design";
+import { moderateScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
@@ -109,18 +110,18 @@ export default TextInput;
 
 const styles = StyleSheet.create({
 	container: {
-		marginBottom: verticalScale(16),
+		marginBottom: componentSizes.input.containerMargin,
 	},
 	label: {
-		marginBottom: verticalScale(8),
+		marginBottom: componentSizes.input.labelMargin,
 	},
 	inputContainer: {
 		flexDirection: "row",
 		alignItems: "center",
 		borderWidth: 1.5,
-		borderRadius: moderateScale(12),
-		paddingHorizontal: scale(16),
-		height: verticalScale(52),
+		borderRadius: borderRadius.md,
+		paddingHorizontal: componentSizes.input.padding,
+		height: componentSizes.input.height,
 	},
 	input: {
 		flex: 1,
@@ -128,14 +129,14 @@ const styles = StyleSheet.create({
 		fontFamily: "Segoe UI",
 	},
 	leftIcon: {
-		marginRight: scale(12),
+		marginRight: componentSizes.input.iconMargin,
 	},
 	rightIcon: {
-		marginLeft: scale(12),
-		padding: moderateScale(4),
+		marginLeft: componentSizes.input.iconMargin,
+		padding: componentSizes.input.iconPadding,
 	},
 	error: {
-		marginTop: verticalScale(4),
-		marginLeft: scale(4),
+		marginTop: componentSizes.input.errorMargin,
+		marginLeft: componentSizes.input.errorMarginLeft,
 	},
 });

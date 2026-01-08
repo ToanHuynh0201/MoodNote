@@ -1,5 +1,6 @@
 import { useTheme } from "@/hooks";
 import { LoadingSpinnerProps } from "@/types";
+import { componentSizes } from "@/constants/design";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, Easing, StyleSheet, View } from "react-native";
 
@@ -180,18 +181,18 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 20,
+		padding: componentSizes.loading.containerPadding,
 	},
 	waveContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		height: 60,
-		marginBottom: 20,
+		height: componentSizes.loading.waveHeight,
+		marginBottom: componentSizes.loading.containerMarginBottom,
 	},
 	bar: {
-		width: 6,
-		borderRadius: 4,
-		marginHorizontal: 4,
+		width: componentSizes.loading.barWidth,
+		borderRadius: componentSizes.loading.barBorderRadius,
+		marginHorizontal: componentSizes.loading.barMargin,
 	},
 	text: {
 		fontSize: 15,

@@ -1,6 +1,7 @@
 import { useTheme } from "@/hooks/useTheme";
 import { IconButtonProps } from "@/types";
-import { moderateScale, scale, verticalScale } from "@/utils/responsive";
+import { componentSizes, borderRadius } from "@/constants/design";
+import { moderateScale } from "@/utils/responsive";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
 import Typo from "./Typo";
@@ -80,16 +81,16 @@ export default IconButton;
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: verticalScale(16),
-		paddingHorizontal: scale(24),
-		borderRadius: moderateScale(100),
+		paddingVertical: componentSizes.button.paddingVertical,
+		paddingHorizontal: componentSizes.button.paddingHorizontal,
+		borderRadius: borderRadius.full,
 		alignItems: "center",
 		justifyContent: "center",
-		minHeight: verticalScale(60),
+		minHeight: componentSizes.button.minHeight,
 		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
-			height: verticalScale(2),
+			height: componentSizes.shadow.offsetHeight,
 		},
 		shadowOpacity: 0.1,
 		shadowRadius: moderateScale(100),
@@ -99,21 +100,21 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		gap: scale(10),
+		gap: componentSizes.button.iconGap,
 	},
 	contentReverse: {
 		flexDirection: "row-reverse",
 	},
 	iconContainer: {
-		width: moderateScale(24),
-		height: moderateScale(24),
+		width: componentSizes.icon.medium,
+		height: componentSizes.icon.medium,
 		alignItems: "center",
 		justifyContent: "center",
 		flexShrink: 0,
 	},
 	label: {
 		textAlign: "center",
-		paddingVertical: verticalScale(2),
+		paddingVertical: componentSizes.button.labelPadding,
 	},
 	disabled: {
 		opacity: 0.5,

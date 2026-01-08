@@ -12,7 +12,8 @@ import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@/hooks";
 import { Typo, TextInput, Button, LoadingSpinner } from "@/components";
-import { moderateScale, scale, verticalScale } from "@/utils/responsive";
+import { componentSizes, verticalSpacing } from "@/constants/design";
+import { moderateScale, verticalScale } from "@/utils/responsive";
 import { ScreenWrapper } from "@/components/layout";
 
 const LoginScreen = () => {
@@ -291,62 +292,62 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingHorizontal: scale(24),
-    paddingTop: verticalScale(20),
+    paddingHorizontal: componentSizes.screen.paddingHorizontal,
+    paddingTop: componentSizes.screen.paddingVertical,
   },
   header: {
-    marginBottom: verticalScale(32),
+    marginBottom: verticalSpacing.xxl,
   },
   backButton: {
-    width: moderateScale(40),
-    height: moderateScale(40),
-    borderRadius: moderateScale(20),
+    width: componentSizes.backButton.size,
+    height: componentSizes.backButton.size,
+    borderRadius: componentSizes.backButton.borderRadius,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: verticalScale(20),
+    marginBottom: componentSizes.backButton.marginBottom,
   },
   titleContainer: {
-    marginBottom: verticalScale(8),
+    marginBottom: verticalSpacing.sm,
   },
   title: {
-    marginBottom: verticalScale(8),
+    marginBottom: verticalSpacing.sm,
   },
   subtitle: {
     opacity: 0.8,
   },
   form: {
-    marginBottom: verticalScale(24),
+    marginBottom: verticalSpacing.xl,
   },
   forgotPassword: {
     alignSelf: "flex-end",
     marginTop: verticalScale(-8),
-    marginBottom: verticalScale(24),
+    marginBottom: verticalSpacing.xl,
   },
   loginButton: {
-    marginTop: verticalScale(8),
+    marginTop: verticalSpacing.sm,
   },
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: verticalScale(24),
+    marginVertical: verticalSpacing.xl,
   },
   divider: {
     flex: 1,
-    height: 1,
+    height: componentSizes.divider.height,
   },
   dividerText: {
-    marginHorizontal: scale(16),
+    marginHorizontal: componentSizes.divider.textMargin,
   },
   socialContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    gap: scale(16),
-    marginBottom: verticalScale(24),
+    gap: componentSizes.socialButton.gap,
+    marginBottom: verticalSpacing.xl,
   },
   socialButton: {
-    width: moderateScale(56),
-    height: moderateScale(56),
-    borderRadius: moderateScale(28),
+    width: componentSizes.socialButton.size,
+    height: componentSizes.socialButton.size,
+    borderRadius: componentSizes.socialButton.borderRadius,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -354,7 +355,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: verticalScale(24),
+    marginBottom: verticalSpacing.xl,
   },
 });
 

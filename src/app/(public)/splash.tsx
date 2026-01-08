@@ -1,6 +1,7 @@
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
+import { componentSizes } from "@/constants/design";
 import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
@@ -436,7 +437,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: moderateScale(20),
+		paddingHorizontal: componentSizes.screen.paddingVertical,
 	},
 	centerContent: {
 		flex: 1,

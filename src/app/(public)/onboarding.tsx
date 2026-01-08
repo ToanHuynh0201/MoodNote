@@ -2,6 +2,7 @@ import IconButton from "@/components/common/IconButton";
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
+import { componentSizes, borderRadius, spacingScale } from "@/constants/design";
 import { moderateScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -221,24 +222,24 @@ const styles = StyleSheet.create({
 	},
 	skipButton: {
 		position: "absolute",
-		top: moderateScale(20),
-		right: moderateScale(20),
+		top: componentSizes.screen.paddingVertical,
+		right: componentSizes.screen.paddingVertical,
 		zIndex: 10,
-		padding: moderateScale(10),
+		padding: spacingScale.md,
 	},
 	slide: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: moderateScale(40),
+		paddingHorizontal: spacingScale.xxxxl,
 	},
 	iconCircle: {
-		width: moderateScale(160),
-		height: moderateScale(160),
-		borderRadius: 80,
+		width: componentSizes.iconContainer.medium,
+		height: componentSizes.iconContainer.medium,
+		borderRadius: borderRadius.xxxl,
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(40),
+		marginBottom: spacingScale.xxxxl,
 		shadowColor: "#000",
 		shadowOffset: { width: 2, height: 4 },
 		shadowOpacity: 0.3,
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
 		elevation: 5,
 	},
 	title: {
-		marginBottom: moderateScale(16),
+		marginBottom: spacingScale.lg,
 		fontSize: moderateScale(32),
 		lineHeight: moderateScale(42),
 		textShadowColor: "rgba(0, 0, 0, 0.3)",
@@ -263,25 +264,25 @@ const styles = StyleSheet.create({
 		fontSize: moderateScale(20),
 	},
 	bottomSection: {
-		paddingBottom: moderateScale(40),
-		paddingHorizontal: moderateScale(20),
+		paddingBottom: spacingScale.xxxxl,
+		paddingHorizontal: componentSizes.screen.paddingVertical,
 	},
 	dotsContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
 		marginBottom: moderateScale(30),
-		height: moderateScale(20),
+		height: componentSizes.dots.containerHeight,
 	},
 	dot: {
-		height: moderateScale(10),
-		borderRadius: moderateScale(5),
-		marginHorizontal: moderateScale(4),
+		height: componentSizes.dots.height,
+		borderRadius: componentSizes.dots.borderRadius,
+		marginHorizontal: componentSizes.dots.margin,
 	},
 	buttonContainer: {
 		alignItems: "center",
 	},
 	nextButton: {
-		minWidth: moderateScale(200),
+		minWidth: componentSizes.button.minWidth,
 	},
 });
