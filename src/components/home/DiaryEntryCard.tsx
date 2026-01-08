@@ -4,23 +4,17 @@ import {
 	verticalSpacing,
 } from "@/constants/design";
 import { useTheme } from "@/hooks";
+import { DiaryEntryCardProps } from "@/types";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Typo } from "../common";
 
-interface DiaryEntryCardProps {
-	title: string;
-	preview: string;
-	date: string;
-	onPress?: () => void;
-}
-
-export const DiaryEntryCard: React.FC<DiaryEntryCardProps> = ({
+export const DiaryEntryCard = ({
 	title,
 	preview,
 	date,
 	onPress,
-}) => {
+}: DiaryEntryCardProps) => {
 	const { theme } = useTheme();
 
 	return (

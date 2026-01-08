@@ -1,23 +1,17 @@
-import { borderRadius, componentSizes, spacingScale, verticalSpacing } from "@/constants/design";
+import {
+	borderRadius,
+	componentSizes,
+	spacingScale,
+	verticalSpacing,
+} from "@/constants/design";
 import { useTheme } from "@/hooks";
+import { PlaylistCardProps } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
-import { Typo } from "../common/Typo";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Typo } from "../common";
 
-interface PlaylistCardProps {
-	title: string;
-	artist: string;
-	coverUrl?: string;
-	onPress?: () => void;
-	onLike?: () => void;
-	onInfo?: () => void;
-	onShare?: () => void;
-	onPlay?: () => void;
-	isLiked?: boolean;
-}
-
-export const PlaylistCard: React.FC<PlaylistCardProps> = ({
+export const PlaylistCard = ({
 	title,
 	artist,
 	coverUrl,
@@ -27,7 +21,7 @@ export const PlaylistCard: React.FC<PlaylistCardProps> = ({
 	onShare,
 	onPlay,
 	isLiked = false,
-}) => {
+}: PlaylistCardProps) => {
 	const { theme } = useTheme();
 
 	return (
@@ -37,34 +31,71 @@ export const PlaylistCard: React.FC<PlaylistCardProps> = ({
 			activeOpacity={0.7}>
 			<View style={styles.content}>
 				{coverUrl ? (
-					<Image source={{ uri: coverUrl }} style={styles.cover} />
+					<Image
+						source={{ uri: coverUrl }}
+						style={styles.cover}
+					/>
 				) : (
-					<View style={[styles.cover, { backgroundColor: theme.surface.tertiary }]}>
-						<Ionicons name="musical-notes" size={24} color={theme.text.tertiary} />
+					<View
+						style={[
+							styles.cover,
+							{ backgroundColor: theme.surface.elevated },
+						]}>
+						<Ionicons
+							name="musical-notes"
+							size={24}
+							color={theme.text.tertiary}
+						/>
 					</View>
 				)}
 
 				<View style={styles.info}>
-					<Typo variant="titleMedium" style={styles.title} color={theme.text.primary} numberOfLines={1}>
+					<Typo
+						variant="titleMedium"
+						style={styles.title}
+						color={theme.text.primary}
+						numberOfLines={1}>
 						{title}
 					</Typo>
-					<Typo variant="bodySmall" style={styles.artist} color={theme.text.secondary} numberOfLines={1}>
+					<Typo
+						variant="bodySmall"
+						style={styles.artist}
+						color={theme.text.secondary}
+						numberOfLines={1}>
 						{artist}
 					</Typo>
 
 					<View style={styles.actions}>
-						<TouchableOpacity onPress={onLike} style={styles.actionButton}>
+						<TouchableOpacity
+							onPress={onLike}
+							style={styles.actionButton}>
 							<Ionicons
 								name={isLiked ? "heart" : "heart-outline"}
 								size={20}
-								color={isLiked ? theme.accent.default : theme.text.secondary}
+								color={
+									isLiked
+										? theme.accent.soft
+										: theme.text.secondary
+								}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={onInfo} style={styles.actionButton}>
-							<Ionicons name="information-circle-outline" size={20} color={theme.text.secondary} />
+						<TouchableOpacity
+							onPress={onInfo}
+							style={styles.actionButton}>
+							<Ionicons
+								name="information-circle-outline"
+								size={20}
+								color={theme.text.secondary}
+							/>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={onShare} style={styles.actionButton}>
-							<Ionicons name="share-outline" size={20} color={theme.text.secondary} />
+						<TouchableOpacity
+							onPress={onShare}
+							style={styles.actionButton}>
+							<Ionicons
+								name="share-outline"
+								size={20}
+								color={theme.text.secondary}
+							/>
 						</TouchableOpacity>
 					</View>
 				</View>
@@ -73,7 +104,11 @@ export const PlaylistCard: React.FC<PlaylistCardProps> = ({
 			<TouchableOpacity
 				onPress={onPlay}
 				style={[styles.playButton, { backgroundColor: theme.primary }]}>
-				<Ionicons name="play" size={24} color="#FFFFFF" />
+				<Ionicons
+					name="play"
+					size={24}
+					color="#FFFFFF"
+				/>
 			</TouchableOpacity>
 		</TouchableOpacity>
 	);
@@ -92,8 +127,8 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	cover: {
-		width: componentSizes.iconXLarge,
-		height: componentSizes.iconXLarge,
+		width: componentSizes.icon.xLarge,
+		height: componentSizes.icon.xLarge,
 		borderRadius: borderRadius.sm,
 		marginRight: spacingScale.md,
 		alignItems: "center",
@@ -117,8 +152,8 @@ const styles = StyleSheet.create({
 		padding: spacingScale.xxs,
 	},
 	playButton: {
-		width: componentSizes.buttonHeight,
-		height: componentSizes.buttonHeight,
+		width: componentSizes.button.height,
+		height: componentSizes.button.height,
 		borderRadius: borderRadius.full,
 		alignItems: "center",
 		justifyContent: "center",

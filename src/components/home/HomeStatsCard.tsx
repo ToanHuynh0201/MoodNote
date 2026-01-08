@@ -1,34 +1,46 @@
-import { TYPOGRAPHY } from "@/constants/theme";
-import { borderRadius, componentSizes, spacingScale, verticalSpacing } from "@/constants/design";
+import {
+	borderRadius,
+	componentSizes,
+	spacingScale,
+	verticalSpacing,
+} from "@/constants/design";
 import { useTheme } from "@/hooks";
+import { HomeStatsCardProps } from "@/types";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Typo } from "../common/Typo";
+import { Typo } from "../common";
 
-interface HomeStatsCardProps {
-	icon: React.ReactNode;
-	days: number;
-	label: string;
-	accentColor?: string;
-}
-
-export const HomeStatsCard: React.FC<HomeStatsCardProps> = ({
+export const HomeStatsCard = ({
 	icon,
 	days,
 	label,
 	accentColor,
-}) => {
+}: HomeStatsCardProps) => {
 	const { theme } = useTheme();
 
 	return (
-		<View style={[styles.container, { backgroundColor: theme.surface.secondary }]}>
-			<View style={[styles.iconContainer, accentColor && { backgroundColor: accentColor }]}>
+		<View
+			style={[
+				styles.container,
+				{ backgroundColor: theme.surface.secondary },
+			]}>
+			<View
+				style={[
+					styles.iconContainer,
+					accentColor && { backgroundColor: accentColor },
+				]}>
 				{icon}
 			</View>
-			<Typo variant="headlineMedium" style={styles.days} color={theme.text.primary}>
+			<Typo
+				variant="headlineMedium"
+				style={styles.days}
+				color={theme.text.primary}>
 				{days} ngày
 			</Typo>
-			<Typo variant="bodySmall" style={styles.label} color={theme.text.secondary}>
+			<Typo
+				variant="bodySmall"
+				style={styles.label}
+				color={theme.text.secondary}>
 				{label}
 			</Typo>
 		</View>
@@ -44,8 +56,8 @@ const styles = StyleSheet.create({
 		minWidth: 100,
 	},
 	iconContainer: {
-		width: componentSizes.iconLarge,
-		height: componentSizes.iconLarge,
+		width: componentSizes.icon.large,
+		height: componentSizes.icon.large,
 		borderRadius: borderRadius.full,
 		alignItems: "center",
 		justifyContent: "center",

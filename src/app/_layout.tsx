@@ -1,10 +1,10 @@
-import { ThemeProvider } from "@/contexts";
+import { env } from "@/config/env";
+import { printValidation } from "@/config/validateEnv";
+import { AuthProvider, ThemeProvider } from "@/contexts";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { printValidation } from "@/config/validateEnv";
-import { env } from "@/config/env";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -35,43 +35,45 @@ export default function RootLayout() {
 
 	return (
 		<ThemeProvider defaultMode="dark">
-			<Stack
-				screenOptions={{
-					headerShown: false,
-					animation: "fade",
-					animationDuration: 200,
-					contentStyle: { backgroundColor: "transparent" },
-				}}>
-				<Stack.Screen
-					name="(public)"
-					options={{
+			<AuthProvider>
+				<Stack
+					screenOptions={{
+						headerShown: false,
 						animation: "fade",
 						animationDuration: 200,
-					}}
-				/>
-				<Stack.Screen
-					name="(auth)"
-					options={{
-						animation: "fade",
-						animationDuration: 200,
-					}}
-				/>
-				<Stack.Screen
-					name="(tabs)"
-					options={{
-						animation: "fade",
-						animationDuration: 200,
-					}}
-				/>
+						contentStyle: { backgroundColor: "transparent" },
+					}}>
+					<Stack.Screen
+						name="(public)"
+						options={{
+							animation: "fade",
+							animationDuration: 200,
+						}}
+					/>
+					<Stack.Screen
+						name="(auth)"
+						options={{
+							animation: "fade",
+							animationDuration: 200,
+						}}
+					/>
+					<Stack.Screen
+						name="(tabs)"
+						options={{
+							animation: "fade",
+							animationDuration: 200,
+						}}
+					/>
 
-				<Stack.Screen
-					name="index"
-					options={{
-						animation: "fade",
-						animationDuration: 200,
-					}}
-				/>
-			</Stack>
+					<Stack.Screen
+						name="index"
+						options={{
+							animation: "fade",
+							animationDuration: 200,
+						}}
+					/>
+				</Stack>
+			</AuthProvider>
 		</ThemeProvider>
 	);
 }

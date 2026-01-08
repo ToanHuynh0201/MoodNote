@@ -22,11 +22,11 @@ const IconButton = ({
 		switch (variant) {
 			case "filled":
 				return {
-					backgroundColor: theme.primaryLight,
+					backgroundColor: theme.primary,
 				};
 			case "tonal":
 				return {
-					backgroundColor: theme.primaryDark,
+					backgroundColor: theme.surface.elevated,
 				};
 			case "outlined":
 				return {
@@ -43,6 +43,8 @@ const IconButton = ({
 		switch (variant) {
 			case "filled":
 				return theme.text.inverse;
+			case "tonal":
+				return theme.primary;
 			default:
 				return theme.text.primary;
 		}

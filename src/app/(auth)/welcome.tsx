@@ -1,6 +1,11 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
+import {
+	borderRadius,
+	componentSizes,
+	spacingScale,
+	verticalSpacing,
+} from "@/constants/design";
 import { useTheme } from "@/hooks";
-import { componentSizes, borderRadius, spacingScale, verticalSpacing } from "@/constants/design";
 import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -137,7 +142,7 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="person-add"
 								size={moderateScale(24)}
-								color={theme.text.primary}
+								color={theme.primary}
 							/>
 						}
 						label="Đăng kí"
