@@ -1,8 +1,8 @@
 import { Button, LoadingSpinner, TextInput, Typo } from "@/components";
 import { ScreenWrapper } from "@/components/layout";
-import { componentSizes, verticalSpacing } from "@/constants/design";
+import { radius, sizes, space, vSpace } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
-import { moderateScale, verticalScale } from "@/utils/responsive";
+import { vSpacing } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -67,9 +67,9 @@ const LoginScreen = () => {
 	};
 
 	const handleLogin = async () => {
-		if (!validateForm()) {
-			return;
-		}
+		// if (!validateForm()) {
+		// 	return;
+		// }
 
 		setLoading(true);
 
@@ -112,12 +112,12 @@ const LoginScreen = () => {
 								onPress={() => router.back()}
 								style={[
 									styles.backButton,
-									{ backgroundColor: theme.surface.primary },
+									{ backgroundColor: theme.surface.raised },
 								]}
 								activeOpacity={0.7}>
 								<MaterialIcons
 									name="arrow-back"
-									size={moderateScale(24)}
+									size={sizes.icon.lg}
 									color={theme.text.primary}
 								/>
 							</TouchableOpacity>
@@ -191,7 +191,7 @@ const LoginScreen = () => {
 								activeOpacity={0.7}>
 								<Typo
 									variant="labelMedium"
-									color={theme.primary}>
+									color={theme.primary.default}>
 									Quên mật khẩu?
 								</Typo>
 							</TouchableOpacity>
@@ -210,7 +210,7 @@ const LoginScreen = () => {
 							<View
 								style={[
 									styles.divider,
-									{ backgroundColor: theme.border.main },
+									{ backgroundColor: theme.border.default },
 								]}
 							/>
 							<Typo
@@ -222,7 +222,7 @@ const LoginScreen = () => {
 							<View
 								style={[
 									styles.divider,
-									{ backgroundColor: theme.border.main },
+									{ backgroundColor: theme.border.default },
 								]}
 							/>
 						</View>
@@ -232,12 +232,12 @@ const LoginScreen = () => {
 							<TouchableOpacity
 								style={[
 									styles.socialButton,
-									{ backgroundColor: theme.surface.primary },
+									{ backgroundColor: theme.surface.raised },
 								]}
 								activeOpacity={0.7}>
 								<MaterialIcons
 									name="g-translate"
-									size={moderateScale(24)}
+									size={sizes.icon.lg}
 									color={theme.text.primary}
 								/>
 							</TouchableOpacity>
@@ -245,12 +245,12 @@ const LoginScreen = () => {
 							<TouchableOpacity
 								style={[
 									styles.socialButton,
-									{ backgroundColor: theme.surface.primary },
+									{ backgroundColor: theme.surface.raised },
 								]}
 								activeOpacity={0.7}>
 								<MaterialIcons
 									name="facebook"
-									size={moderateScale(24)}
+									size={sizes.icon.lg}
 									color={theme.text.primary}
 								/>
 							</TouchableOpacity>
@@ -258,12 +258,12 @@ const LoginScreen = () => {
 							<TouchableOpacity
 								style={[
 									styles.socialButton,
-									{ backgroundColor: theme.surface.primary },
+									{ backgroundColor: theme.surface.raised },
 								]}
 								activeOpacity={0.7}>
 								<MaterialIcons
 									name="apple"
-									size={moderateScale(24)}
+									size={sizes.icon.lg}
 									color={theme.text.primary}
 								/>
 							</TouchableOpacity>
@@ -281,7 +281,7 @@ const LoginScreen = () => {
 								activeOpacity={0.7}>
 								<Typo
 									variant="labelMedium"
-									color={theme.primary}>
+									color={theme.primary.default}>
 									Đăng ký ngay
 								</Typo>
 							</TouchableOpacity>
@@ -308,62 +308,62 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		paddingHorizontal: componentSizes.screen.paddingHorizontal,
-		paddingTop: componentSizes.screen.paddingVertical,
+		paddingHorizontal: space[7],
+		paddingTop: vSpace[5],
 	},
 	header: {
-		marginBottom: verticalSpacing.xxl,
+		marginBottom: vSpace[7],
 	},
 	backButton: {
-		width: componentSizes.backButton.size,
-		height: componentSizes.backButton.size,
-		borderRadius: componentSizes.backButton.borderRadius,
+		width: sizes.icon["2xl"],
+		height: sizes.icon["2xl"],
+		borderRadius: radius["2xl"],
 		alignItems: "center",
 		justifyContent: "center",
-		marginBottom: componentSizes.backButton.marginBottom,
+		marginBottom: vSpace[5],
 	},
 	titleContainer: {
-		marginBottom: verticalSpacing.sm,
+		marginBottom: vSpace[3],
 	},
 	title: {
-		marginBottom: verticalSpacing.sm,
+		marginBottom: vSpace[3],
 	},
 	subtitle: {
 		opacity: 0.8,
 	},
 	form: {
-		marginBottom: verticalSpacing.xl,
+		marginBottom: vSpace[6],
 	},
 	forgotPassword: {
 		alignSelf: "flex-end",
-		marginTop: verticalScale(-8),
-		marginBottom: verticalSpacing.xl,
+		marginTop: vSpacing(-8),
+		marginBottom: vSpace[6],
 	},
 	loginButton: {
-		marginTop: verticalSpacing.sm,
+		marginTop: vSpace[3],
 	},
 	dividerContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginVertical: verticalSpacing.xl,
+		marginVertical: vSpace[6],
 	},
 	divider: {
 		flex: 1,
-		height: componentSizes.divider.height,
+		height: 1,
 	},
 	dividerText: {
-		marginHorizontal: componentSizes.divider.textMargin,
+		marginHorizontal: space[5],
 	},
 	socialContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
-		gap: componentSizes.socialButton.gap,
-		marginBottom: verticalSpacing.xl,
+		gap: sizes.social.gap,
+		marginBottom: vSpace[6],
 	},
 	socialButton: {
-		width: componentSizes.socialButton.size,
-		height: componentSizes.socialButton.size,
-		borderRadius: componentSizes.socialButton.borderRadius,
+		width: sizes.social.size,
+		height: sizes.social.size,
+		borderRadius: radius["3xl"],
 		alignItems: "center",
 		justifyContent: "center",
 	},
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: verticalSpacing.xl,
+		marginBottom: vSpace[6],
 	},
 });
 

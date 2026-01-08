@@ -1,3 +1,4 @@
-export * from "./theme";
 export * from "./auth";
-export * from "./design";
+export * from "./colors";
+export * from "./spacing";
+export * from "./typography";

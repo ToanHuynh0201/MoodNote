@@ -1,9 +1,4 @@
-import {
-	borderRadius,
-	componentSizes,
-	spacingScale,
-	verticalSpacing,
-} from "@/constants/design";
+import { space, vSpace, radius, sizes } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { HomeStatsCardProps } from "@/types";
 import React from "react";
@@ -22,7 +17,7 @@ export const HomeStatsCard = ({
 		<View
 			style={[
 				styles.container,
-				{ backgroundColor: theme.surface.secondary },
+				{ backgroundColor: theme.surface.raised },
 			]}>
 			<View
 				style={[
@@ -51,24 +46,24 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
-		padding: spacingScale.md,
-		borderRadius: borderRadius.lg,
+		padding: space[4],
+		borderRadius: radius.lg,
 		minWidth: 100,
 	},
 	iconContainer: {
-		width: componentSizes.icon.large,
-		height: componentSizes.icon.large,
-		borderRadius: borderRadius.full,
+		width: sizes.icon["3xl"],
+		height: sizes.icon["3xl"],
+		borderRadius: radius.full,
 		alignItems: "center",
 		justifyContent: "center",
-		marginBottom: verticalSpacing.xs,
+		marginBottom: vSpace[1],
 	},
 	days: {
-		marginTop: verticalSpacing.xxs,
+		marginTop: vSpace[1],
 		fontWeight: "bold",
 	},
 	label: {
 		textAlign: "center",
-		marginTop: verticalSpacing.xxs,
+		marginTop: vSpace[1],
 	},
 });

@@ -16,13 +16,13 @@ const { width } = Dimensions.get("window");
 const ScreenWrapper = ({
 	children,
 	style,
-	safeAreaEdges = ["top", "bottom", "left", "right"], // Mặc định apply safe area cho tất cả các cạnh
+	safeAreaEdges = ["top", "bottom", "left", "right"],
 	useGradient = false,
 }: ScreenWrapperProps) => {
 	const { theme } = useTheme();
 
 	// Convert gradient array to proper type
-	const gradientColors = theme.background.gradient.slice() as [
+	const gradientColors = theme.gradient.background.slice() as [
 		string,
 		string,
 		...string[],
@@ -42,13 +42,11 @@ const ScreenWrapper = ({
 				<View
 					style={[
 						StyleSheet.absoluteFillObject,
-						{ backgroundColor: theme.background.primary },
+						{ backgroundColor: theme.surface.base },
 					]}
 				/>
 			)}
-			<SafeAreaView
-				style={[styles.container]}
-				edges={safeAreaEdges}>
+			<SafeAreaView style={[styles.container]} edges={safeAreaEdges}>
 				<KeyboardAvoidingView
 					style={{ flex: 1 }}
 					behavior={Platform.OS === "ios" ? "padding" : undefined}>

@@ -2,8 +2,8 @@ import IconButton from "@/components/common/IconButton";
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { componentSizes, borderRadius, spacingScale } from "@/constants/design";
-import { moderateScale } from "@/utils/responsive";
+import { space, vSpace, sizes, shadows } from "@/constants/spacing";
+import { s } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useRef, useState } from "react";
@@ -81,11 +81,14 @@ const OnboardingScreen = () => {
 	const renderSlide = ({ item }: { item: OnboardingSlide }) => (
 		<View style={[styles.slide, { width }]}>
 			<View
-				style={[styles.iconCircle, { backgroundColor: theme.primary }]}>
+				style={[
+					styles.iconCircle,
+					{ backgroundColor: theme.primary.default },
+				]}>
 				<MaterialIcons
 					name={item.icon}
-					size={moderateScale(80)}
-					color={theme.text.inverse}
+					size={sizes.icon["3xl"]}
+					color={theme.text.onPrimary}
 				/>
 			</View>
 
@@ -137,7 +140,7 @@ const OnboardingScreen = () => {
 							{
 								width: dotWidth,
 								opacity,
-								backgroundColor: theme.primary,
+								backgroundColor: theme.primary.default,
 							},
 						]}
 					/>
@@ -156,7 +159,7 @@ const OnboardingScreen = () => {
 					<Typo
 						variant="labelLarge"
 						color={theme.text.primary}
-						style={{ fontSize: moderateScale(24) }}>
+						style={{ fontSize: s(24) }}>
 						Bỏ qua
 					</Typo>
 				</Pressable>
@@ -194,8 +197,8 @@ const OnboardingScreen = () => {
 											? "check"
 											: "arrow-forward"
 									}
-									size={moderateScale(24)}
-									color={theme.text.inverse}
+									size={sizes.icon.lg}
+									color={theme.text.onPrimary}
 								/>
 							}
 							label={
@@ -222,67 +225,63 @@ const styles = StyleSheet.create({
 	},
 	skipButton: {
 		position: "absolute",
-		top: componentSizes.screen.paddingVertical,
-		right: componentSizes.screen.paddingVertical,
+		top: vSpace[5],
+		right: vSpace[5],
 		zIndex: 10,
-		padding: spacingScale.md,
+		padding: space[4],
 	},
 	slide: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: spacingScale.xxxxl,
+		paddingHorizontal: space[10],
 	},
 	iconCircle: {
-		width: componentSizes.iconContainer.medium,
-		height: componentSizes.iconContainer.medium,
-		borderRadius: borderRadius.xxxl,
+		width: sizes.iconContainer.md,
+		height: sizes.iconContainer.md,
+		borderRadius: sizes.iconContainer.md / 2,
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: spacingScale.xxxxl,
-		shadowColor: "#000",
-		shadowOffset: { width: 2, height: 4 },
-		shadowOpacity: 0.3,
-		shadowRadius: 8,
-		elevation: 5,
+		marginBottom: space[10],
+		...shadows.lg,
 	},
 	title: {
-		marginBottom: spacingScale.lg,
-		fontSize: moderateScale(32),
-		lineHeight: moderateScale(42),
+		marginBottom: space[5],
+		fontSize: s(32),
+		lineHeight: s(42),
 		textShadowColor: "rgba(0, 0, 0, 0.3)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 4,
 		fontWeight: "700",
 	},
 	description: {
-		lineHeight: moderateScale(26),
+		lineHeight: s(26),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 3,
 		fontWeight: "700",
-		fontSize: moderateScale(20),
+		fontSize: s(20),
 	},
 	bottomSection: {
-		paddingBottom: spacingScale.xxxxl,
-		paddingHorizontal: componentSizes.screen.paddingVertical,
+		paddingBottom: space[10],
+		paddingHorizontal: vSpace[5],
 	},
 	dotsContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: moderateScale(30),
-		height: componentSizes.dots.containerHeight,
+		marginBottom: s(30),
+		height: s(20),
 	},
 	dot: {
-		height: componentSizes.dots.height,
-		borderRadius: componentSizes.dots.borderRadius,
-		marginHorizontal: componentSizes.dots.margin,
+		height: s(10),
+		borderRadius: s(5),
+		marginHorizontal: s(4),
 	},
 	buttonContainer: {
 		alignItems: "center",
 	},
 	nextButton: {
-		minWidth: componentSizes.button.minWidth,
+		minWidth: s(200),
 	},
 });

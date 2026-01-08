@@ -1,9 +1,4 @@
-import {
-	borderRadius,
-	componentSizes,
-	spacingScale,
-	verticalSpacing,
-} from "@/constants/design";
+import { space, vSpace, radius, sizes } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { PlaylistCardProps } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
@@ -43,7 +38,7 @@ export const PlaylistCard = ({
 						]}>
 						<Ionicons
 							name="musical-notes"
-							size={24}
+							size={sizes.icon.lg}
 							color={theme.text.tertiary}
 						/>
 					</View>
@@ -71,10 +66,10 @@ export const PlaylistCard = ({
 							style={styles.actionButton}>
 							<Ionicons
 								name={isLiked ? "heart" : "heart-outline"}
-								size={20}
+								size={sizes.icon.md}
 								color={
 									isLiked
-										? theme.accent.soft
+										? theme.secondary.default
 										: theme.text.secondary
 								}
 							/>
@@ -84,7 +79,7 @@ export const PlaylistCard = ({
 							style={styles.actionButton}>
 							<Ionicons
 								name="information-circle-outline"
-								size={20}
+								size={sizes.icon.md}
 								color={theme.text.secondary}
 							/>
 						</TouchableOpacity>
@@ -93,7 +88,7 @@ export const PlaylistCard = ({
 							style={styles.actionButton}>
 							<Ionicons
 								name="share-outline"
-								size={20}
+								size={sizes.icon.md}
 								color={theme.text.secondary}
 							/>
 						</TouchableOpacity>
@@ -103,11 +98,14 @@ export const PlaylistCard = ({
 
 			<TouchableOpacity
 				onPress={onPlay}
-				style={[styles.playButton, { backgroundColor: theme.primary }]}>
+				style={[
+					styles.playButton,
+					{ backgroundColor: theme.primary.default },
+				]}>
 				<Ionicons
 					name="play"
-					size={24}
-					color="#FFFFFF"
+					size={sizes.icon.lg}
+					color={theme.text.onPrimary}
 				/>
 			</TouchableOpacity>
 		</TouchableOpacity>
@@ -118,8 +116,8 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginBottom: verticalSpacing.sm,
-		paddingVertical: verticalSpacing.xs,
+		marginBottom: vSpace[2],
+		paddingVertical: vSpace[1],
 	},
 	content: {
 		flex: 1,
@@ -127,10 +125,10 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	cover: {
-		width: componentSizes.icon.xLarge,
-		height: componentSizes.icon.xLarge,
-		borderRadius: borderRadius.sm,
-		marginRight: spacingScale.md,
+		width: sizes.icon.xl,
+		height: sizes.icon.xl,
+		borderRadius: radius.sm,
+		marginRight: space[4],
 		alignItems: "center",
 		justifyContent: "center",
 	},
@@ -139,24 +137,24 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontWeight: "600",
-		marginBottom: verticalSpacing.xxs,
+		marginBottom: vSpace[1],
 	},
 	artist: {
-		marginBottom: verticalSpacing.xs,
+		marginBottom: vSpace[1],
 	},
 	actions: {
 		flexDirection: "row",
-		gap: spacingScale.md,
+		gap: space[4],
 	},
 	actionButton: {
-		padding: spacingScale.xxs,
+		padding: space[1],
 	},
 	playButton: {
-		width: componentSizes.button.height,
-		height: componentSizes.button.height,
-		borderRadius: borderRadius.full,
+		width: sizes.button.height,
+		height: sizes.button.height,
+		borderRadius: radius.full,
 		alignItems: "center",
 		justifyContent: "center",
-		marginLeft: spacingScale.sm,
+		marginLeft: space[3],
 	},
 });

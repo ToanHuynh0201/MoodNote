@@ -1,6 +1,7 @@
 import { useTheme } from "@/hooks";
-import { componentSizes, borderRadius } from "@/constants/design";
-import { moderateScale } from "@/utils/responsive";
+import { sizes, radius, space, vSpace } from "@/constants/spacing";
+import { fontSizes, FONTS } from "@/constants/typography";
+import { s } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
@@ -39,7 +40,7 @@ const TextInput = ({
 			{label && (
 				<Typo
 					variant="labelMedium"
-					color={error ? theme.error : theme.text.secondary}
+					color={error ? theme.status.error : theme.text.secondary}
 					style={styles.label}>
 					{label}
 				</Typo>
@@ -49,18 +50,18 @@ const TextInput = ({
 				style={[
 					styles.inputContainer,
 					{
-						backgroundColor: theme.surface.primary,
+						backgroundColor: theme.surface.base,
 						borderColor: error
-							? theme.error
+							? theme.status.error
 							: isFocused
-							? theme.primary
-							: theme.border.main,
+								? theme.primary.default
+								: theme.border.default,
 					},
 				]}>
 				{leftIcon && (
 					<MaterialIcons
 						name={leftIcon}
-						size={moderateScale(20)}
+						size={sizes.icon.md}
 						color={theme.text.secondary}
 						style={styles.leftIcon}
 					/>
@@ -87,7 +88,7 @@ const TextInput = ({
 						activeOpacity={0.7}>
 						<MaterialIcons
 							name={rightIcon}
-							size={moderateScale(20)}
+							size={sizes.icon.md}
 							color={theme.text.secondary}
 						/>
 					</TouchableOpacity>
@@ -97,7 +98,7 @@ const TextInput = ({
 			{error && (
 				<Typo
 					variant="labelSmall"
-					color={theme.error}
+					color={theme.status.error}
 					style={styles.error}>
 					{error}
 				</Typo>
@@ -110,33 +111,33 @@ export default TextInput;
 
 const styles = StyleSheet.create({
 	container: {
-		marginBottom: componentSizes.input.containerMargin,
+		marginBottom: vSpace[4], // 16px
 	},
 	label: {
-		marginBottom: componentSizes.input.labelMargin,
+		marginBottom: vSpace[3], // 8px
 	},
 	inputContainer: {
 		flexDirection: "row",
 		alignItems: "center",
 		borderWidth: 1.5,
-		borderRadius: borderRadius.md,
-		paddingHorizontal: componentSizes.input.padding,
-		height: componentSizes.input.height,
+		borderRadius: radius.lg,
+		paddingHorizontal: sizes.input.paddingX,
+		height: sizes.input.height,
 	},
 	input: {
 		flex: 1,
-		fontSize: moderateScale(16),
-		fontFamily: "Segoe UI",
+		fontSize: fontSizes.lg, // 16px
+		fontFamily: FONTS.regular,
 	},
 	leftIcon: {
-		marginRight: componentSizes.input.iconMargin,
+		marginRight: space[4], // 12px
 	},
 	rightIcon: {
-		marginLeft: componentSizes.input.iconMargin,
-		padding: componentSizes.input.iconPadding,
+		marginLeft: space[4], // 12px
+		padding: s(4),
 	},
 	error: {
-		marginTop: componentSizes.input.errorMargin,
-		marginLeft: componentSizes.input.errorMarginLeft,
+		marginTop: vSpace[2], // 4px
+		marginLeft: space[2], // 4px
 	},
 });

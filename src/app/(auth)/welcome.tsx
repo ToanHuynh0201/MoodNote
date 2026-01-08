@@ -1,12 +1,8 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
-import {
-	borderRadius,
-	componentSizes,
-	spacingScale,
-	verticalSpacing,
-} from "@/constants/design";
+import { space, vSpace, radius, sizes, shadows } from "@/constants/spacing";
+import { fontSizes } from "@/constants/typography";
 import { useTheme } from "@/hooks";
-import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
+import { s } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
@@ -68,13 +64,14 @@ const WelcomeScreen = () => {
 						style={[
 							styles.iconContainer,
 							{
-								backgroundColor: theme.primary,
+								backgroundColor: theme.primary.default,
+								shadowColor: theme.shadow.color,
 							},
 						]}>
 						<MaterialIcons
 							name="favorite"
-							size={moderateScale(80)}
-							color={theme.text.inverse}
+							size={s(80)}
+							color={theme.text.onPrimary}
 						/>
 					</View>
 
@@ -90,7 +87,7 @@ const WelcomeScreen = () => {
 					<Typo
 						variant="displayLarge"
 						decorative={true}
-						color={theme.primary}
+						color={theme.primary.default}
 						align="center"
 						style={styles.appName}>
 						MoodNote
@@ -127,8 +124,8 @@ const WelcomeScreen = () => {
 						icon={
 							<MaterialIcons
 								name="login"
-								size={moderateScale(24)}
-								color={theme.text.inverse}
+								size={sizes.icon.lg}
+								color={theme.text.onPrimary}
 							/>
 						}
 						label="Đăng nhập"
@@ -141,8 +138,8 @@ const WelcomeScreen = () => {
 						icon={
 							<MaterialIcons
 								name="person-add"
-								size={moderateScale(24)}
-								color={theme.primary}
+								size={sizes.icon.lg}
+								color={theme.text.onElevated}
 							/>
 						}
 						label="Đăng kí"
@@ -162,8 +159,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: "space-between",
-		paddingVertical: moderateScale(60),
-		paddingHorizontal: componentSizes.screen.paddingVertical,
+		paddingVertical: s(60),
+		paddingHorizontal: space[7],
 	},
 	contentContainer: {
 		flex: 1,
@@ -171,46 +168,42 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	iconContainer: {
-		width: componentSizes.iconContainer.small,
-		height: componentSizes.iconContainer.small,
-		borderRadius: borderRadius.xxl,
+		width: sizes.iconContainer.sm,
+		height: sizes.iconContainer.sm,
+		borderRadius: radius["3xl"],
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: spacingScale.xxxxl,
-		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.3,
-		shadowRadius: 10,
-		elevation: 8,
+		marginBottom: vSpace[8],
+		...shadows.lg,
 	},
 	welcomeTitle: {
-		marginBottom: verticalSpacing.sm,
-		fontSize: moderateScale(28),
+		marginBottom: vSpace[2],
+		fontSize: fontSizes["2xl"],
 		textShadowColor: "rgba(0, 0, 0, 0.15)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 3,
 		fontWeight: "500",
 	},
 	appName: {
-		fontSize: moderateScale(56),
-		marginBottom: verticalSpacing.xl,
-		paddingVertical: moderateVerticalScale(10),
+		fontSize: fontSizes["6xl"],
+		marginBottom: vSpace[6],
+		paddingVertical: vSpace[2],
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 6,
 	},
 	description: {
-		lineHeight: moderateScale(26),
-		paddingHorizontal: componentSizes.screen.paddingVertical,
+		lineHeight: s(26),
+		paddingHorizontal: space[7],
 		textShadowColor: "rgba(0, 0, 0, 0.1)",
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 2,
-		fontSize: moderateScale(17),
+		fontSize: fontSizes.xl,
 		fontWeight: "500",
 	},
 	buttonContainer: {
 		width: "100%",
-		gap: moderateScale(14),
+		gap: space[4],
 	},
 	button: {
 		width: "100%",

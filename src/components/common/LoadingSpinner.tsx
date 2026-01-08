@@ -1,6 +1,6 @@
 import { useTheme } from "@/hooks";
 import { LoadingSpinnerProps } from "@/types";
-import { componentSizes } from "@/constants/design";
+import { sizes } from "@/constants/spacing";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, Easing, StyleSheet, View } from "react-native";
 
@@ -14,8 +14,8 @@ const LoadingSpinner = ({
 	const { theme } = useTheme();
 
 	// Sử dụng theme colors nếu không có color được truyền vào
-	const primaryColor = color || theme.primary;
-	const accentColor = secondaryColor || theme.secondary;
+	const primaryColor = color || theme.primary.default;
+	const accentColor = secondaryColor || theme.secondary.default;
 	// SÓNG ÂM (WAVES) ===
 	const waveCount = 5;
 	const waveAnims = useRef(
@@ -181,18 +181,18 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
-		padding: componentSizes.loading.containerPadding,
+		padding: sizes.loading.containerPadding,
 	},
 	waveContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		height: componentSizes.loading.waveHeight,
-		marginBottom: componentSizes.loading.containerMarginBottom,
+		height: sizes.loading.waveHeight,
+		marginBottom: sizes.loading.containerMarginBottom,
 	},
 	bar: {
-		width: componentSizes.loading.barWidth,
-		borderRadius: componentSizes.loading.barBorderRadius,
-		marginHorizontal: componentSizes.loading.barMargin,
+		width: sizes.loading.barWidth,
+		borderRadius: sizes.loading.barBorderRadius,
+		marginHorizontal: sizes.loading.barMargin,
 	},
 	text: {
 		fontSize: 15,

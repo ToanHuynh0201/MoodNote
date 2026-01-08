@@ -1,9 +1,10 @@
 import { useTheme } from "@/hooks/useTheme";
 import { IconButtonProps } from "@/types";
-import { componentSizes, borderRadius } from "@/constants/design";
-import { moderateScale } from "@/utils/responsive";
+import { sizes, radius, shadows, space } from "@/constants/spacing";
+import { s } from "@/utils/scaling";
+import { getButtonColors } from "@/utils/buttonStyles";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Typo from "./Typo";
 
 const IconButton = ({
@@ -17,44 +18,18 @@ const IconButton = ({
 	iconPosition = "left",
 }: IconButtonProps) => {
 	const { theme } = useTheme();
-
-	const getButtonStyle = (): ViewStyle => {
-		switch (variant) {
-			case "filled":
-				return {
-					backgroundColor: theme.primary,
-				};
-			case "tonal":
-				return {
-					backgroundColor: theme.surface.elevated,
-				};
-			case "outlined":
-				return {
-					backgroundColor: "transparent",
-					borderWidth: 1,
-					borderColor: theme.border.dark,
-				};
-			default:
-				return {};
-		}
-	};
-
-	const getTextColor = (): string => {
-		switch (variant) {
-			case "filled":
-				return theme.text.inverse;
-			case "tonal":
-				return theme.primary;
-			default:
-				return theme.text.primary;
-		}
-	};
+	const colors = getButtonColors(variant, theme);
 
 	return (
 		<TouchableOpacity
 			style={[
 				styles.button,
-				getButtonStyle(),
+				{
+					backgroundColor: colors.background,
+					borderColor: colors.border,
+					borderWidth: colors.border ? 1 : 0,
+					shadowColor: theme.shadow.color,
+				},
 				disabled && styles.disabled,
 				style,
 			]}
@@ -69,7 +44,7 @@ const IconButton = ({
 				<View style={styles.iconContainer}>{icon}</View>
 				<Typo
 					variant="titleLarge"
-					color={getTextColor()}
+					color={colors.text}
 					style={styles.label}
 					{...labelStyle}>
 					{label}
@@ -83,40 +58,33 @@ export default IconButton;
 
 const styles = StyleSheet.create({
 	button: {
-		paddingVertical: componentSizes.button.paddingVertical,
-		paddingHorizontal: componentSizes.button.paddingHorizontal,
-		borderRadius: borderRadius.full,
+		paddingVertical: sizes.button.paddingY,
+		paddingHorizontal: sizes.button.paddingX,
+		borderRadius: radius.full,
 		alignItems: "center",
 		justifyContent: "center",
-		minHeight: componentSizes.button.minHeight,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: componentSizes.shadow.offsetHeight,
-		},
-		shadowOpacity: 0.1,
-		shadowRadius: moderateScale(100),
-		elevation: 3,
+		minHeight: sizes.button.height,
+		...shadows.md,
 	},
 	content: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		gap: componentSizes.button.iconGap,
+		gap: space[4], // 12px gap between icon and text
 	},
 	contentReverse: {
 		flexDirection: "row-reverse",
 	},
 	iconContainer: {
-		width: componentSizes.icon.medium,
-		height: componentSizes.icon.medium,
+		width: sizes.icon.lg,
+		height: sizes.icon.lg,
 		alignItems: "center",
 		justifyContent: "center",
 		flexShrink: 0,
 	},
 	label: {
 		textAlign: "center",
-		paddingVertical: componentSizes.button.labelPadding,
+		paddingVertical: s(2),
 	},
 	disabled: {
 		opacity: 0.5,

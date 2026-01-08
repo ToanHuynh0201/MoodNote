@@ -5,9 +5,9 @@ import {
 	ScreenWrapper,
 	Typo,
 } from "@/components";
-import { spacingScale, verticalSpacing } from "@/constants/design";
+import { space, vSpace, sizes, radius } from "@/constants/spacing";
+import { fontSizes } from "@/constants/typography";
 import { useAuth, useTheme } from "@/hooks";
-import { scale } from "@/utils";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -19,30 +19,6 @@ import {
 } from "react-native";
 
 // Mock data
-const MOCK_STATS = [
-	{
-		id: 1,
-		days: 18,
-		label: "Cuối mỗi ngày",
-		icon: "happy",
-		color: "#8B5CF6", // Purple
-	},
-	{
-		id: 2,
-		days: 20,
-		label: "Giữ chuỗi\nbạn nhà",
-		icon: "flame",
-		color: "#F97316", // Orange/Fire
-	},
-	{
-		id: 3,
-		days: 2,
-		label: "Buồn rồi,\nqua nhanh thôi",
-		icon: "sad",
-		color: "#60A5FA", // Blue
-	},
-];
-
 const MOCK_DIARY_ENTRIES = [
 	{
 		id: 1,
@@ -106,6 +82,31 @@ const HomeScreen = () => {
 	const { theme } = useTheme();
 	const { user } = useAuth();
 
+	// Mock data - Using theme colors instead of hardcoded
+	const MOCK_STATS = [
+		{
+			id: 1,
+			days: 18,
+			label: "Cuối mỗi ngày",
+			icon: "happy",
+			color: theme.stats.purple, // ✅ Fixed from hardcoded #8B5CF6
+		},
+		{
+			id: 2,
+			days: 20,
+			label: "Giữ chuỗi\nbạn nhà",
+			icon: "flame",
+			color: theme.stats.orange, // ✅ Fixed from hardcoded #F97316
+		},
+		{
+			id: 3,
+			days: 2,
+			label: "Buồn rồi,\nqua nhanh thôi",
+			icon: "sad",
+			color: theme.stats.blue, // ✅ Fixed from hardcoded #60A5FA
+		},
+	];
+
 	const renderStatIcon = (iconName: string, color: string) => {
 		let name: keyof typeof Ionicons.glyphMap;
 
@@ -124,11 +125,7 @@ const HomeScreen = () => {
 		}
 
 		return (
-			<Ionicons
-				name={name}
-				size={32}
-				color="#FFFFFF"
-			/>
+			<Ionicons name={name} size={32} color={theme.text.onPrimary} />
 		);
 	};
 
@@ -246,41 +243,41 @@ export default HomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingHorizontal: spacingScale.xl,
+		paddingHorizontal: space[6], // 20px
 	},
 	header: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginTop: verticalSpacing.lg,
-		marginBottom: verticalSpacing.md,
+		marginTop: vSpace[5], // 20px
+		marginBottom: vSpace[4], // 16px
 	},
 	headerLeft: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: spacingScale.md,
+		gap: space[4], // 12px
 	},
 	avatar: {
-		width: 48,
-		height: 48,
-		borderRadius: 24,
+		width: sizes.avatar.lg, // 48px
+		height: sizes.avatar.lg,
+		borderRadius: radius.full,
 	},
 	greeting: {
 		fontWeight: "600",
-		fontSize: scale(30),
+		fontSize: fontSizes["5xl"], // 34px (reduced from scale(30) which was wrong)
 	},
 	statsContainer: {
 		flexDirection: "row",
-		gap: spacingScale.sm,
-		marginBottom: verticalSpacing.xl,
+		gap: space[3], // 8px
+		marginBottom: vSpace[6], // 24px
 	},
 	section: {
-		marginBottom: verticalSpacing.xl,
+		marginBottom: vSpace[6], // 24px
 	},
 	sectionHeader: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginBottom: verticalSpacing.md,
+		marginBottom: vSpace[4], // 16px
 	},
 });

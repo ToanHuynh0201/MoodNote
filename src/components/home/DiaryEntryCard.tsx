@@ -1,8 +1,4 @@
-import {
-	borderRadius,
-	spacingScale,
-	verticalSpacing,
-} from "@/constants/design";
+import { space, vSpace, radius } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { DiaryEntryCardProps } from "@/types";
 import React from "react";
@@ -21,7 +17,7 @@ export const DiaryEntryCard = ({
 		<TouchableOpacity
 			style={[
 				styles.container,
-				{ backgroundColor: theme.surface.secondary },
+				{ backgroundColor: theme.surface.raised },
 			]}
 			onPress={onPress}
 			activeOpacity={0.7}>
@@ -53,16 +49,16 @@ export const DiaryEntryCard = ({
 
 const styles = StyleSheet.create({
 	container: {
-		borderRadius: borderRadius.md,
-		padding: spacingScale.lg,
-		marginBottom: verticalSpacing.sm,
+		borderRadius: radius.md,
+		padding: space[5],
+		marginBottom: vSpace[2],
 	},
 	content: {
-		marginBottom: verticalSpacing.xs,
+		marginBottom: vSpace[1],
 	},
 	title: {
 		fontWeight: "600",
-		marginBottom: verticalSpacing.xxs,
+		marginBottom: vSpace[1],
 	},
 	preview: {
 		lineHeight: 20,

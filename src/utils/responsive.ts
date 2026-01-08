@@ -1,3 +1,16 @@
+/**
+ * @deprecated This file is DEPRECATED. Use @/utils/scaling instead.
+ *
+ * Migration guide:
+ * - scale(size) → spacing(size) or s(size, { axis: 'x' })
+ * - verticalScale(size) → vSpacing(size) or s(size, { axis: 'y' })
+ * - moderateScale(size) → s(size) or fontSize(size)
+ * - moderateVerticalScale(size) → Rarely needed, use s(size, { axis: 'y', factor })
+ *
+ * See @/constants/spacing for pre-defined spacing tokens.
+ * See @/utils/scaling for the new unified scaling API.
+ */
+
 import { Dimensions, PixelRatio, Platform, StatusBar } from "react-native";
 
 // Lấy kích thước màn hình
@@ -14,31 +27,39 @@ const guidelineBaseWidth = 375;
 const guidelineBaseHeight = 812;
 
 /**
+ * @deprecated Use spacing(size) or s(size, { axis: 'x' }) from @/utils/scaling instead
+ *
  * Scale theo chiều rộng (Width)
  * Dùng cho: paddingHorizontal, marginHorizontal, width, v.v.
  */
-export const scale = (size: number) =>
-	Math.round(
+export const scale = (size: number) => {
+	return Math.round(
 		PixelRatio.roundToNearestPixel(
 			(shortDimension / guidelineBaseWidth) * size,
 		),
 	);
+};
 
 /**
+ * @deprecated Use vSpacing(size) or s(size, { axis: 'y' }) from @/utils/scaling instead
+ *
  * Scale theo chiều cao (Height)
  * Dùng cho: paddingVertical, marginVertical, height, v.v.
  */
-export const verticalScale = (size: number) =>
-	Math.round(
+export const verticalScale = (size: number) => {
+	return Math.round(
 		PixelRatio.roundToNearestPixel(
 			(longDimension / guidelineBaseHeight) * size,
 		),
 	);
+};
 
 /**
+ * @deprecated Use s(size) or fontSize(size) from @/utils/scaling instead
+ *
  * Scale có điều chỉnh (Moderate Scale) - QUAN TRỌNG NHẤT
  * Dùng cho: fontSize, borderRadius, iconSize
- * * @param size Kích thước trong design
+ * @param size Kích thước trong design
  * @param factor Hệ số điều chỉnh (default 0.5).
  * - 0: Không scale (giữ nguyên size).
  * - 1: Scale full theo màn hình (giống hàm scale ở trên).
@@ -52,6 +73,8 @@ export const moderateScale = (size: number, factor = 0.5) => {
 };
 
 /**
+ * @deprecated Rarely used. Use s(size, { axis: 'y', factor }) from @/utils/scaling if needed
+ *
  * Scale chiều cao có điều chỉnh (Ít dùng hơn, nhưng hữu ích cho các khoảng cách dọc nhỏ)
  */
 export const moderateVerticalScale = (size: number, factor = 0.5) => {

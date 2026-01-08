@@ -1,4 +1,4 @@
-import { FONTS, TYPOGRAPHY } from "@/constants/theme";
+import { FONTS, TYPOGRAPHY } from "@/constants/typography";
 import { useTheme } from "@/hooks/useTheme";
 import { TypoProps } from "@/types";
 import React from "react";

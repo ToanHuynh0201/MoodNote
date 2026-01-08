@@ -1,8 +1,7 @@
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { componentSizes } from "@/constants/design";
-import { moderateScale, moderateVerticalScale } from "@/utils/responsive";
+import { s, vSpacing } from "@/utils/scaling";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
@@ -74,7 +73,7 @@ const FloatingNote = ({ delay, startX, endX, duration, symbol }: any) => {
 			]}>
 			<Typo
 				variant="displayMedium"
-				color={theme.accent.warm}
+				color={theme.secondary.default}
 				style={styles.noteSymbol}>
 				{symbol}
 			</Typo>
@@ -138,7 +137,7 @@ const Particle = ({ delay, startX, startY, endX, endY }: any) => {
 			style={[
 				styles.particle,
 				{
-					backgroundColor: theme.accent.lavender,
+					backgroundColor: theme.primary.hover,
 					opacity,
 					transform: [{ translateX }, { translateY }, { scale }],
 				},
@@ -175,9 +174,9 @@ const SoundWave = ({ delay }: any) => {
 			style={[
 				styles.soundWave,
 				{
-					backgroundColor: theme.primary,
+					backgroundColor: theme.primary.default,
 					transform: [{ scaleY }],
-					marginHorizontal: moderateScale(3),
+					marginHorizontal: s(3),
 				},
 			]}
 		/>
@@ -233,7 +232,7 @@ const TypewriterText = ({ text, startDelay }: any) => {
 							styles.cursor,
 							{
 								opacity: showCursor ? 1 : 0,
-								color: theme.primary,
+								color: theme.primary.default,
 							},
 						]}>
 						|
@@ -377,7 +376,7 @@ const SplashScreen = () => {
 						<Typo
 							variant="displayLarge"
 							decorative
-							color={theme.primary}
+							color={theme.primary.default}
 							style={styles.appName}>
 							MoodNote
 						</Typo>
@@ -386,7 +385,7 @@ const SplashScreen = () => {
 						<View style={styles.iconContainer}>
 							<Typo
 								variant="displayLarge"
-								color={theme.primary}
+								color={theme.primary.default}
 								style={styles.musicIcon}>
 								♪
 							</Typo>
@@ -437,7 +436,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: componentSizes.screen.paddingVertical,
+		paddingHorizontal: vSpacing(20),
 	},
 	centerContent: {
 		flex: 1,
@@ -451,7 +450,7 @@ const styles = StyleSheet.create({
 		zIndex: 1,
 	},
 	noteSymbol: {
-		fontSize: moderateScale(32),
+		fontSize: s(32),
 		textShadowColor: "rgba(255, 255, 255, 0.4)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 4,
@@ -459,10 +458,9 @@ const styles = StyleSheet.create({
 	// Particles
 	particle: {
 		position: "absolute",
-		width: moderateScale(6),
-		height: moderateScale(6),
-		borderRadius: moderateScale(3),
-		// backgroundColor: "rgba(255, 255, 255, 0.9)",
+		width: s(6),
+		height: s(6),
+		borderRadius: s(3),
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.8,
@@ -471,10 +469,9 @@ const styles = StyleSheet.create({
 	},
 	// Sound waves
 	soundWave: {
-		width: moderateScale(4),
-		height: moderateScale(40),
-		// backgroundColor: "rgba(255, 255, 255, 0.8)",
-		borderRadius: moderateScale(2),
+		width: s(4),
+		height: s(40),
+		borderRadius: s(2),
 		shadowColor: "#FFFFFF",
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.6,
@@ -484,13 +481,13 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
-		marginTop: moderateScale(20),
-		height: moderateScale(50),
+		marginTop: s(20),
+		height: s(50),
 	},
 	// Logo and main content
 	logoContainer: {
 		alignItems: "center",
-		marginBottom: moderateScale(60),
+		marginBottom: s(60),
 		position: "relative",
 		overflow: "visible",
 	},
@@ -498,14 +495,14 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		top: 0,
 		left: -width,
-		width: moderateScale(100),
+		width: s(100),
 		height: "100%",
 		backgroundColor: "rgba(255, 255, 255, 0.3)",
 		transform: [{ skewX: "-20deg" }],
 	},
 	appName: {
-		fontSize: moderateScale(56),
-		paddingVertical: moderateVerticalScale(10),
+		fontSize: s(56),
+		paddingVertical: vSpacing(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,
@@ -513,15 +510,15 @@ const styles = StyleSheet.create({
 		zIndex: 2,
 	},
 	iconContainer: {
-		marginTop: moderateScale(10),
+		marginTop: s(10),
 		position: "relative",
 		alignItems: "center",
 		justifyContent: "center",
-		width: moderateScale(80),
-		height: moderateScale(80),
+		width: s(80),
+		height: s(80),
 	},
 	musicIcon: {
-		fontSize: moderateScale(52),
+		fontSize: s(52),
 		textShadowColor: "rgba(255, 255, 255, 0.8)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,
@@ -530,10 +527,10 @@ const styles = StyleSheet.create({
 	// Slogan with Typewriter
 	sloganContainer: {
 		position: "absolute",
-		bottom: moderateScale(100),
+		bottom: s(100),
 		width: width * 0.9,
-		paddingVertical: moderateScale(16),
-		paddingHorizontal: moderateScale(24),
+		paddingVertical: s(16),
+		paddingHorizontal: s(24),
 		alignItems: "center",
 	},
 	typewriterContainer: {
@@ -547,14 +544,14 @@ const styles = StyleSheet.create({
 		textShadowOffset: { width: 0, height: 1 },
 		textShadowRadius: 3,
 		fontWeight: "500",
-		fontSize: moderateScale(18),
-		lineHeight: moderateScale(26),
+		fontSize: s(18),
+		lineHeight: s(26),
 		letterSpacing: 0.5,
 		textAlign: "center",
 	},
 	cursor: {
 		fontStyle: "normal",
 		fontWeight: "300",
-		fontSize: moderateScale(18),
+		fontSize: s(18),
 	},
 });
