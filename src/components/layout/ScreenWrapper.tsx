@@ -17,11 +17,11 @@ const ScreenWrapper = ({
 	children,
 	style,
 	safeAreaEdges = ["top", "bottom", "left", "right"],
-	useGradient = false,
+	useGradient = true, // Enable gradient by default for subtle effect
 }: ScreenWrapperProps) => {
 	const { theme } = useTheme();
 
-	// Convert gradient array to proper type
+	// Strong gradient from theme
 	const gradientColors = theme.gradient.background.slice() as [
 		string,
 		string,
@@ -31,12 +31,12 @@ const ScreenWrapper = ({
 	return (
 		<View style={styles.gradient}>
 			{useGradient ? (
-				// Gradient động theo theme (light/dark mode)
+				// Strong gradient from theme (White→Purple in light, Dark purple in dark)
 				<LinearGradient
 					colors={gradientColors}
 					style={[StyleSheet.absoluteFillObject]}
 					start={{ x: 0, y: 0 }}
-					end={{ x: 1, y: 1 }}
+					end={{ x: 0, y: 1 }}
 				/>
 			) : (
 				<View

@@ -365,16 +365,16 @@ export const createSemanticTokens = (
 	gradient: {
 		/**
 		 * Background gradient - For ScreenWrapper and full-screen backgrounds
-		 * Light: White → Light purple progression
+		 * Light: Purple gradient from light to medium
 		 * Dark: Very dark uniform background with subtle purple gradient
 		 */
 		background:
 			mode === "light"
 				? ([
-						primitives.neutral[0], // White
-						primitives.purple[50], // Very light purple
-						primitives.purple[100], // Light purple
-						primitives.purple[200], // Pastel purple
+						primitives.purple[100], // Light purple start
+						primitives.purple[200], // Medium-light purple
+						primitives.purple[300], // Medium purple
+						primitives.purple[200], // Back to medium-light
 					] as const)
 				: ([
 						primitives.purple[975], // Almost black (#1A0233)

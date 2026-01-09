@@ -1,4 +1,11 @@
-import { TextProps, TextStyle, TextInputProps as RNTextInputProps, ViewStyle } from "react-native";
+import {
+	TextInputProps as RNTextInputProps,
+	TextProps,
+	TextStyle,
+	ViewStyle,
+} from "react-native";
+
+import { Ionicons } from "@expo/vector-icons";
 export type TypographyVariant =
 	| "displayLarge"
 	| "displayMedium"
@@ -68,4 +75,18 @@ export interface TextInputProps extends RNTextInputProps {
 	rightIcon?: string;
 	onRightIconPress?: () => void;
 	containerStyle?: ViewStyle;
+}
+
+export interface ActionMenuItem {
+	icon: keyof typeof Ionicons.glyphMap;
+	label: string;
+	onPress: () => void;
+	color?: string;
+}
+
+export interface ActionMenuProps {
+	visible: boolean;
+	onClose: () => void;
+	items: ActionMenuItem[];
+	anchorPosition?: { x: number; y: number };
 }
