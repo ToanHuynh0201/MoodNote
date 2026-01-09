@@ -23,7 +23,7 @@ interface MenuItem {
 	color?: string;
 }
 
-export default function ProfileScreen() {
+const ProfileScreen = () => {
 	const { theme, isDark, toggleTheme } = useTheme();
 	const { user, logout } = useAuth();
 
@@ -214,7 +214,9 @@ export default function ProfileScreen() {
 			</ScrollView>
 		</ScreenWrapper>
 	);
-}
+};
+
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
 	scrollView: {

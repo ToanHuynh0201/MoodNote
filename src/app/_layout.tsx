@@ -14,7 +14,7 @@ if (env.isDevelopment() || __DEV__) {
 	printValidation();
 }
 
-export default function RootLayout() {
+const RootLayout = () => {
 	const [fontsLoaded, fontError] = useFonts({
 		"Segoe UI": require("../../assets/fonts/Segoe_UI.ttf"),
 		"Segoe UI Italic": require("../../assets/fonts/Segoe_UI_Italic.ttf"),
@@ -76,4 +76,6 @@ export default function RootLayout() {
 			</AuthProvider>
 		</ThemeProvider>
 	);
-}
+};
+
+export default RootLayout;

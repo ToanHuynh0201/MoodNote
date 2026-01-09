@@ -3,7 +3,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { CustomTabBar } from "@/components/layout";
 
-export default function TabLayout() {
+const TabLayout = () => {
 	const { theme } = useTheme();
 
 	return (
@@ -51,4 +51,6 @@ export default function TabLayout() {
 			/>
 		</Tabs>
 	);
-}
+};
+
+export default TabLayout;

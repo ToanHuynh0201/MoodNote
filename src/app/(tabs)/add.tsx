@@ -5,7 +5,7 @@ import { Typo } from "@/components/common";
 import { useTheme } from "@/hooks/useTheme";
 import { space, vSpace } from "@/constants/spacing";
 
-export default function AddScreen() {
+const AddScreen = () => {
 	const { theme } = useTheme();
 
 	return (
@@ -20,7 +20,9 @@ export default function AddScreen() {
 			</View>
 		</ScreenWrapper>
 	);
-}
+};
+
+export default AddScreen;
 
 const styles = StyleSheet.create({
 	container: {

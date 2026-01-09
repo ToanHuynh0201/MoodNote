@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { useEffect } from "react";
 
-export default function Index() {
+const Index = () => {
 	useEffect(() => {
 		// Redirect to splash screen after Root Layout is mounted
 		const timeout = setTimeout(() => {
@@ -12,4 +12,6 @@ export default function Index() {
 	}, []);
 
 	return null;
-}
+};
+
+export default Index;

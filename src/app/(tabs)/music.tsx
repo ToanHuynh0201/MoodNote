@@ -5,7 +5,7 @@ import { Typo } from "@/components/common";
 import { useTheme } from "@/hooks/useTheme";
 import { space, vSpace } from "@/constants/spacing";
 
-export default function MusicScreen() {
+const MusicScreen = () => {
 	const { theme } = useTheme();
 
 	return (
@@ -20,7 +20,9 @@ export default function MusicScreen() {
 			</View>
 		</ScreenWrapper>
 	);
-}
+};
+
+export default MusicScreen;
 
 const styles = StyleSheet.create({
 	container: {

@@ -431,6 +431,110 @@ Fonts are loaded via `useFonts` hook before rendering the app.
 
 ## Code Style Guidelines
 
+### Component Structure
+
+**IMPORTANT**: All components and screens MUST use arrow function syntax with named exports.
+
+```typescript
+// ✅ CORRECT - Arrow function with named constant
+const ComponentName = () => {
+	// Component logic
+	return <View>...</View>;
+};
+
+export default ComponentName;
+
+// ❌ WRONG - Regular function declaration
+export default function ComponentName() {
+	return <View>...</View>;
+}
+```
+
+**Key Rules**:
+- Use arrow functions (`const ComponentName = () => {}`) for ALL components and screens
+- Export default at the bottom of the file
+- Name the component constant before exporting
+- This applies to: screens, layouts, and reusable components
+
+**Examples**:
+
+```typescript
+// Screen component
+const HomeScreen = () => {
+	const { theme } = useTheme();
+
+	return (
+		<ScreenWrapper>
+			{/* Screen content */}
+		</ScreenWrapper>
+	);
+};
+
+export default HomeScreen;
+
+// Layout component
+const TabLayout = () => {
+	return (
+		<Tabs>
+			{/* Tabs configuration */}
+		</Tabs>
+	);
+};
+
+export default TabLayout;
+
+// Reusable component with typed props
+interface ButtonProps {
+	title: string;
+	onPress: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ title, onPress }) => {
+	return (
+		<TouchableOpacity onPress={onPress}>
+			<Text>{title}</Text>
+		</TouchableOpacity>
+	);
+};
+
+export default Button;
+```
+
+### Type Definitions
+
+**Component Props**: All component prop interfaces MUST be defined in `src/types/components/` directory.
+
+```typescript
+// ❌ WRONG - Props defined in component file
+interface MoodChartProps {
+	entries: MoodEntry[];
+	weekLabel: string;
+}
+
+export const MoodChart: React.FC<MoodChartProps> = ({ entries, weekLabel }) => {
+	// ...
+};
+
+// ✅ CORRECT - Props imported from types directory
+import { MoodChartProps } from "@/types/components";
+
+export const MoodChart: React.FC<MoodChartProps> = ({ entries, weekLabel }) => {
+	// ...
+};
+```
+
+**Directory Structure for Types**:
+- `src/types/components/common.ts` - Common component props (Button, TextInput, etc.)
+- `src/types/components/stats.ts` - Stats component props (MoodChart, MoodCalendar, etc.)
+- `src/types/components/home.ts` - Home component props
+- `src/types/components/index.ts` - Re-exports all component types
+
+**Key Rules**:
+- Props interfaces go in `src/types/components/` NOT in component files
+- Use JSDoc comments to document each prop
+- Export from `src/types/components/index.ts` for easy importing
+- Group related component props in the same file
+
 ### Spacing and Layout
 
 Always use design tokens instead of hardcoded values:
@@ -598,3 +702,138 @@ Unit tests are located in `src/utils/__tests__/`. The project uses a standard Re
 -   Theme mode (light/dark) can be toggled via ThemeContext
 -   Font loading is handled in root layout; splash screen stays visible until fonts load
 -   See [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md) for details on the color & responsive refactor
+
+## Statistics Screen Components
+
+The Statistics screen (`src/app/(tabs)/stats.tsx`) uses three specialized components for mood tracking visualization:
+
+### MoodChart Component
+
+Displays a weekly mood trend line chart with interactive data points.
+
+**Location**: `src/components/stats/MoodChart.tsx`
+
+**Props** (defined in `src/types/components/stats.ts`):
+```typescript
+interface MoodChartProps {
+	entries: MoodEntry[];  // 7 entries for a week
+	weekLabel: string;     // e.g., "1/12 - 7/12"
+}
+```
+
+**Features**:
+- SVG-based smooth curve using quadratic bezier
+- Mood intensity mapping (1-5 scale) to Y-axis position
+- Emoji icons displayed on each data point
+- Day labels (T2, T3, etc.) at the bottom
+- Background curve with lower opacity for depth
+- Responsive to screen width
+
+**Usage**:
+```typescript
+<MoodChart
+	entries={currentWeekEntries}
+	weekLabel="1/12 - 7/12"
+/>
+```
+
+### MoodCalendar Component
+
+Displays a monthly calendar grid with mood indicators for each day.
+
+**Location**: `src/components/stats/MoodCalendar.tsx`
+
+**Props** (defined in `src/types/components/stats.ts`):
+```typescript
+interface MoodCalendarProps {
+	year: number;        // e.g., 2024
+	month: number;       // 0-11 (0 = January)
+	entries: MoodEntry[];
+	onMonthChange?: (month: number) => void;
+}
+```
+
+**Features**:
+- Full calendar grid including previous/next month days
+- Week day headers (T2-CN)
+- Mood icons in circular containers for days with entries
+- Empty circles with dates for days without entries
+- Month selector with dropdown icon
+- Supports tap interactions on each day
+
+**Usage**:
+```typescript
+<MoodCalendar
+	year={2024}
+	month={11}
+	entries={monthEntries}
+	onMonthChange={(month) => console.log(month)}
+/>
+```
+
+### WeekOverview Component
+
+Displays a horizontal row of 7 daily mood icons for quick week visualization.
+
+**Location**: `src/components/stats/WeekOverview.tsx`
+
+**Props** (defined in `src/types/components/stats.ts`):
+```typescript
+interface WeekOverviewProps {
+	entries: MoodEntry[];  // 7 entries for a week
+	onDayPress?: (entry: MoodEntry) => void;
+}
+```
+
+**Features**:
+- 7 circular mood icons in a row
+- Date numbers below each icon
+- Border highlighting on each circle
+- Tap interactions for each day
+- Evenly spaced layout
+
+**Usage**:
+```typescript
+<WeekOverview
+	entries={currentWeekEntries}
+	onDayPress={(entry) => console.log("Day pressed:", entry)}
+/>
+```
+
+### Mood Data Types
+
+**Location**: `src/types/mood.ts`
+
+```typescript
+type MoodType = "very_sad" | "sad" | "neutral" | "happy" | "very_happy";
+
+interface MoodEntry {
+	date: Date;
+	mood: MoodType;
+	intensity?: number; // 1-5 scale
+}
+
+// Mood to emotion color mapping
+const MOOD_EMOTION_MAP: Record<MoodType, keyof EmotionTokens> = {
+	very_sad: "sad",
+	sad: "anxious",
+	neutral: "calm",
+	happy: "happy",
+	very_happy: "excited",
+};
+
+// Mood to intensity for charting
+const MOOD_INTENSITY: Record<MoodType, number> = {
+	very_sad: 1,
+	sad: 2,
+	neutral: 3,
+	happy: 4,
+	very_happy: 5,
+};
+```
+
+**Key Concepts**:
+- **MoodType**: 5 levels of mood from very_sad to very_happy
+- **MoodEntry**: Single mood record with date and mood type
+- **Intensity Mapping**: Used for Y-axis positioning in charts
+- **Emotion Mapping**: Links mood types to theme emotion colors
