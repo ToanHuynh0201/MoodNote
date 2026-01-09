@@ -51,9 +51,7 @@ export const createSemanticTokens = (
 		 * Overlay - For modal backdrops and overlays
 		 */
 		overlay:
-			mode === "light"
-				? "rgba(0, 0, 0, 0.5)"
-				: "rgba(26, 2, 51, 0.90)",
+			mode === "light" ? "rgba(0, 0, 0, 0.5)" : "rgba(26, 2, 51, 0.90)",
 	},
 
 	// ============================================================================
@@ -76,7 +74,9 @@ export const createSemanticTokens = (
 		 * Dark: Light gray (#E5E5E5) - 16.82:1 contrast (AAA)
 		 */
 		secondary:
-			mode === "light" ? primitives.neutral[700] : primitives.neutral[200],
+			mode === "light"
+				? primitives.neutral[700]
+				: primitives.neutral[200],
 
 		/**
 		 * Tertiary text - Subtle text, captions
@@ -84,7 +84,9 @@ export const createSemanticTokens = (
 		 * Dark: Light-medium gray (#D4D4D4) - 13.90:1 contrast (AAA)
 		 */
 		tertiary:
-			mode === "light" ? primitives.neutral[600] : primitives.neutral[300],
+			mode === "light"
+				? primitives.neutral[600]
+				: primitives.neutral[300],
 
 		/**
 		 * Disabled text - Disabled states
@@ -92,7 +94,9 @@ export const createSemanticTokens = (
 		 * Dark: Medium gray (#737373) - 5.24:1 contrast (AA)
 		 */
 		disabled:
-			mode === "light" ? primitives.neutral[400] : primitives.neutral[500],
+			mode === "light"
+				? primitives.neutral[400]
+				: primitives.neutral[500],
 
 		/**
 		 * Inverse text - Text on dark backgrounds (light mode) or light backgrounds (dark mode)
@@ -153,8 +157,7 @@ export const createSemanticTokens = (
 		 * Light: Pink-500 (#D946EF)
 		 * Dark: Pink-400 (#E879F9) - bright vibrant pink on dark background
 		 */
-		default:
-			mode === "light" ? primitives.pink[500] : primitives.pink[400],
+		default: mode === "light" ? primitives.pink[500] : primitives.pink[400],
 
 		/**
 		 * Hover state
@@ -366,7 +369,7 @@ export const createSemanticTokens = (
 		/**
 		 * Background gradient - For ScreenWrapper and full-screen backgrounds
 		 * Light: Purple gradient from light to medium
-		 * Dark: Very dark uniform background with subtle purple gradient
+		 * Dark: Gradient from dark purple to almost black (darker at bottom)
 		 */
 		background:
 			mode === "light"
@@ -375,13 +378,13 @@ export const createSemanticTokens = (
 						primitives.purple[200], // Medium-light purple
 						primitives.purple[300], // Medium purple
 						primitives.purple[200], // Back to medium-light
-					] as const)
+				  ] as const)
 				: ([
-						primitives.purple[975], // Almost black (#1A0233)
-						primitives.purple[975], // Stay almost black
-						primitives.purple[950], // Very deep purple-black (#3B0764)
-						primitives.purple[950], // Stay very deep
-					] as const),
+						// primitives.purple[950],
+						primitives.purple[950],
+						primitives.purple[975],
+						primitives.purple[975], // Pure black (#000000) - very bottom
+				  ] as const),
 	},
 
 	// ============================================================================
@@ -404,7 +407,9 @@ export const createSemanticTokens = (
 		 * Neutral - For neutral data
 		 */
 		neutral:
-			mode === "light" ? primitives.neutral[600] : primitives.neutral[400],
+			mode === "light"
+				? primitives.neutral[600]
+				: primitives.neutral[400],
 
 		/**
 		 * Gradient colors - For chart gradients

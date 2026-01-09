@@ -2,16 +2,8 @@ import { useTheme } from "@/hooks/useTheme";
 import { ScreenWrapperProps } from "@/types";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import {
-	Dimensions,
-	KeyboardAvoidingView,
-	Platform,
-	StyleSheet,
-	View,
-} from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const { width } = Dimensions.get("window");
 
 const ScreenWrapper = ({
 	children,
@@ -46,7 +38,9 @@ const ScreenWrapper = ({
 					]}
 				/>
 			)}
-			<SafeAreaView style={[styles.container]} edges={safeAreaEdges}>
+			<SafeAreaView
+				style={[styles.container]}
+				edges={safeAreaEdges}>
 				<KeyboardAvoidingView
 					style={{ flex: 1 }}
 					behavior={Platform.OS === "ios" ? "padding" : undefined}>
