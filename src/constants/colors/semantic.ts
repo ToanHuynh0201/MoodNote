@@ -99,26 +99,10 @@ export const createSemanticTokens = (
 				: primitives.neutral[500],
 
 		/**
-		 * Inverse text - Text on dark backgrounds (light mode) or light backgrounds (dark mode)
-		 * Light: Pure white (#FFFFFF)
-		 * Dark: Pure black (#000000)
-		 */
-		inverse:
-			mode === "light" ? primitives.neutral[0] : primitives.neutral[1000],
-
-		/**
 		 * On Primary - Text on primary color backgrounds
 		 * Always white for maximum contrast on purple backgrounds
 		 */
 		onPrimary: primitives.neutral[0],
-
-		/**
-		 * On Elevated - Text on elevated surface backgrounds (tonal buttons)
-		 * Light: Primary color (purple) for contrast on light background
-		 * Dark: White for contrast on dark purple background
-		 */
-		onElevated:
-			mode === "light" ? primitives.purple[600] : primitives.neutral[0],
 	},
 
 	// ============================================================================
@@ -149,29 +133,6 @@ export const createSemanticTokens = (
 		 */
 		subtle:
 			mode === "light" ? primitives.purple[100] : primitives.purple[900],
-	},
-
-	secondary: {
-		/**
-		 * Default secondary - Secondary brand color
-		 * Light: Pink-500 (#D946EF)
-		 * Dark: Pink-400 (#E879F9) - bright vibrant pink on dark background
-		 */
-		default: mode === "light" ? primitives.pink[500] : primitives.pink[400],
-
-		/**
-		 * Hover state
-		 * Light: Pink-600 (#C026D3)
-		 * Dark: Pink-300 (#F0ABFC) - lighter on hover
-		 */
-		hover: mode === "light" ? primitives.pink[600] : primitives.pink[300],
-
-		/**
-		 * Subtle secondary - Light background with secondary tint
-		 * Light: Pink-100 (#FAE8FF)
-		 * Dark: Pink-800 (#86198F) - dark tinted background
-		 */
-		subtle: mode === "light" ? primitives.pink[100] : primitives.pink[800],
 	},
 
 	// ============================================================================
@@ -206,44 +167,22 @@ export const createSemanticTokens = (
 
 	// ============================================================================
 	// STATUS TOKENS
-	// Success, warning, error, info states
+	// Error states (success, warning, info can be added when needed)
 	// All meet WCAG AA standards
 	// ============================================================================
 	status: {
-		/**
-		 * Success - Positive actions, confirmations
-		 * Light: Green-600 (#059669) - 4.9:1 contrast (AA)
-		 * Dark: Green-400 (#34D399) - 5.8:1 contrast (AA)
-		 */
-		success:
-			mode === "light" ? primitives.green[600] : primitives.green[400],
-
-		/**
-		 * Warning - Cautions, alerts
-		 * Light: Amber-600 (#D97706) - 4.8:1 contrast (AA)
-		 * Dark: Amber-400 (#FBBF24) - 5.2:1 contrast (AA)
-		 */
-		warning:
-			mode === "light" ? primitives.amber[600] : primitives.amber[400],
-
 		/**
 		 * Error - Errors, destructive actions
 		 * Light: Red-600 (#DC2626) - 5.1:1 contrast (AA)
 		 * Dark: Red-400 (#F87171) - 4.7:1 contrast (AA)
 		 */
 		error: mode === "light" ? primitives.red[600] : primitives.red[400],
-
-		/**
-		 * Info - Informational messages
-		 * Light: Blue-600 (#2563EB) - 4.9:1 contrast (AA)
-		 * Dark: Blue-400 (#60A5FA) - 5.0:1 contrast (AA)
-		 */
-		info: mode === "light" ? primitives.blue[600] : primitives.blue[400],
 	},
 
 	// ============================================================================
 	// EMOTION TOKENS (WCAG AA COMPLIANT)
-	// Colors for mood tracking - all fixed for accessibility
+	// Colors for mood tracking - only actively used emotions
+	// (sad, angry, tired, grateful can be added back when needed)
 	// ============================================================================
 	emotions: {
 		/**
@@ -255,7 +194,7 @@ export const createSemanticTokens = (
 
 		/**
 		 * Excited - Energetic, enthusiastic
-		 * Light: Rose-600 (#E11D48) - 5.2:1 contrast (AA) - FIXED
+		 * Light: Rose-600 (#E11D48) - 5.2:1 contrast (AA)
 		 * Dark: Pink-300 (#F9A8D4) - 6.2:1 contrast (AA)
 		 */
 		excited: primitives.emotions.excited[mode],
@@ -266,41 +205,6 @@ export const createSemanticTokens = (
 		 * Dark: Green-300 (#6EE7B7) - 7.3:1 contrast (AAA)
 		 */
 		calm: primitives.emotions.calm[mode],
-
-		/**
-		 * Sad - Melancholy, down
-		 * Light: Blue-600 (#2563EB) - 4.9:1 contrast (AA)
-		 * Dark: Blue-300 (#93C5FD) - 7.8:1 contrast (AAA)
-		 */
-		sad: primitives.emotions.sad[mode],
-
-		/**
-		 * Anxious - Worried, nervous
-		 * Light: Violet-600 (#7C3AED) - 5.3:1 contrast (AA)
-		 * Dark: Violet-300 (#C4B5FD) - 5.8:1 contrast (AA)
-		 */
-		anxious: primitives.emotions.anxious[mode],
-
-		/**
-		 * Angry - Frustrated, mad
-		 * Light: Red-600 (#DC2626) - 5.1:1 contrast (AA) - FIXED
-		 * Dark: Red-300 (#FCA5A5) - 5.5:1 contrast (AA)
-		 */
-		angry: primitives.emotions.angry[mode],
-
-		/**
-		 * Tired - Exhausted, weary
-		 * Light: Slate-500 (#64748B) - 4.7:1 contrast (AA)
-		 * Dark: Slate-300 (#CBD5E1) - 8.9:1 contrast (AAA)
-		 */
-		tired: primitives.emotions.tired[mode],
-
-		/**
-		 * Grateful - Thankful, appreciative
-		 * Light: Orange-600 (#EA580C) - 4.5:1 contrast (AA)
-		 * Dark: Orange-300 (#FDBA74) - 6.8:1 contrast (AA)
-		 */
-		grateful: primitives.emotions.grateful[mode],
 	},
 
 	// ============================================================================
@@ -327,11 +231,11 @@ export const createSemanticTokens = (
 
 	// ============================================================================
 	// SHADOW TOKENS
-	// Shadow colors for elevation
+	// Shadow color for elevation (use shadows.sm/md/lg from spacing.ts for presets)
 	// ============================================================================
 	shadow: {
 		/**
-		 * Base shadow - Subtle depth
+		 * Shadow color - For elevation effects
 		 * Light: Black with 8% opacity
 		 * Dark: White with 5% opacity (lighter shadows for dark mode)
 		 */
@@ -339,26 +243,6 @@ export const createSemanticTokens = (
 			mode === "light"
 				? "rgba(0, 0, 0, 0.08)"
 				: "rgba(255, 255, 255, 0.05)",
-
-		/**
-		 * Medium shadow - Moderate depth
-		 * Light: Black with 12% opacity
-		 * Dark: White with 8% opacity
-		 */
-		colorMedium:
-			mode === "light"
-				? "rgba(0, 0, 0, 0.12)"
-				: "rgba(255, 255, 255, 0.08)",
-
-		/**
-		 * Strong shadow - Deep depth
-		 * Light: Black with 16% opacity
-		 * Dark: White with 12% opacity
-		 */
-		colorStrong:
-			mode === "light"
-				? "rgba(0, 0, 0, 0.16)"
-				: "rgba(255, 255, 255, 0.12)",
 	},
 
 	// ============================================================================
@@ -386,39 +270,6 @@ export const createSemanticTokens = (
 						primitives.purple[975], // Pure black (#000000) - very bottom
 				  ] as const),
 	},
-
-	// ============================================================================
-	// CHART TOKENS
-	// Colors for data visualization
-	// ============================================================================
-	chart: {
-		/**
-		 * Positive - For positive trends, increases
-		 */
-		positive:
-			mode === "light" ? primitives.green[600] : primitives.green[400],
-
-		/**
-		 * Negative - For negative trends, decreases
-		 */
-		negative: mode === "light" ? primitives.red[600] : primitives.red[400],
-
-		/**
-		 * Neutral - For neutral data
-		 */
-		neutral:
-			mode === "light"
-				? primitives.neutral[600]
-				: primitives.neutral[400],
-
-		/**
-		 * Gradient colors - For chart gradients
-		 */
-		gradient1:
-			mode === "light" ? primitives.purple[600] : primitives.purple[400],
-		gradient2:
-			mode === "light" ? primitives.pink[500] : primitives.pink[400],
-	},
 });
 
 // ============================================================================
@@ -436,11 +287,9 @@ export type ThemeColors = ReturnType<typeof createSemanticTokens>;
 export type SurfaceColors = ThemeColors["surface"];
 export type TextColors = ThemeColors["text"];
 export type PrimaryColors = ThemeColors["primary"];
-export type SecondaryColors = ThemeColors["secondary"];
 export type BorderColors = ThemeColors["border"];
 export type StatusColors = ThemeColors["status"];
 export type EmotionTokens = ThemeColors["emotions"];
 export type StatsTokens = ThemeColors["stats"];
 export type ShadowColors = ThemeColors["shadow"];
 export type GradientTokens = ThemeColors["gradient"];
-export type ChartColors = ThemeColors["chart"];

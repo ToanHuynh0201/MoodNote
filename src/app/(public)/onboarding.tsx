@@ -2,7 +2,7 @@ import IconButton from "@/components/common/IconButton";
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { space, vSpace, sizes, shadows } from "@/constants/spacing";
+import { space, sizes, shadows } from "@/constants/spacing";
 import { s } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -225,8 +225,8 @@ const styles = StyleSheet.create({
 	},
 	skipButton: {
 		position: "absolute",
-		top: vSpace[5],
-		right: vSpace[5],
+		top: space[5],
+		right: space[5],
 		zIndex: 10,
 		padding: space[4],
 	},
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
 	},
 	bottomSection: {
 		paddingBottom: space[10],
-		paddingHorizontal: vSpace[5],
+		paddingHorizontal: space[5],
 	},
 	dotsContainer: {
 		flexDirection: "row",

@@ -1,4 +1,4 @@
-import { space, vSpace, radius } from "@/constants/spacing";
+import { space, radius } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { DiaryEntryCardProps } from "@/types";
 import React from "react";
@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
 	container: {
 		borderRadius: radius.md,
 		padding: space[5],
-		marginBottom: vSpace[2],
+		marginBottom: space[2],
 	},
 	content: {
-		marginBottom: vSpace[1],
+		marginBottom: space[1],
 	},
 	title: {
 		fontWeight: "600",
-		marginBottom: vSpace[1],
+		marginBottom: space[1],
 	},
 	preview: {
 		lineHeight: 20,

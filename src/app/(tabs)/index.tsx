@@ -5,7 +5,7 @@ import {
 	ScreenWrapper,
 	Typo,
 } from "@/components";
-import { space, vSpace, sizes, radius } from "@/constants/spacing";
+import { space, sizes, radius } from "@/constants/spacing";
 import { fontSizes } from "@/constants/typography";
 import { useAuth, useTheme } from "@/hooks";
 import { Ionicons } from "@expo/vector-icons";
@@ -249,8 +249,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginTop: vSpace[5], // 20px
-		marginBottom: vSpace[4], // 16px
+		marginTop: space[5], // 20px
+		marginBottom: space[4], // 16px
 	},
 	headerLeft: {
 		flexDirection: "row",
@@ -269,15 +269,15 @@ const styles = StyleSheet.create({
 	statsContainer: {
 		flexDirection: "row",
 		gap: space[3], // 8px
-		marginBottom: vSpace[6], // 24px
+		marginBottom: space[6], // 24px
 	},
 	section: {
-		marginBottom: vSpace[6], // 24px
+		marginBottom: space[6], // 24px
 	},
 	sectionHeader: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginBottom: vSpace[4], // 16px
+		marginBottom: space[4], // 16px
 	},
 });

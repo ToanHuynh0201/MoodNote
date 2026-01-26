@@ -15,7 +15,7 @@ const LoadingSpinner = ({
 
 	// Sử dụng theme colors nếu không có color được truyền vào
 	const primaryColor = color || theme.primary.default;
-	const accentColor = secondaryColor || theme.secondary.default;
+	const accentColor = secondaryColor || theme.primary.default;
 	// SÓNG ÂM (WAVES) ===
 	const waveCount = 5;
 	const waveAnims = useRef(

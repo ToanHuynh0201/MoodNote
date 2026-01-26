@@ -1,31 +1,27 @@
-import { s, spacing, vSpacing } from "@/utils/scaling";
+import { s, spacing } from "@/utils/scaling";
 
 /**
  * Spacing Constants - Simplified Design Tokens
  *
- * This file provides a simplified, numeric-based spacing system
- * inspired by Tailwind CSS but optimized for React Native.
+ * Numeric-based spacing system (0-10) inspired by Tailwind CSS.
+ * All values scale proportionally based on screen width.
  *
- * Philosophy:
- * - Use numeric keys (0-10) instead of semantic names (xs, sm, md, lg, xl)
- * - Separate horizontal (space) and vertical (vSpace) for clarity
- * - All values are responsive via scaling functions
- *
- * Migration from old system:
- * - spacingScale.xxl (24px) → space[7]
- * - verticalSpacing.lg (20px) → vSpace[5]
+ * Usage:
+ * - padding: space[7]          // 24px scaled
+ * - margin: space[5]           // 16px scaled
+ * - gap: space[3]              // 8px scaled
  */
 
 // ============================================================================
-// HORIZONTAL SPACING
-// For: paddingHorizontal, marginHorizontal, gap (horizontal), width adjustments
+// SPACING SCALE
+// For: padding, margin, gap, width/height adjustments
 // ============================================================================
 
 export const space = {
-	0: 0, // No spacing
-	1: spacing(2), // 2px - Fine adjustments
-	2: spacing(4), // 4px - Tight spacing
-	3: spacing(8), // 8px - Small gaps
+	0: 0,           // No spacing
+	1: spacing(2),  // 2px - Fine adjustments
+	2: spacing(4),  // 4px - Tight spacing
+	3: spacing(8),  // 8px - Small gaps
 	4: spacing(12), // 12px - Medium-small gaps
 	5: spacing(16), // 16px - Standard spacing
 	6: spacing(20), // 20px - Large spacing
@@ -33,24 +29,6 @@ export const space = {
 	8: spacing(32), // 32px - Major sections
 	9: spacing(40), // 40px - Extra spacing
 	10: spacing(48), // 48px - Maximum spacing
-} as const;
-
-// ============================================================================
-// VERTICAL SPACING
-// For: paddingVertical, marginVertical, gap (vertical), height adjustments
-// ============================================================================
-
-export const vSpace = {
-	0: 0, // No spacing
-	1: vSpacing(2), // 2px - Fine adjustments
-	2: vSpacing(4), // 4px - Tight spacing
-	3: vSpacing(8), // 8px - Small gaps
-	4: vSpacing(16), // 16px - Medium spacing
-	5: vSpacing(20), // 20px - Standard spacing (screen padding)
-	6: vSpacing(24), // 24px - Large spacing
-	7: vSpacing(32), // 32px - Extra large spacing
-	8: vSpacing(40), // 40px - Major sections
-	9: vSpacing(48), // 48px - Maximum spacing
 } as const;
 
 // ============================================================================
@@ -91,19 +69,19 @@ export const sizes = {
 	 * Button sizes
 	 */
 	button: {
-		height: vSpacing(60), // Standard button height
+		height: spacing(60), // Standard button height
 		paddingX: spacing(24), // Horizontal padding
-		paddingY: vSpacing(16), // Vertical padding
-		minHeight: vSpacing(60), // Minimum height
+		paddingY: spacing(16), // Vertical padding
+		minHeight: spacing(60), // Minimum height
 	},
 
 	/**
 	 * Input field sizes
 	 */
 	input: {
-		height: vSpacing(52), // Input height
+		height: spacing(52), // Input height
 		paddingX: spacing(16), // Horizontal padding
-		paddingY: vSpacing(12), // Vertical padding
+		paddingY: spacing(12), // Vertical padding
 	},
 
 	/**
@@ -138,12 +116,12 @@ export const sizes = {
 	 * Loading spinner sizes
 	 */
 	loading: {
-		waveHeight: vSpacing(60), // 60px - Sound wave container height
+		waveHeight: spacing(60), // 60px - Sound wave container height
 		barWidth: s(6), // 6px - Bar width
 		barBorderRadius: s(4), // 4px - Bar border radius
 		barMargin: spacing(4), // 4px - Bar horizontal margin
 		containerPadding: spacing(20), // 20px - Container padding
-		containerMarginBottom: vSpacing(20), // 20px - Margin between waves and text
+		containerMarginBottom: spacing(20), // 20px - Margin between waves and text
 	},
 } as const;
 
@@ -157,32 +135,32 @@ export const layout = {
 	 * Screen padding - Standard padding for screen containers
 	 */
 	screen: {
-		paddingX: space[7], // 24px horizontal
-		paddingY: vSpace[5], // 20px vertical
+		paddingX: space[7], // 24px
+		paddingY: space[5], // 16px
 	},
 
 	/**
 	 * Card padding - Standard padding for card components
 	 */
 	card: {
-		paddingX: space[6], // 20px horizontal
-		paddingY: vSpace[4], // 16px vertical
+		paddingX: space[6], // 20px
+		paddingY: space[4], // 12px
 	},
 
 	/**
 	 * Form spacing - Spacing between form elements
 	 */
 	form: {
-		fieldGap: vSpace[4], // 16px - Between fields
-		sectionGap: vSpace[6], // 24px - Between sections
+		fieldGap: space[4], // 12px - Between fields
+		sectionGap: space[6], // 20px - Between sections
 	},
 
 	/**
 	 * List spacing
 	 */
 	list: {
-		itemGap: vSpace[3], // 8px - Between list items
-		sectionGap: vSpace[6], // 24px - Between list sections
+		itemGap: space[3], // 8px - Between list items
+		sectionGap: space[6], // 20px - Between list sections
 	},
 } as const;
 
@@ -196,7 +174,7 @@ export const shadows = {
 	 * Small shadow - Subtle elevation
 	 */
 	sm: {
-		shadowOffset: { width: 0, height: vSpacing(1) },
+		shadowOffset: { width: 0, height: spacing(1) },
 		shadowRadius: s(2),
 		shadowOpacity: 0.05,
 		elevation: 1,
@@ -206,7 +184,7 @@ export const shadows = {
 	 * Medium shadow - Standard elevation (buttons, cards)
 	 */
 	md: {
-		shadowOffset: { width: 0, height: vSpacing(2) },
+		shadowOffset: { width: 0, height: spacing(2) },
 		shadowRadius: s(4),
 		shadowOpacity: 0.1,
 		elevation: 3,
@@ -216,7 +194,7 @@ export const shadows = {
 	 * Large shadow - Strong elevation (modals, dialogs)
 	 */
 	lg: {
-		shadowOffset: { width: 0, height: vSpacing(4) },
+		shadowOffset: { width: 0, height: spacing(4) },
 		shadowRadius: s(8),
 		shadowOpacity: 0.15,
 		elevation: 5,
@@ -226,7 +204,7 @@ export const shadows = {
 	 * Extra large shadow - Maximum elevation
 	 */
 	xl: {
-		shadowOffset: { width: 0, height: vSpacing(8) },
+		shadowOffset: { width: 0, height: spacing(8) },
 		shadowRadius: s(16),
 		shadowOpacity: 0.2,
 		elevation: 8,
@@ -238,7 +216,6 @@ export const shadows = {
 // ============================================================================
 
 export type SpaceKey = keyof typeof space;
-export type VSpaceKey = keyof typeof vSpace;
 export type RadiusKey = keyof typeof radius;
 export type IconSizeKey = keyof typeof sizes.icon;
 export type AvatarSizeKey = keyof typeof sizes.avatar;
@@ -250,7 +227,6 @@ export type ShadowKey = keyof typeof shadows;
 
 export default {
 	space,
-	vSpace,
 	radius,
 	sizes,
 	layout,

@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { ScreenWrapper } from "@/components/layout";
 import { Typo } from "@/components/common";
 import { useTheme } from "@/hooks/useTheme";
-import { space, vSpace } from "@/constants/spacing";
+import { space } from "@/constants/spacing";
 
 const MusicScreen = () => {
 	const { theme } = useTheme();
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingHorizontal: space[7],
-		paddingTop: vSpace[8],
-		gap: vSpace[4],
+		paddingTop: space[8],
+		gap: space[4],
 	},
 });

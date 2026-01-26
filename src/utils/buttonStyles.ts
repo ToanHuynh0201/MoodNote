@@ -39,12 +39,11 @@ export const getButtonColors = (
 			};
 
 		case "tonal":
-			// Elevated surface with adaptive text color
-			// Light mode: purple text on light purple background
-			// Dark mode: white text on dark purple background
+			// Elevated surface with primary text color
+			// Provides good contrast in both light and dark modes
 			return {
 				background: theme.surface.elevated,
-				text: theme.text.onElevated,
+				text: theme.text.primary,
 			};
 
 		case "outlined":

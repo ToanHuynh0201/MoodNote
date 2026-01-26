@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Typo } from "@/components/common";
 import { MoodEntry } from "@/types/mood";
 import { MoodCalendarProps } from "@/types/components";
-import { space, vSpace, radius } from "@/constants/spacing";
+import { space, radius } from "@/constants/spacing";
 import { s } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -203,11 +203,11 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		gap: space[2],
-		marginBottom: vSpace[4],
+		marginBottom: space[4],
 	},
 	weekHeader: {
 		flexDirection: "row",
-		marginBottom: vSpace[3],
+		marginBottom: space[3],
 	},
 	dayHeader: {
 		flex: 1,

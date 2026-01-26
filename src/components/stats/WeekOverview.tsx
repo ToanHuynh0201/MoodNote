@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Typo } from "@/components/common";
 import { MoodEntry } from "@/types/mood";
 import { WeekOverviewProps } from "@/types/components";
-import { space, vSpace, radius } from "@/constants/spacing";
+import { space, radius } from "@/constants/spacing";
 import { s } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -64,7 +64,7 @@ export const WeekOverview: React.FC<WeekOverviewProps> = ({
 						variant="bodySmall"
 						style={{
 							color: theme.text.secondary,
-							marginTop: vSpace[1],
+							marginTop: space[1],
 						}}>
 						{getDayLabel(entry.date)}
 					</Typo>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 	},
 	dayContainer: {
 		alignItems: "center",
-		gap: vSpace[1],
+		gap: space[1],
 	},
 	moodCircle: {
 		width: s(48),

@@ -1,6 +1,6 @@
 import { radius, shadows, sizes, space } from "@/constants/spacing";
 import { useTheme } from "@/hooks/useTheme";
-import { s, vSpacing } from "@/utils/scaling";
+import { s, spacing } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React, { useState } from "react";
@@ -223,9 +223,9 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-around",
 		paddingHorizontal: space[4],
-		paddingTop: vSpacing(12),
-		paddingBottom: vSpacing(Platform.OS === "ios" ? 24 : 12),
-		height: vSpacing(Platform.OS === "ios" ? 88 : 64),
+		paddingTop: spacing(12),
+		paddingBottom: spacing(Platform.OS === "ios" ? 24 : 12),
+		height: spacing(Platform.OS === "ios" ? 88 : 64),
 	},
 	tabItem: {
 		flex: 1,
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		marginTop: vSpacing(-28), // Nổi lên trên tab bar
+		marginTop: spacing(-28), // Nổi lên trên tab bar
 	},
 	centerButton: {
 		width: s(64),

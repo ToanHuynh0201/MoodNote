@@ -10,8 +10,8 @@ import { ScreenWrapper } from "@/components/layout";
 import { Typo, ThemeToggle } from "@/components/common";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
-import { space, vSpace, radius } from "@/constants/spacing";
-import { s, vSpacing } from "@/utils/scaling";
+import { space, radius } from "@/constants/spacing";
+import { s, spacing } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 
@@ -122,7 +122,7 @@ const ProfileScreen = () => {
 						variant="titleLarge"
 						style={{ 
 							color: isDark ? theme.text.onPrimary : theme.primary.default,
-							marginTop: vSpace[4] 
+							marginTop: space[4] 
 						}}>
 						{user?.username || "Bunnie"}
 					</Typo>
@@ -210,7 +210,7 @@ const ProfileScreen = () => {
 				))}
 
 				{/* Spacing at bottom */}
-				<View style={{ height: vSpacing(120) }} />
+				<View style={{ height: spacing(120) }} />
 			</ScrollView>
 		</ScreenWrapper>
 	);
@@ -226,13 +226,13 @@ const styles = StyleSheet.create({
 		paddingHorizontal: space[7],
 	},
 	header: {
-		paddingTop: vSpace[8],
-		paddingBottom: vSpace[6],
+		paddingTop: space[8],
+		paddingBottom: space[6],
 		alignItems: "center",
 	},
 	avatarSection: {
 		alignItems: "center",
-		marginBottom: vSpace[8],
+		marginBottom: space[8],
 	},
 	avatarContainer: {
 		width: s(120),
@@ -250,17 +250,17 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		gap: space[2],
-		marginTop: vSpace[2],
+		marginTop: space[2],
 	},
 	menuItemCard: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
 		paddingHorizontal: space[5],
-		paddingVertical: vSpace[4],
+		paddingVertical: space[4],
 		borderRadius: radius.xl,
 		borderWidth: 1,
-		marginBottom: vSpace[3],
+		marginBottom: space[3],
 	},
 	menuItemLeft: {
 		flexDirection: "row",

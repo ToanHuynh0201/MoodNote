@@ -1,4 +1,4 @@
-import { space, vSpace, radius, sizes } from "@/constants/spacing";
+import { space, radius, sizes } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { HomeStatsCardProps } from "@/types";
 import React from "react";
@@ -56,14 +56,14 @@ const styles = StyleSheet.create({
 		borderRadius: radius.full,
 		alignItems: "center",
 		justifyContent: "center",
-		marginBottom: vSpace[1],
+		marginBottom: space[1],
 	},
 	days: {
-		marginTop: vSpace[1],
+		marginTop: space[1],
 		fontWeight: "bold",
 	},
 	label: {
 		textAlign: "center",
-		marginTop: vSpace[1],
+		marginTop: space[1],
 	},
 });

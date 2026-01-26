@@ -1,4 +1,4 @@
-import { space, vSpace, radius, sizes } from "@/constants/spacing";
+import { space, radius, sizes } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
 import { PlaylistCardProps } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
@@ -69,7 +69,7 @@ export const PlaylistCard = ({
 								size={sizes.icon.md}
 								color={
 									isLiked
-										? theme.secondary.default
+										? theme.primary.default
 										: theme.text.secondary
 								}
 							/>
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginBottom: vSpace[2],
-		paddingVertical: vSpace[1],
+		marginBottom: space[2],
+		paddingVertical: space[1],
 	},
 	content: {
 		flex: 1,
@@ -137,10 +137,10 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontWeight: "600",
-		marginBottom: vSpace[1],
+		marginBottom: space[1],
 	},
 	artist: {
-		marginBottom: vSpace[1],
+		marginBottom: space[1],
 	},
 	actions: {
 		flexDirection: "row",

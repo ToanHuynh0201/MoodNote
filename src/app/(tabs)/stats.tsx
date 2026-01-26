@@ -8,7 +8,7 @@ import {
 	WeekOverview,
 } from "@/components/stats";
 import { useTheme } from "@/hooks/useTheme";
-import { space, vSpace, radius } from "@/constants/spacing";
+import { space, radius } from "@/constants/spacing";
 import { MoodEntry, MoodType } from "@/types/mood";
 import { Ionicons } from "@expo/vector-icons";
 import { s } from "@/utils/scaling";
@@ -206,7 +206,7 @@ const StatsScreen = () => {
 				</View>
 
 				{/* Bottom spacing for tab bar */}
-				<View style={{ height: vSpace[8] }} />
+				<View style={{ height: space[8] }} />
 			</ScrollView>
 		</ScreenWrapper>
 	);
@@ -220,21 +220,21 @@ const styles = StyleSheet.create({
 		paddingHorizontal: space[6],
 	},
 	header: {
-		marginTop: vSpace[5],
-		marginBottom: vSpace[4],
+		marginTop: space[5],
+		marginBottom: space[4],
 	},
 	title: {
 		fontSize: s(32),
 		fontWeight: "600",
 	},
 	weekSelector: {
-		marginBottom: vSpace[6],
+		marginBottom: space[6],
 	},
 	weekHeader: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginBottom: vSpace[4],
+		marginBottom: space[4],
 	},
 	weekNavigation: {
 		flexDirection: "row",
@@ -248,13 +248,13 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	chartContainer: {
-		marginBottom: vSpace[4],
+		marginBottom: space[4],
 	},
 	section: {
-		marginBottom: vSpace[6],
+		marginBottom: space[6],
 	},
 	sectionTitle: {
-		marginBottom: vSpace[4],
+		marginBottom: space[4],
 		fontWeight: "600",
 	},
 });

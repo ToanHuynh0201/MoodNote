@@ -12,7 +12,7 @@ import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@/hooks";
 import { Typo, TextInput, Button, LoadingSpinner } from "@/components";
-import { space, vSpace, radius, sizes } from "@/constants/spacing";
+import { space, radius, sizes } from "@/constants/spacing";
 import { ScreenWrapper } from "@/components/layout";
 
 const RegisterScreen = () => {
@@ -336,10 +336,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: space[7],
-    paddingTop: vSpace[5],
+    paddingTop: space[5],
   },
   header: {
-    marginBottom: vSpace[7],
+    marginBottom: space[7],
   },
   backButton: {
     width: sizes.icon["2xl"],
@@ -347,27 +347,27 @@ const styles = StyleSheet.create({
     borderRadius: radius["2xl"],
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: vSpace[5],
+    marginBottom: space[5],
   },
   titleContainer: {
-    marginBottom: vSpace[3],
+    marginBottom: space[3],
   },
   title: {
-    marginBottom: vSpace[3],
+    marginBottom: space[3],
   },
   subtitle: {
     opacity: 0.8,
   },
   form: {
-    marginBottom: vSpace[6],
+    marginBottom: space[6],
   },
   registerButton: {
-    marginTop: vSpace[3],
+    marginTop: space[3],
   },
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: vSpace[6],
+    marginVertical: space[6],
   },
   divider: {
     flex: 1,
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     gap: sizes.social.gap,
-    marginBottom: vSpace[6],
+    marginBottom: space[6],
   },
   socialButton: {
     width: sizes.social.size,
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: vSpace[6],
+    marginBottom: space[6],
   },
 });
 

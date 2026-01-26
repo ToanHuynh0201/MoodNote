@@ -1,7 +1,7 @@
 import Typo from "@/components/common/Typo";
 import ScreenWrapper from "@/components/layout/ScreenWrapper";
 import { useTheme } from "@/hooks/useTheme";
-import { s, vSpacing } from "@/utils/scaling";
+import { s, spacing } from "@/utils/scaling";
 import { router } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
@@ -73,7 +73,7 @@ const FloatingNote = ({ delay, startX, endX, duration, symbol }: any) => {
 			]}>
 			<Typo
 				variant="displayMedium"
-				color={theme.secondary.default}
+				color={theme.primary.default}
 				style={styles.noteSymbol}>
 				{symbol}
 			</Typo>
@@ -436,7 +436,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingHorizontal: vSpacing(20),
+		paddingHorizontal: spacing(20),
 	},
 	centerContent: {
 		flex: 1,
@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: s(56),
-		paddingVertical: vSpacing(10),
+		paddingVertical: spacing(10),
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 3 },
 		textShadowRadius: 10,

@@ -92,16 +92,21 @@ The app uses a comprehensive design system with responsive scaling and WCAG AA c
 
 #### Color System (`src/constants/colors/`)
 
-**Architecture**: 3-layer token system (Primitives → Semantic → Usage)
+**Architecture**: Simplified 3-layer token system (Primitives → Semantic → Usage)
 
 1. **Primitives** (`primitives.ts`) - Raw color values with WCAG-compliant variants
 2. **Semantic** (`semantic.ts`) - Mode-based tokens (light/dark) with guaranteed accessibility
 3. **Usage** - Components access colors via `useTheme()` hook
 
+**System Size**: **18 essential tokens** (reduced from 28 for clarity)
+- Removed unused tokens (chart, secondary colors, unused emotions, etc.)
+- Kept only actively-used tokens for simpler developer experience
+
 **WCAG Compliance**: All color combinations meet WCAG 2.1 AA standards:
 - Text colors: ≥4.5:1 contrast ratio
 - UI components: ≥3.0:1 contrast ratio
 - Dark mode: Many colors exceed AAA (7:1) standards
+- **FIXED**: Tonal buttons now have proper contrast in light mode
 
 **Using Colors**:
 
@@ -129,8 +134,8 @@ const MyComponent = () => {
       borderColor: theme.border.strong         // Borders (5:1 contrast)
 
       {/* Status & Emotions */}
-      color: theme.status.success
-      color: theme.emotions.happy
+      color: theme.status.error       // Only error is available
+      color: theme.emotions.happy     // happy, excited, calm available
 
       {/* Feature-specific */}
       color: theme.stats.purple   // Stats cards
@@ -156,53 +161,45 @@ const MyComponent = () => {
 
 #### Responsive Scaling (`src/utils/scaling.ts`)
 
-**Universal Scaling Function**: Single `s()` function replaces the old 3-function system.
+**Simple Width-Based Scaling**: Single `s()` function scales proportionally to screen width.
 
-Based on 375x812 base dimension (iPhone X/11/12/13/14 Pro):
+Based on 375px base width (iPhone X/11/12/13/14 Pro in portrait mode):
 
 ```typescript
-import { s, fontSize, spacing, vSpacing } from "@/utils/scaling";
+import { s, fontSize, spacing } from "@/utils/scaling";
 
-// Font sizes (moderate scaling - default)
+// Font sizes, icons (moderate scaling - default factor 0.5)
 fontSize: s(16)
 fontSize: fontSize(16)  // Same, more semantic
-
-// Horizontal spacing (full x-axis scaling)
-paddingHorizontal: s(24, { axis: 'x' })
-paddingHorizontal: spacing(24)  // Same, more semantic
-
-// Vertical spacing (full y-axis scaling)
-paddingVertical: s(20, { axis: 'y' })
-paddingVertical: vSpacing(20)  // Same, more semantic
-
-// Icons, border radius (moderate scaling)
 width: s(24)
 borderRadius: s(12)
 
-// Exact sizes (no scaling)
-width: s(48, { factor: 0 })
+// Padding, margins, gaps (full scaling - factor 1)
+padding: s(24, 1)
+padding: spacing(24)  // Same, more semantic
+
+// No scaling (factor 0)
+borderWidth: s(1, 0)
 ```
 
-**Semantic Helpers** (recommended for better code readability):
-- `fontSize(size)` - For font sizes
-- `spacing(size)` - For horizontal padding/margins
-- `vSpacing(size)` - For vertical padding/margins
+**Semantic Helpers** (recommended):
+- `fontSize(size)` - Font sizes (factor 0.5)
+- `spacing(size)` - Padding, margins, gaps (factor 1)
+- `iconSize(size)` - Icon sizes (factor 0.5)
+- `radius(size)` - Border radius (factor 0.5)
+- `exact(size)` - No scaling (factor 0)
 
 #### Spacing & Layout (`src/constants/spacing.ts`)
 
-**Spacing Scales**: Numeric keys (0-10) for predictable sizing.
+**Spacing Scale**: Numeric keys (0-10) for predictable sizing.
 
 ```typescript
-import { space, vSpace, radius, sizes } from "@/constants/spacing";
+import { space, radius, sizes } from "@/constants/spacing";
 
-// Horizontal spacing
+// Spacing (padding, margin, gap)
 paddingHorizontal: space[7]   // 24px scaled
-marginHorizontal: space[5]    // 16px scaled
+marginVertical: space[5]      // 16px scaled
 gap: space[3]                 // 8px scaled
-
-// Vertical spacing
-paddingVertical: vSpace[5]    // 20px scaled
-marginVertical: vSpace[4]     // 16px scaled
 
 // Border radius
 borderRadius: radius.lg       // 12px scaled
@@ -216,17 +213,19 @@ width: sizes.avatar.lg        // 48px scaled
 
 **Spacing Scale Reference**:
 
-| Key | Horizontal (space) | Vertical (vSpace) | Common Usage |
-|-----|-------------------|-------------------|--------------|
-| 0 | 0px | 0px | No spacing |
-| 1 | 2px | 2px | Fine adjustments |
-| 2 | 4px | 4px | Tight spacing |
-| 3 | 8px | 8px | Small gaps |
-| 4 | 12px | 16px | Medium spacing |
-| 5 | 16px | 20px | Standard spacing |
-| 6 | 20px | 24px | Large spacing |
-| 7 | 24px | 32px | Screen padding |
-| 8 | 32px | 40px | Major sections |
+| Key | Size | Common Usage |
+|-----|------|--------------|
+| 0 | 0px | No spacing |
+| 1 | 2px | Fine adjustments |
+| 2 | 4px | Tight spacing |
+| 3 | 8px | Small gaps |
+| 4 | 12px | Medium-small gaps |
+| 5 | 16px | Standard spacing |
+| 6 | 20px | Large spacing |
+| 7 | 24px | Screen padding |
+| 8 | 32px | Major sections |
+| 9 | 40px | Extra spacing |
+| 10 | 48px | Maximum spacing |
 
 **Pre-defined Sizes**:
 
@@ -291,11 +290,11 @@ fontFamily: FONTS.decorative  // Pacifico
 }
 ```
 
-**Secondary Button Pattern** (Tonal):
+**Tonal Button Pattern**:
 ```typescript
 {
   backgroundColor: theme.surface.elevated,   // Light purple
-  color: theme.primary.default,             // Dark purple text
+  color: theme.text.primary,                // Dark text (light mode) / White text (dark mode)
 }
 ```
 
@@ -384,10 +383,35 @@ fontFamily: FONTS.decorative  // Pacifico
 | `theme.stats.*` | `theme.text.onPrimary` | - | Colored icons |
 
 **Remember**:
-- Use `theme.text.onPrimary` for ANY colored background (primary, secondary, status, stats)
+- Use `theme.text.onPrimary` for ANY colored background (primary, status, stats)
 - Use `theme.text.primary/secondary/tertiary` for neutral backgrounds (surface.*)
 - ALWAYS add border when using transparent backgrounds
 - Reference `src/utils/buttonStyles.ts` for correct implementation examples
+
+#### Color System Simplification (January 2026)
+
+The color system was simplified to improve contrast and reduce complexity:
+
+**What Changed**:
+- ❌ Removed `text.onElevated` (mode-dependent bug causing poor contrast)
+- ❌ Removed `text.inverse` (never used)
+- ❌ Removed `secondary.*` colors (minimal usage, use `primary.*` instead)
+- ❌ Removed `chart.*` colors (not yet implemented)
+- ❌ Removed `status.warning/info/success` (only `error` is used)
+- ❌ Removed unused `emotions.*` (sad, angry, tired, grateful)
+- ❌ Removed `shadow.colorMedium/colorStrong` (use presets from `spacing.ts`)
+
+**Result**: 28 tokens → 18 tokens (36% reduction)
+
+**Migration**:
+- Tonal buttons now use `theme.text.primary` instead of `theme.text.onElevated`
+- Replace `theme.secondary.default` with `theme.primary.default`
+- Removed tokens had 0 usage, so no breaking changes for existing code
+
+**When to Add Tokens Back**:
+- Add `status.success/warning/info` when implementing success messages
+- Add more `emotions.*` when expanding mood tracking features
+- Add `chart.*` when implementing data visualization
 
 ### API Configuration
 
@@ -540,19 +564,17 @@ export const MoodChart: React.FC<MoodChartProps> = ({ entries, weekLabel }) => {
 Always use design tokens instead of hardcoded values:
 
 ```typescript
-import { space, vSpace, radius, sizes, shadows } from "@/constants/spacing";
-import { s, spacing, vSpacing } from "@/utils/scaling";
+import { space, radius, sizes, shadows } from "@/constants/spacing";
+import { s, spacing } from "@/utils/scaling";
 
 const styles = StyleSheet.create({
 	container: {
 		// Option 1: Use spacing tokens (recommended)
-		paddingHorizontal: space[7],   // 24px scaled
-		paddingVertical: vSpace[5],    // 20px scaled
-		borderRadius: radius.lg,       // 12px scaled
+		padding: space[7],         // 24px scaled
+		borderRadius: radius.lg,   // 12px scaled
 
 		// Option 2: Use scaling functions directly
-		paddingHorizontal: spacing(24),
-		paddingVertical: vSpacing(20),
+		padding: spacing(24),
 		borderRadius: s(12),
 
 		// Shadows
@@ -562,20 +584,19 @@ const styles = StyleSheet.create({
 
 	icon: {
 		// Use pre-defined component sizes
-		width: sizes.icon.lg,      // 24px
-		height: sizes.icon.lg,
+		width: sizes.icon.lg,
+		height: sizes.icon.lg,  // 24px
 	},
 
 	button: {
-		height: sizes.button.height,    // 60px
+		height: sizes.button.height,  // 60px
 		paddingHorizontal: sizes.button.paddingX,  // 24px
 	},
 });
 ```
 
 **Key Rules**:
-- Use `space[n]` for horizontal spacing (padding, margins, gaps)
-- Use `vSpace[n]` for vertical spacing
+- Use `space[n]` for all spacing (padding, margins, gaps)
 - Use `radius.*` for border radius
 - Use `sizes.*` for component dimensions
 - Use `shadows.*` for elevation

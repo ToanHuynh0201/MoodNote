@@ -2,13 +2,14 @@
  * @deprecated This file is DEPRECATED. Use @/utils/scaling instead.
  *
  * Migration guide:
- * - scale(size) → spacing(size) or s(size, { axis: 'x' })
- * - verticalScale(size) → vSpacing(size) or s(size, { axis: 'y' })
+ * - scale(size) → spacing(size) or s(size, 1)
+ * - verticalScale(size) → spacing(size) or s(size, 1)
  * - moderateScale(size) → s(size) or fontSize(size)
- * - moderateVerticalScale(size) → Rarely needed, use s(size, { axis: 'y', factor })
+ * - moderateVerticalScale(size) → spacing(size) or s(size, 1)
  *
+ * The new system uses simple width-based scaling for portrait mobile only.
  * See @/constants/spacing for pre-defined spacing tokens.
- * See @/utils/scaling for the new unified scaling API.
+ * See @/utils/scaling for the new simplified scaling API.
  */
 
 import { Dimensions, PixelRatio, Platform, StatusBar } from "react-native";
@@ -41,7 +42,7 @@ export const scale = (size: number) => {
 };
 
 /**
- * @deprecated Use vSpacing(size) or s(size, { axis: 'y' }) from @/utils/scaling instead
+ * @deprecated Use spacing(size) or s(size, { axis: 'y' }) from @/utils/scaling instead
  *
  * Scale theo chiều cao (Height)
  * Dùng cho: paddingVertical, marginVertical, height, v.v.

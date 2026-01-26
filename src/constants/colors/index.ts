@@ -41,14 +41,12 @@ export type {
 	SurfaceColors,
 	TextColors,
 	PrimaryColors,
-	SecondaryColors,
 	BorderColors,
 	StatusColors,
 	EmotionTokens,
 	StatsTokens,
 	ShadowColors,
 	GradientTokens,
-	ChartColors,
 } from "./semantic";
 
 import { ColorPrimitives } from "./primitives";

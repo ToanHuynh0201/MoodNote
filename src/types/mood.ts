@@ -24,15 +24,16 @@ export interface MonthData {
 }
 
 // Map mood types to emotion colors from theme
+// Note: Using available emotion colors (happy, excited, calm)
 export const MOOD_EMOTION_MAP: Record<
 	MoodType,
 	keyof import("@/constants/colors/semantic").EmotionTokens
 > = {
-	very_sad: "sad",
-	sad: "anxious",
-	neutral: "calm",
-	happy: "happy",
-	very_happy: "excited",
+	very_sad: "calm", // Using calm for very sad (cool color)
+	sad: "calm", // Using calm for sad (cool color)
+	neutral: "calm", // Neutral uses calm
+	happy: "happy", // Happy matches happy
+	very_happy: "excited", // Very happy uses excited
 };
 
 // Mood intensity for chart plotting (1-5 scale)

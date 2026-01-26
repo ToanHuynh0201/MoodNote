@@ -1,5 +1,5 @@
 import { useTheme } from "@/hooks";
-import { sizes, radius, space, vSpace } from "@/constants/spacing";
+import { sizes, radius, space } from "@/constants/spacing";
 import { fontSizes, FONTS } from "@/constants/typography";
 import { s } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -111,10 +111,10 @@ export default TextInput;
 
 const styles = StyleSheet.create({
 	container: {
-		marginBottom: vSpace[4], // 16px
+		marginBottom: space[4], // 16px
 	},
 	label: {
-		marginBottom: vSpace[3], // 8px
+		marginBottom: space[3], // 8px
 	},
 	inputContainer: {
 		flexDirection: "row",
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
 		padding: s(4),
 	},
 	error: {
-		marginTop: vSpace[2], // 4px
+		marginTop: space[2], // 4px
 		marginLeft: space[2], // 4px
 	},
 });

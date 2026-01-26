@@ -11,7 +11,7 @@ import {
 import { ScreenWrapper } from "@/components/layout";
 import { Typo } from "@/components/common";
 import { useTheme } from "@/hooks/useTheme";
-import { space, vSpace, radius } from "@/constants/spacing";
+import { space, radius } from "@/constants/spacing";
 import { s } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -255,8 +255,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-end",
 		alignItems: "center",
-		paddingTop: vSpace[3],
-		paddingBottom: vSpace[2],
+		paddingTop: space[3],
+		paddingBottom: space[2],
 	},
 	saveButton: {
 		width: s(48),
@@ -268,10 +268,10 @@ const styles = StyleSheet.create({
 	toolbar: {
 		flexDirection: "row",
 		alignItems: "center",
-		paddingVertical: vSpace[2],
+		paddingVertical: space[2],
 		paddingHorizontal: space[3],
 		borderRadius: radius.lg,
-		marginBottom: vSpace[4],
+		marginBottom: space[4],
 		gap: space[1],
 	},
 	toolbarButton: {
@@ -286,21 +286,21 @@ const styles = StyleSheet.create({
 	titleInput: {
 		fontSize: s(20),
 		fontWeight: "600",
-		marginBottom: vSpace[3],
-		paddingVertical: vSpace[2],
+		marginBottom: space[3],
+		paddingVertical: space[2],
 	},
 	contentInput: {
 		fontSize: s(16),
 		lineHeight: s(24),
 		minHeight: s(400),
-		paddingBottom: vSpace[8],
+		paddingBottom: space[8],
 	},
 	bottomBar: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
 		paddingHorizontal: space[5],
-		paddingVertical: vSpace[3],
+		paddingVertical: space[3],
 		borderTopWidth: 0,
 	},
 	leftActions: {

@@ -1,8 +1,8 @@
-import { radius, shadows, space, vSpace } from "@/constants/spacing";
+import { radius, shadows, space } from "@/constants/spacing";
 import { FONTS, fontSizes } from "@/constants/typography";
 import { useTheme } from "@/hooks/useTheme";
 import { ActionMenuProps } from "@/types";
-import { s, spacing, vSpacing } from "@/utils/scaling";
+import { s, spacing } from "@/utils/scaling";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
 	menuContainer: {
 		width: "100%",
 		alignItems: "center",
-		paddingBottom: vSpacing(100), // Space above tab bar
+		paddingBottom: spacing(100), // Space above tab bar
 	},
 	menu: {
 		width: spacing(280),
 		borderRadius: radius.xl,
 		borderWidth: 1,
-		paddingVertical: vSpace[2],
+		paddingVertical: space[2],
 		shadowOffset: {
 			width: 0,
 			height: 8,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
 	},
 	triangle: {
 		position: "absolute",
-		bottom: vSpacing(-12),
+		bottom: spacing(-12),
 		alignSelf: "center",
 		width: 0,
 		height: 0,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		paddingHorizontal: space[5],
-		paddingVertical: vSpace[4],
+		paddingVertical: space[4],
 		gap: space[4],
 	},
 	iconCircle: {

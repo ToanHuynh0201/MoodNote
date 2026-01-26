@@ -1,5 +1,5 @@
 import { IconButton, ScreenWrapper, Typo } from "@/components";
-import { space, vSpace, radius, sizes, shadows } from "@/constants/spacing";
+import { space, radius, sizes, shadows } from "@/constants/spacing";
 import { fontSizes } from "@/constants/typography";
 import { useTheme } from "@/hooks";
 import { s } from "@/utils/scaling";
@@ -139,7 +139,7 @@ const WelcomeScreen = () => {
 							<MaterialIcons
 								name="person-add"
 								size={sizes.icon.lg}
-								color={theme.text.onElevated}
+								color={theme.text.primary}
 							/>
 						}
 						label="Đăng kí"
@@ -173,11 +173,11 @@ const styles = StyleSheet.create({
 		borderRadius: radius["3xl"],
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: vSpace[8],
+		marginBottom: space[8],
 		...shadows.lg,
 	},
 	welcomeTitle: {
-		marginBottom: vSpace[2],
+		marginBottom: space[2],
 		fontSize: fontSizes["2xl"],
 		textShadowColor: "rgba(0, 0, 0, 0.15)",
 		textShadowOffset: { width: 0, height: 1 },
@@ -186,8 +186,8 @@ const styles = StyleSheet.create({
 	},
 	appName: {
 		fontSize: fontSizes["6xl"],
-		marginBottom: vSpace[6],
-		paddingVertical: vSpace[2],
+		marginBottom: space[6],
+		paddingVertical: space[2],
 		textShadowColor: "rgba(0, 0, 0, 0.2)",
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 6,
