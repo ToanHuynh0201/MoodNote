@@ -82,6 +82,7 @@ export const ColorPrimitives = {
 		500: "#10B981", // Success main
 		600: "#059669", // Success for light mode - better contrast
 		700: "#047857", // Success dark
+		900: "#064E3B", // Success very dark - for dark mode backgrounds
 	},
 
 	amber: {
@@ -91,6 +92,7 @@ export const ColorPrimitives = {
 		500: "#F59E0B", // Warning main
 		600: "#D97706", // Warning for light mode
 		700: "#B45309", // Warning dark
+		900: "#78350F", // Warning very dark - for dark mode backgrounds
 	},
 
 	red: {
@@ -100,6 +102,7 @@ export const ColorPrimitives = {
 		500: "#EF4444", // Error main
 		600: "#DC2626", // Error for light mode
 		700: "#B91C1C", // Error dark
+		900: "#7F1D1D", // Error very dark - for dark mode backgrounds
 	},
 
 	blue: {
@@ -109,6 +112,7 @@ export const ColorPrimitives = {
 		500: "#3B82F6", // Info main
 		600: "#2563EB", // Info for light mode
 		700: "#1D4ED8", // Info dark
+		900: "#1E3A8A", // Info very dark - for dark mode backgrounds
 	},
 
 	// ============================================================================

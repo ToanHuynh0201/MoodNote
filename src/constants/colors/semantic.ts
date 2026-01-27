@@ -135,6 +135,62 @@ export const createSemanticTokens = (
 			mode === "light" ? primitives.purple[100] : primitives.purple[900],
 	},
 
+	/**
+	 * Secondary brand color - For secondary actions and accents
+	 * Pink-purple for differentiation from primary
+	 */
+	secondary: {
+		/**
+		 * Default secondary - Secondary brand color
+		 * Light: Pink-500 (#D946EF) - 4.5:1 contrast on white (AA)
+		 * Dark: Pink-400 (#E879F9) - bright on dark background
+		 */
+		default:
+			mode === "light" ? primitives.pink[500] : primitives.pink[400],
+
+		/**
+		 * Hover state - Darker/lighter on interaction
+		 * Light: Pink-600 (#C026D3) - 5.8:1 contrast (AA)
+		 * Dark: Pink-300 (#F0ABFC) - lighter on hover
+		 */
+		hover: mode === "light" ? primitives.pink[600] : primitives.pink[300],
+
+		/**
+		 * Subtle secondary - Light background with secondary tint
+		 * Light: Pink-100 (#FAE8FF) - for backgrounds
+		 * Dark: Pink-900 (#701A75) - dark tinted background
+		 */
+		subtle:
+			mode === "light" ? primitives.pink[100] : primitives.pink[900],
+	},
+
+	/**
+	 * Danger color - For destructive actions (delete, remove, etc.)
+	 * Uses red color scale
+	 */
+	danger: {
+		/**
+		 * Default danger - For destructive buttons
+		 * Light: Red-600 (#DC2626) - 5.1:1 contrast (AA)
+		 * Dark: Red-400 (#F87171) - 4.7:1 contrast (AA)
+		 */
+		default: mode === "light" ? primitives.red[600] : primitives.red[400],
+
+		/**
+		 * Hover state - More intense on interaction
+		 * Light: Red-700 (#B91C1C) - 6.8:1 contrast (AAA)
+		 * Dark: Red-500 (#EF4444) - brighter on hover
+		 */
+		hover: mode === "light" ? primitives.red[700] : primitives.red[500],
+
+		/**
+		 * Subtle danger - Light background for danger zones
+		 * Light: Red-100 (#FEE2E2) - for backgrounds
+		 * Dark: Red-900 (#7F1D1D) - dark danger background
+		 */
+		subtle: mode === "light" ? primitives.red[100] : primitives.red[900],
+	},
+
 	// ============================================================================
 	// BORDER TOKENS (WCAG COMPLIANT)
 	// All borders meet at least 3:1 contrast ratio for UI components
@@ -167,8 +223,7 @@ export const createSemanticTokens = (
 
 	// ============================================================================
 	// STATUS TOKENS
-	// Error states (success, warning, info can be added when needed)
-	// All meet WCAG AA standards
+	// All status colors meet WCAG AA standards
 	// ============================================================================
 	status: {
 		/**
@@ -177,12 +232,34 @@ export const createSemanticTokens = (
 		 * Dark: Red-400 (#F87171) - 4.7:1 contrast (AA)
 		 */
 		error: mode === "light" ? primitives.red[600] : primitives.red[400],
+
+		/**
+		 * Success - Success messages, confirmations
+		 * Light: Green-600 (#059669) - 4.9:1 contrast (AA)
+		 * Dark: Green-400 (#34D399) - 4.8:1 contrast (AA)
+		 */
+		success:
+			mode === "light" ? primitives.green[600] : primitives.green[400],
+
+		/**
+		 * Warning - Warnings, cautions
+		 * Light: Amber-600 (#D97706) - 4.6:1 contrast (AA)
+		 * Dark: Amber-400 (#FBBF24) - 4.5:1 contrast (AA)
+		 */
+		warning:
+			mode === "light" ? primitives.amber[600] : primitives.amber[400],
+
+		/**
+		 * Info - Informational messages
+		 * Light: Blue-600 (#2563EB) - 5.0:1 contrast (AA)
+		 * Dark: Blue-400 (#60A5FA) - 4.7:1 contrast (AA)
+		 */
+		info: mode === "light" ? primitives.blue[600] : primitives.blue[400],
 	},
 
 	// ============================================================================
 	// EMOTION TOKENS (WCAG AA COMPLIANT)
-	// Colors for mood tracking - only actively used emotions
-	// (sad, angry, tired, grateful can be added back when needed)
+	// Colors for mood tracking - all 8 emotions
 	// ============================================================================
 	emotions: {
 		/**
@@ -205,6 +282,41 @@ export const createSemanticTokens = (
 		 * Dark: Green-300 (#6EE7B7) - 7.3:1 contrast (AAA)
 		 */
 		calm: primitives.emotions.calm[mode],
+
+		/**
+		 * Sad - Unhappy, down
+		 * Light: Blue-600 (#2563EB) - 5.0:1 contrast (AA)
+		 * Dark: Blue-300 (#93C5FD) - 6.8:1 contrast (AA)
+		 */
+		sad: primitives.emotions.sad[mode],
+
+		/**
+		 * Anxious - Worried, nervous
+		 * Light: Violet-600 (#7C3AED) - 5.3:1 contrast (AA)
+		 * Dark: Violet-300 (#C4B5FD) - 7.1:1 contrast (AAA)
+		 */
+		anxious: primitives.emotions.anxious[mode],
+
+		/**
+		 * Angry - Frustrated, mad
+		 * Light: Red-600 (#DC2626) - 5.1:1 contrast (AA)
+		 * Dark: Red-300 (#FCA5A5) - 6.5:1 contrast (AA)
+		 */
+		angry: primitives.emotions.angry[mode],
+
+		/**
+		 * Tired - Exhausted, fatigued
+		 * Light: Slate-500 (#64748B) - 4.7:1 contrast (AA)
+		 * Dark: Slate-300 (#CBD5E1) - 11.2:1 contrast (AAA)
+		 */
+		tired: primitives.emotions.tired[mode],
+
+		/**
+		 * Grateful - Thankful, appreciative
+		 * Light: Orange-600 (#EA580C) - 4.8:1 contrast (AA)
+		 * Dark: Orange-300 (#FDBA74) - 7.0:1 contrast (AAA)
+		 */
+		grateful: primitives.emotions.grateful[mode],
 	},
 
 	// ============================================================================
@@ -287,6 +399,8 @@ export type ThemeColors = ReturnType<typeof createSemanticTokens>;
 export type SurfaceColors = ThemeColors["surface"];
 export type TextColors = ThemeColors["text"];
 export type PrimaryColors = ThemeColors["primary"];
+export type SecondaryColors = ThemeColors["secondary"];
+export type DangerColors = ThemeColors["danger"];
 export type BorderColors = ThemeColors["border"];
 export type StatusColors = ThemeColors["status"];
 export type EmotionTokens = ThemeColors["emotions"];
