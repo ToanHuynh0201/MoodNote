@@ -1,14 +1,14 @@
 import { useCallback, useState } from "react";
-import type { FormErrors, FormValidators } from "@/types/form";
+import type { FormErrors, ZodSchema } from "@/types/form";
 
 interface UseFormOptions<V extends Record<string, string>> {
 	initialValues: V;
-	validators?: FormValidators<V>;
+	schema: ZodSchema;
 }
 
 const useForm = <V extends Record<string, string>>({
 	initialValues,
-	validators = {},
+	schema,
 }: UseFormOptions<V>) => {
 	const [values, setValues] = useState<V>(initialValues);
 	const [errors, setErrors] = useState<FormErrors<V>>({});
@@ -33,25 +33,27 @@ const useForm = <V extends Record<string, string>>({
 	}, []);
 
 	/**
-	 * Run all validators against current values.
+	 * Run the Zod schema against current values.
 	 * Sets errors state and returns true if the form is valid.
 	 */
 	const validate = useCallback((): boolean => {
-		const newErrors: FormErrors<V> = {};
+		const result = schema.safeParse(values);
 
-		for (const field of Object.keys(validators) as (keyof V)[]) {
-			const rule = validators[field];
-			if (rule) {
-				const error = rule(values, values);
-				if (error) {
-					newErrors[field] = error;
-				}
-			}
+		if (result.success) {
+			setErrors({});
+			return true;
 		}
 
+		const newErrors: FormErrors<V> = {};
+		for (const issue of result.error.issues) {
+			const field = issue.path[0] as keyof V;
+			if (field && !newErrors[field]) {
+				newErrors[field] = issue.message;
+			}
+		}
 		setErrors(newErrors);
-		return Object.keys(newErrors).length === 0;
-	}, [values, validators]);
+		return false;
+	}, [values, schema]);
 
 	/** Reset values and errors back to initial state. */
 	const reset = useCallback(() => {

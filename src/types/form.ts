@@ -1,16 +1,4 @@
-/**
- * Validation rule for a single form field.
- * Returns an error message string if invalid, or undefined if valid.
- */
-export type FieldValidator<V> = (value: V, values: V) => string | undefined;
-
-/**
- * Map of field names to their validation rules.
- * Each key must match a key in the form values object.
- */
-export type FormValidators<V extends Record<string, string>> = {
-	[K in keyof V]?: FieldValidator<V>;
-};
+import type { z } from "zod";
 
 /**
  * Map of field names to their current error messages.
@@ -19,3 +7,6 @@ export type FormValidators<V extends Record<string, string>> = {
 export type FormErrors<V extends Record<string, string>> = {
 	[K in keyof V]?: string;
 };
+
+/** Zod schema type used by useForm. */
+export type ZodSchema = z.ZodTypeAny;

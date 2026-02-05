@@ -2,6 +2,8 @@ import { Button, LoadingSpinner, TextInput, Typo } from "@/components";
 import { ScreenWrapper } from "@/components/layout";
 import { radius, sizes, space } from "@/constants/spacing";
 import { useTheme } from "@/hooks";
+import useForm from "@/hooks/useForm";
+import { loginSchema } from "@/validation/auth";
 import { spacing } from "@/utils/scaling";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -18,13 +20,12 @@ import {
 
 const LoginScreen = () => {
 	const { theme } = useTheme();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const { values, errors, loading, setLoading, setFieldValue, validate } =
+		useForm({
+			initialValues: { email: "", password: "" },
+			schema: loginSchema,
+		});
 	const [showPassword, setShowPassword] = useState(false);
-	const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-		{},
-	);
-	const [loading, setLoading] = useState(false);
 
 	// Animation values
 	const fadeAnim = new Animated.Value(0);
@@ -45,31 +46,10 @@ const LoginScreen = () => {
 		]).start();
 	}, []);
 
-	const validateForm = () => {
-		const newErrors: { email?: string; password?: string } = {};
-
-		// Email validation
-		if (!email.trim()) {
-			newErrors.email = "Vui lòng nhập email";
-		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-			newErrors.email = "Email không hợp lệ";
-		}
-
-		// Password validation
-		if (!password) {
-			newErrors.password = "Vui lòng nhập mật khẩu";
-		} else if (password.length < 6) {
-			newErrors.password = "Mật khẩu phải có ít nhất 6 ký tự";
-		}
-
-		setErrors(newErrors);
-		return Object.keys(newErrors).length === 0;
-	};
-
 	const handleLogin = async () => {
-		// if (!validateForm()) {
-		// 	return;
-		// }
+		if (!validate()) {
+			return;
+		}
 
 		setLoading(true);
 
@@ -143,15 +123,10 @@ const LoginScreen = () => {
 							<TextInput
 								label="Email"
 								placeholder="Nhập email của bạn"
-								value={email}
-								onChangeText={(text) => {
-									setEmail(text);
-									if (errors.email)
-										setErrors({
-											...errors,
-											email: undefined,
-										});
-								}}
+								value={values.email}
+								onChangeText={(text) =>
+									setFieldValue("email", text)
+								}
 								error={errors.email}
 								leftIcon="email"
 								keyboardType="email-address"
@@ -162,15 +137,10 @@ const LoginScreen = () => {
 							<TextInput
 								label="Mật khẩu"
 								placeholder="Nhập mật khẩu của bạn"
-								value={password}
-								onChangeText={(text) => {
-									setPassword(text);
-									if (errors.password)
-										setErrors({
-											...errors,
-											password: undefined,
-										});
-								}}
+								value={values.password}
+								onChangeText={(text) =>
+									setFieldValue("password", text)
+								}
 								error={errors.password}
 								leftIcon="lock"
 								rightIcon={

@@ -11,25 +11,21 @@ import {
 import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@/hooks";
+import useForm from "@/hooks/useForm";
+import { registerSchema } from "@/validation/auth";
 import { Typo, TextInput, Button, LoadingSpinner } from "@/components";
 import { space, radius, sizes } from "@/constants/spacing";
 import { ScreenWrapper } from "@/components/layout";
 
 const RegisterScreen = () => {
   const { theme } = useTheme();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const { values, errors, loading, setLoading, setFieldValue, validate } =
+    useForm({
+      initialValues: { name: "", email: "", password: "", confirmPassword: "" },
+      schema: registerSchema,
+    });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState<{
-    name?: string;
-    email?: string;
-    password?: string;
-    confirmPassword?: string;
-  }>({});
-  const [loading, setLoading] = useState(false);
 
   // Animation values
   const fadeAnim = new Animated.Value(0);
@@ -50,48 +46,8 @@ const RegisterScreen = () => {
     ]).start();
   }, []);
 
-  const validateForm = () => {
-    const newErrors: {
-      name?: string;
-      email?: string;
-      password?: string;
-      confirmPassword?: string;
-    } = {};
-
-    // Name validation
-    if (!name.trim()) {
-      newErrors.name = "Vui lòng nhập họ tên";
-    } else if (name.trim().length < 2) {
-      newErrors.name = "Họ tên phải có ít nhất 2 ký tự";
-    }
-
-    // Email validation
-    if (!email.trim()) {
-      newErrors.email = "Vui lòng nhập email";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Email không hợp lệ";
-    }
-
-    // Password validation
-    if (!password) {
-      newErrors.password = "Vui lòng nhập mật khẩu";
-    } else if (password.length < 6) {
-      newErrors.password = "Mật khẩu phải có ít nhất 6 ký tự";
-    }
-
-    // Confirm password validation
-    if (!confirmPassword) {
-      newErrors.confirmPassword = "Vui lòng xác nhận mật khẩu";
-    } else if (password !== confirmPassword) {
-      newErrors.confirmPassword = "Mật khẩu không khớp";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleRegister = async () => {
-    if (!validateForm()) {
+    if (!validate()) {
       return;
     }
 
@@ -168,11 +124,10 @@ const RegisterScreen = () => {
               <TextInput
                 label="Họ và tên"
                 placeholder="Nhập họ và tên của bạn"
-                value={name}
-                onChangeText={(text) => {
-                  setName(text);
-                  if (errors.name) setErrors({ ...errors, name: undefined });
-                }}
+                value={values.name}
+                onChangeText={(text) =>
+                  setFieldValue("name", text)
+                }
                 error={errors.name}
                 leftIcon="person"
                 autoCapitalize="words"
@@ -181,11 +136,10 @@ const RegisterScreen = () => {
               <TextInput
                 label="Email"
                 placeholder="Nhập email của bạn"
-                value={email}
-                onChangeText={(text) => {
-                  setEmail(text);
-                  if (errors.email) setErrors({ ...errors, email: undefined });
-                }}
+                value={values.email}
+                onChangeText={(text) =>
+                  setFieldValue("email", text)
+                }
                 error={errors.email}
                 leftIcon="email"
                 keyboardType="email-address"
@@ -196,12 +150,10 @@ const RegisterScreen = () => {
               <TextInput
                 label="Mật khẩu"
                 placeholder="Nhập mật khẩu của bạn"
-                value={password}
-                onChangeText={(text) => {
-                  setPassword(text);
-                  if (errors.password)
-                    setErrors({ ...errors, password: undefined });
-                }}
+                value={values.password}
+                onChangeText={(text) =>
+                  setFieldValue("password", text)
+                }
                 error={errors.password}
                 leftIcon="lock"
                 rightIcon={showPassword ? "visibility-off" : "visibility"}
@@ -213,12 +165,10 @@ const RegisterScreen = () => {
               <TextInput
                 label="Xác nhận mật khẩu"
                 placeholder="Nhập lại mật khẩu"
-                value={confirmPassword}
-                onChangeText={(text) => {
-                  setConfirmPassword(text);
-                  if (errors.confirmPassword)
-                    setErrors({ ...errors, confirmPassword: undefined });
-                }}
+                value={values.confirmPassword}
+                onChangeText={(text) =>
+                  setFieldValue("confirmPassword", text)
+                }
                 error={errors.confirmPassword}
                 leftIcon="lock"
                 rightIcon={
