@@ -1,25 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import {
-	View,
-	TouchableOpacity,
-	StyleSheet,
-	Animated,
-	Easing,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "@/hooks/useTheme";
-import { s } from "@/utils/scaling";
 import { radius } from "@/constants/spacing";
+import { useTheme } from "@/hooks/useTheme";
+import type { ThemeToggleProps } from "@/types";
+import { s } from "@/utils/scaling";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useEffect, useRef } from "react";
+import { Animated, StyleSheet, TouchableOpacity, View } from "react-native";
 
-interface ThemeToggleProps {
-	isDark: boolean;
-	onToggle: () => void;
-}
-
-export const ThemeToggle: React.FC<ThemeToggleProps> = ({
-	isDark,
-	onToggle,
-}) => {
+export const ThemeToggle = ({ isDark, onToggle }: ThemeToggleProps) => {
 	const { theme } = useTheme();
 	// Separate animated values for different driver modes
 	const colorValue = useRef(new Animated.Value(isDark ? 1 : 0)).current;
@@ -102,7 +89,11 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
 					<Ionicons
 						name={isDark ? "moon" : "sunny"}
 						size={s(20)}
-						color={isDark ? theme.primary.default : theme.emotions.happy}
+						color={
+							isDark
+								? theme.primary.default
+								: theme.emotions.happy
+						}
 					/>
 				</Animated.View>
 			</Animated.View>

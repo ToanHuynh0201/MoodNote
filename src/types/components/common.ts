@@ -90,3 +90,8 @@ export interface ActionMenuProps {
 	items: ActionMenuItem[];
 	anchorPosition?: { x: number; y: number };
 }
+
+export interface ThemeToggleProps {
+	isDark: boolean;
+	onToggle: () => void;
+}

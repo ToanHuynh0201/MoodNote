@@ -35,9 +35,6 @@ yarn-error.*
 
 # Environment variables
 .env
-.env.development
-.env.preview
-.env.production
 
 # Keep the example file
 !.env.example

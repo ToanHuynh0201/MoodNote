@@ -1,11 +1,10 @@
-import Constants from 'expo-constants';
 import { AppEnvironment, EnvironmentConfig, EnvUtils } from '@/types/env';
 
 /**
  * Environment Configuration Utility
  *
  * Centralizes access to environment variables with type safety
- * Uses expo-constants to access variables set at build time
+ * All variables are read directly from process.env with EXPO_PUBLIC_ prefix
  *
  * Usage:
  *   import { env } from '@/config/env';
@@ -35,26 +34,24 @@ const parseNumber = (
 	return defaultValue;
 };
 
-// Get environment config from expo-constants
+// Get environment config directly from process.env
 const getEnvConfig = (): EnvironmentConfig => {
-	const extra = Constants.expoConfig?.extra?.env || {};
-
 	return {
 		// API Configuration
-		API_URL: extra.API_URL || 'http://localhost:3000/api',
-		API_TIMEOUT: parseNumber(extra.API_TIMEOUT, 30000),
+		API_URL: process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api',
+		API_TIMEOUT: parseNumber(process.env.EXPO_PUBLIC_API_TIMEOUT, 30000),
 
 		// App Configuration
-		APP_ENV: (extra.APP_ENV || 'development') as AppEnvironment,
-		ENABLE_LOGGING: parseBoolean(extra.ENABLE_LOGGING ?? true),
+		APP_ENV: (process.env.EXPO_PUBLIC_APP_ENV || 'development') as AppEnvironment,
+		ENABLE_LOGGING: parseBoolean(process.env.EXPO_PUBLIC_ENABLE_LOGGING ?? true),
 
 		// Feature Flags
-		ENABLE_SOCIAL_LOGIN: parseBoolean(extra.ENABLE_SOCIAL_LOGIN ?? true),
-		ENABLE_ANALYTICS: parseBoolean(extra.ENABLE_ANALYTICS ?? false),
+		ENABLE_SOCIAL_LOGIN: parseBoolean(process.env.EXPO_PUBLIC_ENABLE_SOCIAL_LOGIN ?? true),
+		ENABLE_ANALYTICS: parseBoolean(process.env.EXPO_PUBLIC_ENABLE_ANALYTICS ?? false),
 
 		// Third-party Services
-		GOOGLE_CLIENT_ID: extra.GOOGLE_CLIENT_ID || '',
-		FACEBOOK_APP_ID: extra.FACEBOOK_APP_ID || '',
+		GOOGLE_CLIENT_ID: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID || '',
+		FACEBOOK_APP_ID: process.env.EXPO_PUBLIC_FACEBOOK_APP_ID || '',
 	};
 };
 

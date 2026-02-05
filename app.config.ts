@@ -80,18 +80,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 			eas: {
 				projectId: '484d033e-d611-48a9-80e7-b26d8fa18bb9',
 			},
-			// Expose environment variables through expo-constants
-			// These will be accessible via Constants.expoConfig.extra
-			env: {
-				API_URL: process.env.EXPO_PUBLIC_API_URL,
-				API_TIMEOUT: process.env.EXPO_PUBLIC_API_TIMEOUT,
-				APP_ENV: process.env.EXPO_PUBLIC_APP_ENV,
-				ENABLE_LOGGING: process.env.EXPO_PUBLIC_ENABLE_LOGGING,
-				ENABLE_SOCIAL_LOGIN: process.env.EXPO_PUBLIC_ENABLE_SOCIAL_LOGIN,
-				ENABLE_ANALYTICS: process.env.EXPO_PUBLIC_ENABLE_ANALYTICS,
-				GOOGLE_CLIENT_ID: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID,
-				FACEBOOK_APP_ID: process.env.EXPO_PUBLIC_FACEBOOK_APP_ID,
-			},
 		},
 	};
 };
